@@ -11,6 +11,7 @@ import {
   cilDrop,
   cilNotes,
   cilPencil,
+  cilUserX,
   cilPuzzle,
   cilSpeedometer,
   cilStar,
@@ -33,6 +34,12 @@ const _nav = [
     name: 'Avaliação Inicial',
     to: '/avini',
     icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Avaliação Ombro',
+    to: '/avombro',
+    icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
   },
   /*{
     component: CNavGroup,
