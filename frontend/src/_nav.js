@@ -30,6 +30,18 @@ const _nav = [
     to: '/avombro',
     icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: 'TutorialsList',
+    to: '/tutorials',
+    icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'AddTutorial',
+    to: '/add',
+    icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
+  },
   /*{
     component: CNavGroup,
     name: 'Avaliação Inicial',
