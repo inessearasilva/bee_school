@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Consultas = React.lazy(() => import('./views/dashboard/Consultas'))
-const Avini = React.lazy(() => import('./views/dashboard/Avalini'))
+const Avini = React.lazy(() => import('./views/dashboard/Avini'))
 const TutorialsList = React.lazy(() => import('./components/tutorials-list.component'))
 const AddTutorial = React.lazy(() => import('./components/add-tutorial.component'))
 const Tutorial = React.lazy(() => import('./components/add-tutorial.component'))
