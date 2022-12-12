@@ -16,6 +16,7 @@
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
     "bulma": "^0.9.4",
+    "protected-aidaforms": "file:protected-aidaforms-1.5.9.tgz",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-calendar": "^4.0.0",

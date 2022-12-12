@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form} from 'protected-aidaforms';
 import json from './JSON.js';
-import dlm from './DLMteste.js';
+//import dlm from './DLMteste.js';
 
 const Avini = () => {
 
@@ -11,7 +11,7 @@ const Avini = () => {
  onSave={(values, changedFields) => console.log("SAVED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
  onCancel={status => console.log("CANCELLED:", status)}
  template={json}
- dlm={dlm}
+ dlm={{}}
  showPrint={true}
  editMode={true}
  professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
