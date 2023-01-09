@@ -47,17 +47,10 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <br></br>
-        <div>
-          <Cal calendarType='PT'/>
-        </div>
         <SimpleBar>
           <AppSidebarNav items={navigation} />
         </SimpleBar>
       </CSidebarNav>
-      <CSidebarToggler
-        className="d-none d-lg-flex"
-        onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
-      />
     </CSidebar>
   )
 }
