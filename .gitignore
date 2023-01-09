@@ -1,2 +1,6 @@
+<<<<<<< HEAD
+*.pack
+=======
 
 frontend/node_modules/.cache/default-development/0.pack
+>>>>>>> parent of 4af45cc45 (update)
