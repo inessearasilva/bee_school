@@ -31,7 +31,20 @@ const AppHeader = () => {
         <CHeaderNav className="d-none d-md-flex me-auto">
         </CHeaderNav>
         <CHeaderNav>
-          <CNavItem>
+        </CHeaderNav>
+      </CContainer>
+      <CHeaderDivider />
+      <CContainer fluid>
+        <AppBreadcrumb />
+      </CContainer>
+    </CHeader>
+  )
+}
+
+export default AppHeader
+
+/*
+<CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
             </CNavLink>
@@ -46,17 +59,7 @@ const AppHeader = () => {
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
           </CNavItem>
-        </CHeaderNav>
-        <CHeaderNav className="ms-3">
+          <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
         </CHeaderNav>
-      </CContainer>
-      <CHeaderDivider />
-      <CContainer fluid>
-        <AppBreadcrumb />
-      </CContainer>
-    </CHeader>
-  )
-}
-
-export default AppHeader
+*/
