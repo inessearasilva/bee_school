@@ -25,9 +25,6 @@ const AppHeader = () => {
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
-        <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon src={user} height={48} alt="Logo" />
-        </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
         </CHeaderNav>
         <CHeaderNav>
