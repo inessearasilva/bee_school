@@ -1,33 +1,33 @@
 import http from "../http-common";
 
-class TutorialDataService {
+class UtenteDataService {
   getAll() {
-    return http.get("/tutorials");
+    return http.get("/utente");
   }
 
-  get(id) {
-    return http.get(`/tutorials/${id}`);
+  get(num_sequencial) {
+    return http.get(`/utente/${num_sequencial}`);
   }
 
   create(data) {
-    return http.post("/tutorials", data);
+    return http.post("/utente", data);
   }
 
-  update(id, data) {
-    return http.put(`/tutorials/${id}`, data);
+  update(num_sequencial, data) {
+    return http.put(`/utente/${num_sequencial}`, data);
   }
 
-  delete(id) {
-    return http.delete(`/tutorials/${id}`);
+  delete(num_sequencial) {
+    return http.delete(`/utente/${num_sequencial}`);
   }
 
   deleteAll() {
-    return http.delete(`/tutorials`);
+    return http.delete(`/utente`);
   }
 
-  findByTitle(title) {
-    return http.get(`/tutorials?title=${title}`);
+  findBynome_utente(nome_utente) {
+    return http.get(`/utente?nome_utente=${nome_utente}`);
   }
 }
 
-export default new TutorialDataService();
+export default new UtenteDataService();

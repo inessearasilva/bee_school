@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TutorialDataService from "../services/tutorial.service";
+import UtenteDataService from "../services/tutorial.service";
 import { withRouter } from '../common/with-router';
 
 class Registo_Utente extends Component {
@@ -7,13 +7,13 @@ class Registo_Utente extends Component {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.getTutorial = this.getTutorial.bind(this);
+    this.getUtente = this.getUtente.bind(this);
     this.updatePublished = this.updatePublished.bind(this);
-    this.updateTutorial = this.updateTutorial.bind(this);
-    this.deleteTutorial = this.deleteTutorial.bind(this);
+    this.updateUtente = this.updateUtente.bind(this);
+    this.deleteUtente = this.deleteUtente.bind(this);
 
     this.state = {
-      currentTutorial: {
+      currentUtente: {
         id: null,
         title: "",
         description: "",
@@ -24,7 +24,7 @@ class Registo_Utente extends Component {
   }
 
   componentDidMount() {
-    this.getTutorial(this.props.router.params.id);
+    this.getUtente(this.props.router.params.id);
   }
 
   onChangeTitle(e) {
@@ -32,8 +32,8 @@ class Registo_Utente extends Component {
 
     this.setState(function(prevState) {
       return {
-        currentTutorial: {
-          ...prevState.currentTutorial,
+        currentUtente: {
+          ...prevState.currentUtente,
           title: title
         }
       };
@@ -44,18 +44,18 @@ class Registo_Utente extends Component {
     const description = e.target.value;
     
     this.setState(prevState => ({
-      currentTutorial: {
-        ...prevState.currentTutorial,
+      currentUtente: {
+        ...prevState.currentUtente,
         description: description
       }
     }));
   }
 
-  getTutorial(id) {
-    TutorialDataService.get(id)
+  getUtente(id) {
+    UtenteDataService.get(id)
       .then(response => {
         this.setState({
-          currentTutorial: response.data
+          currentUtente: response.data
         });
         console.log(response.data);
       })
@@ -66,17 +66,17 @@ class Registo_Utente extends Component {
 
   updatePublished(status) {
     var data = {
-      id: this.state.currentTutorial.id,
-      title: this.state.currentTutorial.title,
-      description: this.state.currentTutorial.description,
+      id: this.state.currentUtente.id,
+      title: this.state.currentUtente.title,
+      description: this.state.currentUtente.description,
       published: status
     };
 
-    TutorialDataService.update(this.state.currentTutorial.id, data)
+    UtenteDataService.update(this.state.currentUtente.id, data)
       .then(response => {
         this.setState(prevState => ({
-          currentTutorial: {
-            ...prevState.currentTutorial,
+          currentUtente: {
+            ...prevState.currentUtente,
             published: status
           }
         }));
@@ -87,15 +87,15 @@ class Registo_Utente extends Component {
       });
   }
 
-  updateTutorial() {
-    TutorialDataService.update(
-      this.state.currentTutorial.id,
-      this.state.currentTutorial
+  updateUtente() {
+    UtenteDataService.update(
+      this.state.currentUtente.id,
+      this.state.currentUtente
     )
       .then(response => {
         console.log(response.data);
         this.setState({
-          message: "The tutorial was updated successfully!"
+          message: "The Utente was updated successfully!"
         });
       })
       .catch(e => {
@@ -103,11 +103,11 @@ class Registo_Utente extends Component {
       });
   }
 
-  deleteTutorial() {    
-    TutorialDataService.delete(this.state.currentTutorial.id)
+  deleteUtente() {    
+    UtenteDataService.delete(this.state.currentUtente.id)
       .then(response => {
         console.log(response.data);
-        this.props.router.navigate('/tutorials');
+        this.props.router.navigate('/utente');
       })
       .catch(e => {
         console.log(e);
@@ -115,13 +115,13 @@ class Registo_Utente extends Component {
   }
 
   render() {
-    const { currentTutorial } = this.state;
+    const { currentUtente } = this.state;
 
     return (
       <div>
-        {currentTutorial ? (
+        {currentUtente ? (
           <div className="edit-form">
-            <h4>Tutorial</h4>
+            <h4>Utente</h4>
             <form>
               <div className="form-group">
                 <label htmlFor="title">Title</label>
@@ -129,7 +129,7 @@ class Registo_Utente extends Component {
                   type="text"
                   className="form-control"
                   id="title"
-                  value={currentTutorial.title}
+                  value={currentUtente.title}
                   onChange={this.onChangeTitle}
                 />
               </div>
@@ -139,7 +139,7 @@ class Registo_Utente extends Component {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={currentTutorial.description}
+                  value={currentUtente.description}
                   onChange={this.onChangeDescription}
                 />
               </div>
@@ -148,11 +148,11 @@ class Registo_Utente extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentTutorial.published ? "Published" : "Pending"}
+                {currentUtente.published ? "Published" : "Pending"}
               </div>
             </form>
 
-            {currentTutorial.published ? (
+            {currentUtente.published ? (
               <button
                 className="badge badge-primary mr-2"
                 onClick={() => this.updatePublished(false)}
@@ -170,7 +170,7 @@ class Registo_Utente extends Component {
 
             <button
               className="badge badge-danger mr-2"
-              onClick={this.deleteTutorial}
+              onClick={this.deleteUtente}
             >
               Delete
             </button>
@@ -178,7 +178,7 @@ class Registo_Utente extends Component {
             <button
               type="submit"
               className="badge badge-success"
-              onClick={this.updateTutorial}
+              onClick={this.updateUtente}
             >
               Update
             </button>
@@ -187,7 +187,7 @@ class Registo_Utente extends Component {
         ) : (
           <div>
             <br />
-            <p>Please click on a Tutorial...</p>
+            <p>Please click on a Utente...</p>
           </div>
         )}
       </div>

@@ -1,27 +1,27 @@
 import React, { Component } from "react";
-import TutorialDataService from "../services/tutorial.service";
+import UtenteDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
 
-export default class TutorialsList extends Component {
+export default class Utentes extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
-    this.retrieveTutorials = this.retrieveTutorials.bind(this);
+    this.retrieveUtente = this.retrieveUtente.bind(this);
     this.refreshList = this.refreshList.bind(this);
-    this.setActiveTutorial = this.setActiveTutorial.bind(this);
-    this.removeAllTutorials = this.removeAllTutorials.bind(this);
+    this.setActiveUtente = this.setActiveUtente.bind(this);
+    this.removeAllUtente = this.removeAllUtente.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
 
     this.state = {
-      tutorials: [],
-      currentTutorial: null,
+      Utente: [],
+      currentUtente: null,
       currentIndex: -1,
       searchTitle: ""
     };
   }
 
   componentDidMount() {
-    this.retrieveTutorials();
+    this.retrieveUtente();
   }
 
   onChangeSearchTitle(e) {
@@ -32,11 +32,11 @@ export default class TutorialsList extends Component {
     });
   }
 
-  retrieveTutorials() {
-    TutorialDataService.getAll()
+  retrieveUtente() {
+    UtenteDataService.getAll()
       .then(response => {
         this.setState({
-          tutorials: response.data
+          Utente: response.data
         });
         console.log(response.data);
       })
@@ -46,22 +46,22 @@ export default class TutorialsList extends Component {
   }
 
   refreshList() {
-    this.retrieveTutorials();
+    this.retrieveUtente();
     this.setState({
-      currentTutorial: null,
+      currentUtente: null,
       currentIndex: -1
     });
   }
 
-  setActiveTutorial(tutorial, index) {
+  setActiveUtente(Utente, index) {
     this.setState({
-      currentTutorial: tutorial,
+      currentUtente: Utente,
       currentIndex: index
     });
   }
 
-  removeAllTutorials() {
-    TutorialDataService.deleteAll()
+  removeAllUtente() {
+    UtenteDataService.deleteAll()
       .then(response => {
         console.log(response.data);
         this.refreshList();
@@ -73,14 +73,14 @@ export default class TutorialsList extends Component {
 
   searchTitle() {
     this.setState({
-      currentTutorial: null,
+      currentUtente: null,
       currentIndex: -1
     });
 
-    TutorialDataService.findByTitle(this.state.searchTitle)
+    UtenteDataService.findByTitle(this.state.searchTitle)
       .then(response => {
         this.setState({
-          tutorials: response.data
+          Utente: response.data
         });
         console.log(response.data);
       })
@@ -90,7 +90,7 @@ export default class TutorialsList extends Component {
   }
 
   render() {
-    const { searchTitle, tutorials, currentTutorial, currentIndex } = this.state;
+    const { searchTitle, Utente, currentUtente, currentIndex } = this.state;
 
     return (
       <div className="list row">
@@ -115,56 +115,56 @@ export default class TutorialsList extends Component {
           </div>
         </div>
         <div className="col-md-6">
-          <h4>Tutorials List</h4>
+          <h4>Utente List</h4>
 
           <ul className="list-group">
-            {tutorials &&
-              tutorials.map((tutorial, index) => (
+            {Utente &&
+              Utente.map((Utente, index) => (
                 <li
                   className={
                     "list-group-item " +
                     (index === currentIndex ? "active" : "")
                   }
-                  onClick={() => this.setActiveTutorial(tutorial, index)}
+                  onClick={() => this.setActiveUtente(Utente, index)}
                   key={index}
                 >
-                  {tutorial.title}
+                  {Utente.title}
                 </li>
               ))}
           </ul>
 
           <button
             className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllTutorials}
+            onClick={this.removeAllUtente}
           >
             Remove All
           </button>
         </div>
         <div className="col-md-6">
-          {currentTutorial ? (
+          {currentUtente ? (
             <div>
-              <h4>Tutorial</h4>
+              <h4>Utente</h4>
               <div>
                 <label>
                   <strong>Title:</strong>
                 </label>{" "}
-                {currentTutorial.title}
+                {currentUtente.title}
               </div>
               <div>
                 <label>
                   <strong>Description:</strong>
                 </label>{" "}
-                {currentTutorial.description}
+                {currentUtente.description}
               </div>
               <div>
                 <label>
                   <strong>Status:</strong>
                 </label>{" "}
-                {currentTutorial.published ? "Published" : "Pending"}
+                {currentUtente.published ? "Published" : "Pending"}
               </div>
 
               <Link
-                to={"/tutorials/" + currentTutorial.id}
+                to={"/Utente/" + currentUtente.id}
                 className="badge badge-warning"
               >
                 Edit
@@ -173,7 +173,7 @@ export default class TutorialsList extends Component {
           ) : (
             <div>
               <br />
-              <p>Please click on a Tutorial...</p>
+              <p>Please click on a Utente...</p>
             </div>
           )}
         </div>
