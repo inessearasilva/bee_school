@@ -1,152 +1,138 @@
 const db = require("../models");
-const Tutorial = db.tutorials;
+const Utente = db.utente;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Tutorial
+// Create and Save a new Patient
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.title) {
+    // Valnum_sequencialate request
+    if (!req.body.nome_utente) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
       return;
     }
   
-    // Create a Tutorial
-    const tutorial = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+    // Create a Patient
+    const utente = {
+      sexo: req.body.sexo,
+      nome_utente: req.body.nome_utente,
+      data_nascimento: req.body.data_nascimento ? new Date(req.body.data_nascimento) : null
     };
   
-    // Save Tutorial in the database
-    Tutorial.create(tutorial)
+    // Save Patient in the database
+    Utente.create(utente)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating the Patient."
         });
       });
   };
 
-// Retrieve all Tutorials from the database.
+// Retrieve all Patients from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+  const nome_utente = req.query.nome_utente;
+  var condition = nome_utente ? { nome_utente: { [Op.iLike]: `%${nome_utente}%` } } : null;
 
-  Tutorial.findAll({ where: condition })
+  Utente.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving patients."
       });
     });
 };
 
-// Find a single Tutorial with an id
+// Find a single Patient with an num_sequencial
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const num_sequencial = req.params.num_sequencial;
 
-  Tutorial.findByPk(id)
+  Utente.findByPk(num_sequencial)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Tutorial with id=${id}.`
+          message: `Cannot find Patient with num_sequencial=${num_sequencial}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
+        message: "Error retrieving Patient with num_sequencial=" + num_sequencial
       });
     });
 };
 
-// Update a Tutorial by the id in the request
+// Update a Patient by the num_sequencial in the request
 exports.update = (req, res) => {
-  const id = req.params.id;
+  const num_sequencial = req.params.num_sequencial;
 
-  Tutorial.update(req.body, {
-    where: { id: id }
+  Utente.update(req.body, {
+    where: { num_sequencial: num_sequencial }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Tutorial was updated successfully."
+          message: "Patient was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+          message: `Cannot update patient with num_sequencial=${num_sequencial}. Maybe patient was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Tutorial with id=" + id
+        message: "Error updating Patient with num_sequencial=" + num_sequencial
       });
     });
 };
 
-// Delete a Tutorial with the specified id in the request
+// Delete a Patient with the specified num_sequencial in the request
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const num_sequencial = req.params.num_sequencial;
 
-  Tutorial.destroy({
-    where: { id: id }
+  Utente.destroy({
+    where: { num_sequencial: num_sequencial }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Tutorial was deleted successfully!"
+          message: "Patient was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+          message: `Cannot delete Patient with num_sequencial=${num_sequencial}. Maybe Patient was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Tutorial with id=" + id
+        message: "Could not delete Utente with num_sequencial=" + num_sequencial
       });
     });
 };
 
-// Delete all Tutorials from the database.
+// Delete all Patients from the database.
 exports.deleteAll = (req, res) => {
-  Tutorial.destroy({
+  Utente.destroy({
     where: {},
     truncate: false
   })
     .then(nums => {
-      res.send({ message: `${nums} Tutorials were deleted successfully!` });
+      res.send({ message: `${nums} Patients were deleted successfully!` });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all tutorials."
-      });
-    });
-};
-
-// find all published Tutorial
-exports.findAllPublished = (req, res) => {
-  Tutorial.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while removing all patients."
       });
     });
 };
