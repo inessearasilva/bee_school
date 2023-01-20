@@ -115,7 +115,7 @@ export default class Utentes extends Component {
           </div>
         </div>
         <div className="col-md-6">
-          <h4>Utente List</h4>
+          <h4>Lista de Utentes</h4>
 
           <ul className="list-group">
             {Utente &&
@@ -128,7 +128,7 @@ export default class Utentes extends Component {
                   onClick={() => this.setActiveUtente(Utente, index)}
                   key={index}
                 >
-                  {Utente.title}
+                  {Utente.nome_utente}
                 </li>
               ))}
           </ul>
@@ -146,21 +146,27 @@ export default class Utentes extends Component {
               <h4>Utente</h4>
               <div>
                 <label>
-                  <strong>Title:</strong>
+                  <strong>Número Sequencial:</strong>
                 </label>{" "}
-                {currentUtente.title}
+                {currentUtente.num_sequencial}
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
+                  <strong>Nome:</strong>
                 </label>{" "}
-                {currentUtente.description}
+                {currentUtente.nome_utente}
               </div>
               <div>
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Sexo:</strong>
                 </label>{" "}
-                {currentUtente.published ? "Published" : "Pending"}
+                {currentUtente.sexo}
+              </div>
+              <div>
+                <label>
+                  <strong>Data de nascimento:</strong>
+                </label>{" "}
+                {currentUtente.data_nascimento}
               </div>
 
               <Link
@@ -173,7 +179,7 @@ export default class Utentes extends Component {
           ) : (
             <div>
               <br />
-              <p>Please click on a Utente...</p>
+              <p>Clique num utente...</p>
             </div>
           )}
         </div>
