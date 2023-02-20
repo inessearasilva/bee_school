@@ -1,6 +1,6 @@
 import React from 'react'
 import {Form} from 'protected-aidaforms';
-import json from './JSON.js';
+import json from './InitialEvaluation.js';
 //import dlm from './DLMteste.js';
 
 const Avini = () => {

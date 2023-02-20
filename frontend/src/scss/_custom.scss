@@ -1,5 +1,31 @@
 // Here you can add other styles
 
+select option::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid black;
+  position: relative;
+  left: 10px;
+  top: 2px;
+  pointer-events: none;
+}
+
+.blue-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  width: 50px;
+  height: 30px;;
+  background-color: #60bcf2;
+  color: white;
+  border: none;
+  margin-right: 30px;
+}
+
 .react-calendar {
     width: 250px;
     max-width: 100%;
