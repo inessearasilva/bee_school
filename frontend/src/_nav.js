@@ -38,7 +38,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Avaliação Ombro',
-    to: '/avombrolist',
+    to: '/avombro',
     icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
   },
   /*{

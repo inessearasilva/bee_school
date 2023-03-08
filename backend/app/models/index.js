@@ -20,6 +20,4 @@ db.sequelize = sequelize;
 
 db.utente = require("./tutorial.model.js")(sequelize, Sequelize);
 
-db.clinicalCompositions = require("./forms.js")(sequelize, Sequelize);
-
 module.exports = db;
