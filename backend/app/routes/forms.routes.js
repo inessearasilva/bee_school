@@ -39,17 +39,5 @@ module.exports = app => {
   // Retrieve a single Composition with num_sequencial
   router.get("/initialAvombro/:num_sequencial", clinicalCompositions.findInitialAvombro);
 
-  // Retrieve a single Composition with num_sequencial
-  router.get("/subAvini/:idcomposition/:num_sequencial", clinicalCompositions.findSubAvini);
-
-  // Retrieve a single Composition with num_sequencial
-  router.get("/subAvombro/:idcomposition/:num_sequencial", clinicalCompositions.findSubAvombro);
-
-  // Retrieve a single Composition with num_sequencial
-  router.get("/vizAvini/:idcomposition/:num_sequencial", clinicalCompositions.vizAvini);
-
-  // Retrieve a single Composition with num_sequencial
-  router.get("/vizAvombro/:idcomposition/:num_sequencial", clinicalCompositions.vizAvombro);
-
   app.use("/api/forms", router);
 };

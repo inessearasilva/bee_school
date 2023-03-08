@@ -10,6 +10,16 @@ console.log('first', jdt);
 
 const Avininum = () => {
 
+  useEffect(() => {
+    const pageReloaded = sessionStorage.getItem('pageReloaded');
+    if (!pageReloaded) {
+      sessionStorage.setItem('pageReloaded', true);
+      window.location.reload();
+    } else {
+      sessionStorage.removeItem('pageReloaded');
+    }
+  }, []);
+
   const { num_sequencial } = useParams(); // get the value of num_sequencial from the route parameter
   const { idcomposition } = useParams();
 
@@ -145,30 +155,19 @@ const handleSave = (values, changedFields) => {
       setNewJDT(newJDT);
     }
   }, [formValues.composition]);
+
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     UtenteDataService.getvaluesAvini(num_sequencial)
-    .then(response => {
-      setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
-        //const compositionval = JSON.parse(response.data.composition);
-        console.log("newJDT", newJDT);
-        //setFormValues(compositionval);
+      .then(response => {
+        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log('Novo forms');
       });
   }, [num_sequencial]);
-
-  
-  useEffect(() => {
-    const pageReloaded = sessionStorage.getItem('pageReloaded');
-    if (!pageReloaded) {
-      sessionStorage.setItem('pageReloaded', true);
-      window.location.reload();
-    } else {
-      sessionStorage.removeItem('pageReloaded');
-    }
-  }, []); 
 
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);
@@ -180,7 +179,7 @@ const handleSave = (values, changedFields) => {
 
   return ( 
     <>
-      {currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
+      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
         <Form
         ref={formRef} // pass the reference to the form component
         onSubmit={handleSubmit}

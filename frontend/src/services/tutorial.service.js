@@ -69,22 +69,6 @@ class UtenteDataService {
     return http.get(`/forms/initialAvombro/${num_sequencial}`);
   }
 
-  getsubAvini(idcomposition,num_sequencial) {
-    return http.get(`/forms/subAvini/${idcomposition}/${num_sequencial}`);
-  }
-
-  getsubAvombro(idcomposition,num_sequencial) {
-    return http.get(`/forms/subAvombro/${idcomposition}/${num_sequencial}`);
-  }
-
-  getvizAvini(idcomposition,num_sequencial) {
-    return http.get(`/forms/vizAvini/${idcomposition}/${num_sequencial}`);
-  }
-
-  getvizAvombro(idcomposition,num_sequencial) {
-    return http.get(`/forms/vizAvombro/${idcomposition}/${num_sequencial}`);
-  }
-
   updateform(num_sequencial, data) {
     return http.put(`/forms/${num_sequencial}`, data);
   }

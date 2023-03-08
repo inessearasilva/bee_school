@@ -157,13 +157,13 @@ const handleSave = (values, changedFields) => {
     }
   }, [formValues.composition]);
   
+  const [isLoading, setIsLoading] = useState(true);
+  
   useEffect(() => {
     UtenteDataService.getvaluesAvombro(num_sequencial)
-    .then(response => {
-      setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
-        //const compositionval = JSON.parse(response.data.composition);
-        console.log("newJDT", newJDT);
-        //setFormValues(compositionval);
+      .then(response => {
+        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log('Novo forms');
@@ -181,7 +181,7 @@ const handleSave = (values, changedFields) => {
 
   return ( 
     <>
-      {currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
+      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
         <Form
         ref={formRef} // pass the reference to the form component
         onSubmit={handleSubmit}
