@@ -12,6 +12,12 @@ module.exports = app => {
   // Retrieve all Clinical Compositions
   router.get("/", clinicalCompositions.findAll);
 
+  // Retrieve all Clinical Compositions
+  router.get("/aviniforms/all", clinicalCompositions.findAllAvini);
+
+  // Retrieve all Clinical Compositions
+  router.get("/avombroforms/all", clinicalCompositions.findAllAvombro);
+
   // Update a Clinical Composition with num_sequencial
   router.put("/:id_initialcomposition", clinicalCompositions.update);
 
@@ -22,16 +28,28 @@ module.exports = app => {
   router.delete("/", clinicalCompositions.deleteAll);
 
   // Retrieve a single Composition with num_sequencial
-  router.get("/values/:num_sequencial", clinicalCompositions.findValues);
+  router.get("/valuesAvini/:num_sequencial", clinicalCompositions.findValuesAvini);
 
   // Retrieve a single Composition with num_sequencial
-  router.get("/initial/:num_sequencial", clinicalCompositions.findInitial);
+  router.get("/valuesAvombro/:num_sequencial", clinicalCompositions.findValuesAvombro);
 
   // Retrieve a single Composition with num_sequencial
-  router.get("/submitted/:idcomposition/:num_sequencial", clinicalCompositions.findSub);
+  router.get("/initialAvini/:num_sequencial", clinicalCompositions.findInitialAvini);
 
   // Retrieve a single Composition with num_sequencial
-  router.get("/viz/:idcomposition/:num_sequencial", clinicalCompositions.viz);
+  router.get("/initialAvombro/:num_sequencial", clinicalCompositions.findInitialAvombro);
+
+  // Retrieve a single Composition with num_sequencial
+  router.get("/subAvini/:idcomposition/:num_sequencial", clinicalCompositions.findSubAvini);
+
+  // Retrieve a single Composition with num_sequencial
+  router.get("/subAvombro/:idcomposition/:num_sequencial", clinicalCompositions.findSubAvombro);
+
+  // Retrieve a single Composition with num_sequencial
+  router.get("/vizAvini/:idcomposition/:num_sequencial", clinicalCompositions.vizAvini);
+
+  // Retrieve a single Composition with num_sequencial
+  router.get("/vizAvombro/:idcomposition/:num_sequencial", clinicalCompositions.vizAvombro);
 
   app.use("/api/forms", router);
 };
