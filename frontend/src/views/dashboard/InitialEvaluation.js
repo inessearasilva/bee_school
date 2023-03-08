@@ -17,7 +17,7 @@ const json = {
       "at0003"
     ]
   },
-  "itemName": "Avaliação Inicial",
+  "itemName": "Questionário geral",
   "itemPath": "",
   "items": [
     [
@@ -59,38 +59,38 @@ const json = {
               "All"
             ],
             "dataType": "DV_CODED_TEXT",
-            "itemName": "Sex",
+            "itemName": "Sexo",
             "itemPath": "items.0.0.items.0",
             "itemsList": [
               {
                 "code": "at0010",
-                "description": "Male",
+                "description": "Masculino",
                 "text": "Masculino"
               },
               {
                 "code": "at0011",
-                "description": "Female",
+                "description": "Feminino",
                 "text": "Feminino"
               },
               {
                 "code": "at0012",
-                "description": "is normally used for babies for whom sex has not been determined for whatever reason, should not generally be used on data collection forms completed by the respondent and should only be used if the person or respondent volunteers that the person is intersex or where it otherwise becomes clear during the collection process that the individual is neither male nor female",
+                "description": "é normalmente usado para bebês para os quais o sexo não foi determinado por qualquer motivo, geralmente não deve ser usado em formulários de coleta de dados preenchidos pelo entrevistado e só deve ser usado se a pessoa ou o entrevistado disser voluntariamente que a pessoa é intersexual ou quando isso se tornar claro durante o processo de coleta que o indivíduo não é homem nem mulher",
                 "text": "Intersexual or indeterminado"
               },
               {
                 "code": "at0013",
-                "description": "is not to be used on primary collection forms. It is primarily for use in administrative collections when transferring data from data sets where the item has not been collected.",
-                "text": "Prefiro não dizer"
+                "description": "não deve ser usado em formulários de coleta primária. É principalmente para uso em coletas administrativas ao transferir dados de conjuntos de dados onde o item não foi coletado.",
+                "text": "Não declarado/descrito inadequadamente"
               }
             ],
             "node": {
               "code": "at0001",
-              "description": "The sex of the subject.",
+              "description": "Sexo",
               "text": "Sexo"
             },
             "occurrences": {
               "lowerOccurrences": 0,
-              "upperOccurrences": "*"
+              "upperOccurrences": 1
             },
             "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-DEMOGRAPHIC-CLUSTER.person_additional_data_iso.v0]/[at0001]",
             "ruleMandatory": [],
@@ -110,171 +110,44 @@ const json = {
             "TaskVisible": [
               "All"
             ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Chronological age",
-            "itemPath": "items.0.10.items.0",
-            "node": {
-              "code": "at0004",
-              "description": "Duration of time since birth.",
-              "text": "Idade"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.age.v0]/[at0004]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": {
-              "range": {
-                "lower": "0",
-                "lowerIncluded": "true",
-                "upper": "130",
-                "upperIncluded": "true"
-              },
-              "unit": "anos"
-            },
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Weight",
-            "itemPath": "items.0.11.items.0",
-            "node": {
-              "code": "at0004",
-              "description": "The weight of the individual.",
-              "text": "Peso"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.body_weight.v2]/[at0004]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": [
-              {
-                "range": {
-                  "lower": 0,
-                  "lowerIncluded": "true",
-                  "upper": 1000,
-                  "upperIncluded": "true"
-                },
-                "unit": "kg"
-              },
-            ],
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Height/Length",
-            "itemPath": "items.0.12.items.0",
-            "node": {
-              "code": "at0004",
-              "description": "The length of the body from crown of head to sole of foot.",
-              "text": "Altura"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.height.v2]/[at0004]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": [
-              {
-                "range": {
-                  "lower": 0,
-                  "lowerIncluded": "true",
-                  "upper": 1000,
-                  "upperIncluded": "true"
-                },
-                "unit": "cm"
-              },
-            ],
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
             "dataType": "DV_CODED_TEXT",
-            "itemName": "Marital status",
+            "itemName": "Estado Civil",
             "itemPath": "items.0.0.items.1",
             "itemsList": [
               {
-                "code": "at0010",
-                "description": "Single",
+                "code": "local_terms::S",
                 "text": "Solteiro"
               },
               {
-                "code": "at0011",
-                "description": "Married",
+                "code": "local_terms::M",
                 "text": "Casado"
               },
               {
-                "code": "at0012",
-                "description": "Divorced",
+                "code": "local_terms::D",
                 "text": "Divorciado"
               },
               {
-                "code": "at0013",
-                "description": "Widowed",
+                "code": "local_terms::W",
                 "text": "Viúvo"
+              },
+              {
+                "code": "local_terms::O",
+                "text": "Outro"
               }
             ],
             "node": {
               "code": "at0003",
-              "description": "Marital status",
-              "text": "Estado civil"
+              "description": "Estado Civil",
+              "text": "Estado Civil"
             },
             "occurrences": {
               "lowerOccurrences": 0,
-              "upperOccurrences": "*"
+              "upperOccurrences": 1
             },
             "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-DEMOGRAPHIC-CLUSTER.person_additional_data_iso.v0]/[at0003]",
             "ruleMandatory": [],
             "ruleVisibility": [],
-            "terminology_id": "local",
+            "terminology_id": "local_terms",
             "value": null
           },
           {
@@ -289,12 +162,129 @@ const json = {
             "TaskVisible": [
               "All"
             ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Idade",
+            "itemPath": "items.0.0.items.2",
+            "node": {
+              "code": "at0004",
+              "description": "Idade do paciente.",
+              "text": "Idade"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.age.v0]/[at0004]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "unit": "ano(s)"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Peso",
+            "itemPath": "items.0.0.items.3",
+            "node": {
+              "code": "at0004",
+              "description": "O peso do paciente.",
+              "text": "Peso"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.body_weight.v1]/[at0004]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "range": {
+                "lower": 0,
+                "lowerIncluded": "true",
+                "upper": 1000,
+                "upperIncluded": "true"
+              },
+              "unit": "kg"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Altura",
+            "itemPath": "items.0.0.items.4",
+            "node": {
+              "code": "at0004",
+              "description": "O comprimento do corpo do topo da cabeça à sola do pé.",
+              "text": "Altura"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.height.v1]/[at0004]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "range": {
+                "lower": 0,
+                "lowerIncluded": "true",
+                "upper": 400,
+                "upperIncluded": "true"
+              },
+              "unit": "cm"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
             "dataType": "DV_TEXT",
-            "itemName": "Job title/role",
-            "itemPath": "items.0.1.items.0",
+            "itemName": "Profissão",
+            "itemPath": "items.0.0.items.5",
             "node": {
               "code": "at0005",
-              "description": "The main job title or the role of the individual.",
+              "description": "Nome da profissão",
               "text": "Profissão"
             },
             "occurrences": {
@@ -319,11 +309,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_QUANTITY",
-            "itemName": "Time allocated",
-            "itemPath": "items.0.1.items.1",
+            "itemName": "Carga horária",
+            "itemPath": "items.0.0.items.6",
             "node": {
               "code": "at0019",
-              "description": "The amount of time an individual is allocated to carry out the job or role per specified period of this occupation record.",
+              "description": "A quantidade de tempo que o paciente dedica ao seu trabalho por semana.",
               "text": "Carga horária"
             },
             "occurrences": {
@@ -334,17 +324,90 @@ const json = {
             "ruleMandatory": [],
             "ruleVisibility": [],
             "units": {
-                "precision": {
-                  "lowerPrecision": 2,
-                  "upperPrecision": 2
-                },
-                "range": {
-                  "lower": 0,
-                  "lowerIncluded": "true",
-                  "upperIncluded": "false"
-                },
-                "unit": "horas/semana"
+              "precision": {
+                "lowerPrecision": 2,
+                "upperPrecision": 2
               },
+              "range": {
+                "lower": 0,
+                "lowerIncluded": "true",
+                "upper": 168,
+                "upperIncluded": "true"
+              },
+              "unit": "hora(s)/semana"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          }
+        ],
+        "node": {
+          "code": "at0000",
+          "description": "Dados sociodemográficos",
+          "text": "Dados sociodemográficos"
+        },
+        "occurrences": {
+          "lowerOccurrences": 0,
+          "upperOccurrences": 1
+        },
+        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-DEMOGRAPHIC-CLUSTER.person_additional_data_iso.v0]",
+        "ruleMandatory": [],
+        "ruleVisibility": []
+      },
+      {
+        "Functions": [],
+        "InternalFunctions": [],
+        "TaskEditable": [
+          "All"
+        ],
+        "TaskInReport": [
+          "All"
+        ],
+        "TaskVisible": [
+          "All"
+        ],
+        "archetype_id": "openEHR-EHR-OBSERVATION.gpaq.v0",
+        "data_type": "Title",
+        "itemName": "Global Physical Activity Questionnaire (GPAQ)",
+        "itemPath": "items.0.1",
+        "items": [
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Quantas horas dorme por dia?",
+            "itemPath": "items.0.1.items.0",
+            "node": {
+              "code": "at0006",
+              "description": "Quantas horas dorme por dia num dia típico?",
+              "text": "Quantas horas dorme por dia?"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0006]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "range": {
+                "lower": "0",
+                "lowerIncluded": "true",
+                "upper": "24",
+                "upperIncluded": "true"
+              },
+              "unit": "hora(s)"
+            },
             "value": {
               "unit": null,
               "value": null
@@ -362,48 +425,174 @@ const json = {
             "TaskVisible": [
               "All"
             ],
-            "dataType": "DV_ORDINAL",
-            "itemName": "O seu trabalho é maioritariamente sedentário?",
-            "itemPath": "items.0.4.items.0",
-            "itemsList": [
-              {
-                "code": "at0005",
-                "description": "*",
-                "text": "Não"
-              },
-              {
-                "code": "at0006",
-                "description": "*",
-                "text": "Sim"
-              }
-            ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Quantas horas despende em tarefas domésticas por semana?",
+            "itemPath": "items.0.1.items.1",
             "node": {
-              "code": "at0004",
-              "description": "O seu trabalho é maioritariamente sedentário?",
-              "text": "O seu trabalho é maioritariamente sedentário?"
+              "code": "at0009",
+              "description": "Quantas horas despende em tarefas domésticas por semana?",
+              "text": "Quantas horas despende em tarefas domésticas por semana?"
             },
             "occurrences": {
               "lowerOccurrences": 0,
               "upperOccurrences": 1
             },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-CLUSTER.occupation_record.v1]/[at0019]",
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0009]",
             "ruleMandatory": [],
             "ruleVisibility": [],
-            "value":  null
+            "units": {
+              "range": {
+                "lower": "0",
+                "lowerIncluded": "true",
+                "upper": "168",
+                "upperIncluded": "true"
+              },
+              "unit": "hora(s)"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_DURATION",
+            "itemName": "Quanto tempo despende em viagens por dia?",
+            "itemPath": "items.0.1.items.2",
+            "node": {
+              "code": "at0023",
+              "description": "Quanto tempo despende em viagens por dia?",
+              "text": "Quanto tempo despende em viagens por dia?"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0023]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "range": {
+                "lower": "0",
+                "lowerIncluded": "true"
+              },
+              "unit": [
+                "hora(s)",
+                "minuto(s)"
+              ]
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Quantas horas despende em atividades de lazer por semana?",
+            "itemPath": "items.0.1.items.3",
+            "node": {
+              "code": "at0029",
+              "description": "Quantas horas despende em atividades de lazer por semana?",
+              "text": "Quantas horas despende em atividades de lazer por semana?"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0029]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "range": {
+                "lower": "0",
+                "lowerIncluded": "true",
+                "upper": "24",
+                "upperIncluded": "true"
+              },
+              "unit":
+                "hora(s)"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_QUANTITY",
+            "itemName": "Quanto tempo costuma passar sentado por dia?",
+            "itemPath": "items.0.1.items.4",
+            "node": {
+              "code": "at0030",
+              "text": "Quanto tempo costuma passar sentado por dia?"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0030]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "units": {
+              "range": {
+                "lower": "0",
+                "lowerIncluded": "true",
+                "upper": "24",
+                "upperIncluded": "true"
+              },
+              "unit": 
+                "hora(s)"
+            },
+            "value": {
+              "unit": null,
+              "value": null
+            }
           }
         ],
         "node": {
           "code": "at0000",
-          "description": "Person additional demographic data: sex and marital status",
-          "text": "Dados sociodemográficos"
+          "description": "Ferramenta de vigilância da OMS para avaliar os níveis de atividade física.",
+          "text": "Gestão do tempo"
         },
         "occurrences": {
           "lowerOccurrences": 0,
           "upperOccurrences": 1
         },
-        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-DEMOGRAPHIC-CLUSTER.person_additional_data_iso.v0]",
+        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]",
         "ruleMandatory": [],
-        "ruleVisibility": []
+        "ruleVisibility": [],
+        "xsi_type": "C_ARCHETYPE_ROOT"
       },
       {
         "Functions": [],
@@ -434,14 +623,51 @@ const json = {
             "TaskVisible": [
               "All"
             ],
-            "dataType": "DV_TEXT",
-            "itemName": "Problem/Diagnosis name",
+            "dataType": "DV_CODED_TEXT",
+            "itemName": "Nome do problema/diagnóstico",
             "itemPath": "items.0.2.items.0",
-            "itemsList": [],
+            "itemsList": [
+              {
+                "code": "ICD-10: Lesões do ombro::M75.0",
+                "text": "Capsulite adesiva do ombro"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.1",
+                "text": "Síndrome do manguito rotador"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.2",
+                "text": "Tendinite bicipital"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.3",
+                "text": "Tendinite calcificante do ombro"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.4",
+                "text": "Síndrome do impacto do ombro"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.5",
+                "text": "Bursite do ombro"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.6",
+                "text": "Rutura do lábio da articulação degenerativa do ombro"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.8",
+                "text": "Outras lesões do ombro"
+              },
+              {
+                "code": "ICD-10: Lesões do ombro::M75.9",
+                "text": "Lesão não especificada do ombro"
+              }
+            ],
             "node": {
               "code": "at0002",
-              "description": "Identification of the problem or diagnosis, by name.",
-              "text": "Descrição do problema/diagnóstico"
+              "description": "Identificação do problema ou diagnóstico pelo nome.",
+              "text": "Nome do problema/diagnóstico"
             },
             "occurrences": {
               "lowerOccurrences": 0,
@@ -450,7 +676,7 @@ const json = {
             "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/[at0002]",
             "ruleMandatory": [],
             "ruleVisibility": [],
-            "terminology_id": "local",
+            "terminology_id": "ICD-10: Lesões do ombro",
             "value": null
           },
           {
@@ -466,18 +692,18 @@ const json = {
               "All"
             ],
             "dataType": "DV_TEXT",
-            "itemName": "Cause",
+            "itemName": "Descrição clínica",
             "itemPath": "items.0.2.items.1",
             "node": {
-              "code": "at0078",
-              "description": "A cause, set of causes, or manner of causation of the problem or diagnosis.",
-              "text": "Causa"
+              "code": "at0009",
+              "description": "Descrição narrativa do problema ou diagnóstico.",
+              "text": "Descrição clínica"
             },
             "occurrences": {
               "lowerOccurrences": 0,
-              "upperOccurrences": "*"
+              "upperOccurrences": 1
             },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/[at0078]",
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/[at0009]",
             "ruleMandatory": [],
             "ruleVisibility": [],
             "value": null
@@ -495,11 +721,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_DATE_TIME",
-            "itemName": "Date/time of onset",
+            "itemName": "Data de início",
             "itemPath": "items.0.2.items.2",
             "node": {
               "code": "at0077",
-              "description": "Estimated or actual date/time that signs or symptoms of the problem/diagnosis were first observed.",
+              "description": "Data estimada de início da condição.",
               "text": "Data de início"
             },
             "occurrences": {
@@ -527,28 +753,28 @@ const json = {
               "All"
             ],
             "dataType": "DV_CODED_TEXT",
-            "itemName": "Severity",
+            "itemName": "Severidade",
             "itemPath": "items.0.2.items.3",
             "itemsList": [
               {
                 "code": "at0047",
-                "description": "The problem or diagnosis does not interfere with normal activity or may cause damage to health if left untreated.",
+                "description": "O problema ou diagnóstico não interfere na atividade normal ou pode causar danos à saúde se não for tratado.",
                 "text": "Branda"
               },
               {
                 "code": "at0048",
-                "description": "The problem or diagnosis causes interference with normal activity or will damage health if left untreated.",
+                "description": "O problema ou diagnóstico causa interferência na atividade normal ou prejudicará a saúde se não for tratado.",
                 "text": "Moderada"
               },
               {
                 "code": "at0049",
-                "description": "The problem or diagnosis prevents normal activity or will seriously damage health if left untreated.",
+                "description": "O problema ou diagnóstico impede a atividade normal ou causará sérios danos à saúde se não for tratado.",
                 "text": "Severa"
               }
             ],
             "node": {
               "code": "at0005",
-              "description": "An assessment of the overall severity of the problem or diagnosis.",
+              "description": "Uma avaliação da gravidade geral do problema ou diagnóstico.",
               "text": "Severidade"
             },
             "occurrences": {
@@ -573,11 +799,38 @@ const json = {
             "TaskVisible": [
               "All"
             ],
+            "dataType": "DV_CODED_TEXT",
+            "itemName": "Pós-operatório?",
+            "itemPath": "items.0.2.items.4",
+            "itemsList": [
+              {
+                "code": "NCDHC Generic Yes No::373067005",
+                "text": "Não"
+              },
+              {
+                "code": "NCDHC Generic Yes No::373066001",
+                "text": "Sim"
+              }
+            ],
+            "node": {
+              "code": "at0069",
+              "description": "Paciente em pós-operatório?",
+              "text": "Pós-operatório?"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/[at0069]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "terminology_id": "NCDHC Generic Yes No",
+            "value": null
           }
         ],
         "node": {
           "code": "at0000",
-          "description": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual.",
+          "description": "Detalhes sobre uma única condição de saúde identificada, lesão, deficiência ou qualquer outro problema que afete o bem-estar físico, mental e/ou social de um indivíduo.",
           "text": "Problema/Diagnóstico"
         },
         "occurrences": {
@@ -603,7 +856,7 @@ const json = {
         ],
         "archetype_id": "openEHR-EHR-EVALUATION.physical_activity_summary.v0",
         "data_type": "Title",
-        "itemName": "Physical activity summary",
+        "itemName": "Sumário de atividade física",
         "itemPath": "items.0.3",
         "items": [
           {
@@ -624,33 +877,33 @@ const json = {
             "itemsList": [
               {
                 "code": "at0009",
-                "description": "The individual is extremely inactive, for example a bedridden patient.",
+                "description": "O indivíduo é extremamente inativo, por exemplo, um paciente acamado.",
                 "text": "Extremamente inativo"
               },
               {
                 "code": "at0010",
-                "description": "The individual spends most of their time sitting, for example an office worker getting little or no exercise.",
+                "description": "O indivíduo passa a maior parte do tempo sentado, por exemplo, um funcionário de escritório fazendo pouco ou nenhum exercício.",
                 "text": "Sedentário"
               },
               {
                 "code": "at0011",
-                "description": "The individual is moerately active, for example a construction worker or a person running one hour daily.",
+                "description": "O indivíduo é moderadamente ativo, por exemplo, um trabalhador da construção civil ou uma pessoa que corre uma hora por dia.",
                 "text": "Moderadamente ativo"
               },
               {
                 "code": "at0012",
-                "description": "The individual is very active, for example a manual labourer or a person swimming two hours daily.",
+                "description": "O indivíduo é muito ativo, por exemplo, um trabalhador manual ou uma pessoa nadando duas horas por dia.",
                 "text": "Vigorosamente ativo"
               },
               {
                 "code": "at0013",
-                "description": "The individual is extremely active, for example a competitive cyclist.",
+                "description": "O indivíduo é extremamente ativo, por exemplo, um ciclista competitivo.",
                 "text": "Extremamente ativo"
               }
             ],
             "node": {
               "code": "at0002",
-              "description": "The category of the typical, or usual, physical activity level of an individual.",
+              "description": "A categoria do nível de atividade física típico ou usual de um indivíduo.",
               "text": "Nível de atividade física"
             },
             "occurrences": {
@@ -675,12 +928,26 @@ const json = {
             "TaskVisible": [
               "All"
             ],
-            "dataType": "DV_TEXT",
-            "itemName": "Barrier",
-            "itemPath": "items.0.3.items.3",
+            "dataType": "DV_CODED_TEXT",
+            "itemName": "Há algum fator que o impeça de praticar exercício?",
+            "itemPath": "items.0.3.items.1",
+            "itemsList": [
+              {
+                "code": "ICD-10: Problemas relacionados com a dificuldade de gerenciamento de vida::Z73.3",
+                "text": "Stress"
+              },
+              {
+                "code": "ICD-10: Problemas relacionados com a dificuldade de gerenciamento de vida::Z73.6",
+                "text": "Limitação de atividades por incapacidade"
+              },
+              {
+                "code": "ICD-10: Problemas relacionados com a dificuldade de gerenciamento de vida::Z73.8",
+                "text": "Problemas relacionados com a dificuldade de gestão do tempo"
+              }
+            ],
             "node": {
               "code": "at0005",
-              "description": "Identified factor that prevents the individual to become more physically active.",
+              "description": "Fator identificado que previne que o paciente seja fisicamente mais ativo.",
               "text": "Há algum fator que o impeça de praticar exercício?"
             },
             "occurrences": {
@@ -690,6 +957,7 @@ const json = {
             "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.physical_activity_summary.v0]/[at0005]",
             "ruleMandatory": [],
             "ruleVisibility": [],
+            "terminology_id": "local",
             "value": null
           },
           {
@@ -705,11 +973,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_QUANTITY",
-            "itemName": "Typical moderate exercise",
-            "itemPath": "items.0.3.items.4",
+            "itemName": "Quanto tempo despende semanalmente para atividades físicas?",
+            "itemPath": "items.0.3.items.2",
             "node": {
               "code": "at0008",
-              "description": "Typical number of minutes of moderate exercise.",
+              "description": "Número típico de minutos de exercício praticado.",
               "text": "Quanto tempo despende semanalmente para atividades físicas?"
             },
             "occurrences": {
@@ -722,18 +990,22 @@ const json = {
             "units": [
               {
                 "range": {},
-                "unit": "hora(s)/semana"
+                "unit": "minutos/semana"
               },
+              {
+                "range": {},
+                "unit": "minutos/dia"
+              }
             ],
             "value": {
               "unit": null,
               "value": null
             }
-          },
+          }
         ],
         "node": {
           "code": "at0000",
-          "description": "A summary of the typical level of physical activity undertaken by the individual.",
+          "description": "Um resumo do nível típico de atividade física realizada pelo indivíduo.",
           "text": "Sumário de atividade física"
         },
         "occurrences": {
@@ -757,9 +1029,9 @@ const json = {
         "TaskVisible": [
           "All"
         ],
-        "archetype_id": "openEHR-EHR-OBSERVATION.scoff_questionnaire.v0",
+        "archetype_id": "openEHR-EHR-OBSERVATION.substance_use.v0",
         "data_type": "Title",
-        "itemName": "Eating disorder screening (SCOFF)",
+        "itemName": "Uso de substâncias",
         "itemPath": "items.0.4",
         "items": [
           {
@@ -774,24 +1046,374 @@ const json = {
             "TaskVisible": [
               "All"
             ],
-            "dataType": "DV_ORDINAL",
-            "itemName": "Do you make yourself sick because you feel uncomfortably full?",
+            "dataType": "DV_CODED_TEXT",
+            "itemName": "Consome álcool?",
             "itemPath": "items.0.4.items.0",
             "itemsList": [
               {
-                "code": "at0005",
-                "description": "*",
+                "code": "NCDHC Generic Yes No::373067005",
                 "text": "Não"
               },
               {
-                "code": "at0006",
-                "description": "*",
+                "code": "NCDHC Generic Yes No::373066001",
                 "text": "Sim"
               }
             ],
             "node": {
               "code": "at0004",
-              "description": "Do you make yourself sick because you feel uncomfortably full?",
+              "description": "Identificação da substância.",
+              "text": "Consome álcool?"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]/[at0004]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "terminology_id": "NCDHC Generic Yes No",
+            "value": null
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "cardinality": {
+              "interval": {
+                "lowerOccurrences": 0,
+                "upperOccurrences": "*"
+              },
+              "ordered": false,
+              "unique": false
+            },
+                "dataType": "DV_CODED_TEXT",
+                "itemName": "Frequência",
+                "itemPath": "items.0.4.items.1",
+                "itemsList": [
+                  {
+                    "code": "at0006",
+                    "description": "Consumido todos os dias",
+                    "text": "Diariamente"
+                  },
+                  {
+                    "code": "at0007",
+                    "description": "Consumido semanalmente",
+                    "text": "Semanalmente"
+                  },
+                  {
+                    "code": "at0008",
+                    "description": "Consumido irregularmente",
+                    "text": "Irregularmente"
+                  },
+                  {
+                    "code": "at0009",
+                    "description": "Nunca",
+                    "text": "Nunca", "value":1
+                  }
+                ],
+                "node": {
+                  "code": "at0005",
+                  "description": "Frequência do uso de substância.",
+                  "text": "Frequência"
+                },
+                "occurrences": {
+                  "lowerOccurrences": 0,
+                  "upperOccurrences": 1
+                },
+                "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]/[at0010]/[at0005]",
+                "ruleMandatory": [],
+                "ruleVisibility": [],
+                "terminology_id": "local",
+                "value": null
+              },
+              {
+                "Functions": [],
+                "InternalFunctions": [],
+                "TaskEditable": [
+                  "All"
+                ],
+                "TaskInReport": [
+                  "All"
+                ],
+                "TaskVisible": [
+                  "All"
+                ],
+                "dataType": "DV_CODED_TEXT",
+                "itemName": "É fumador?",
+                "itemPath": "items.0.4.items.2",
+                "itemsList": [
+                  {
+                    "code": "NCDHC Generic Yes No::373067005",
+                    "text": "Não"
+                  },
+                  {
+                    "code": "NCDHC Generic Yes No::373066001",
+                    "text": "Sim"
+                  }
+                ],
+                "node": {
+                  "code": "at0004",
+                  "description": "Identificação da substância",
+                  "text": "É fumador?"
+                },
+                "occurrences": {
+                  "lowerOccurrences": 0,
+                  "upperOccurrences": 1
+                },
+                "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]/[at0004]",
+                "ruleMandatory": [],
+                "ruleVisibility": [],
+                "terminology_id": "NCDHC Generic Yes No",
+                "value": null
+              },
+              {
+                "Functions": [],
+                "InternalFunctions": [],
+                "TaskEditable": [
+                  "All"
+                ],
+                "TaskInReport": [
+                  "All"
+                ],
+                "TaskVisible": [
+                  "All"
+                ],
+                "dataType": "DV_QUANTITY",
+                "itemName": "Quantidade",
+                "itemPath": "items.0.4.items.3",
+                "node": {
+                  "code": "at0008",
+                  "description": "Quantidade",
+                  "text": "Se sim, quantos cigarros fuma em média por dia?"
+                },
+                "occurrences": {
+                  "lowerOccurrences": 0,
+                  "upperOccurrences": 1
+                },
+                "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]",
+                "ruleMandatory": [],
+                "ruleVisibility": [],
+                "units": [
+                  {
+                    "range": {},
+                    "unit": "cigarros"
+                  },
+                ],
+                "value": {
+                  "unit": null,
+                  "value": null
+                }
+              }
+        ],
+        "node": {
+          "code": "at0000",
+          "description": "Arquétipo genérico para registrar o uso ou consumo real de uma substância definida no momento presente, em um momento específico ou durante um período de tempo.",
+          "text": "Consumo de substâncias"
+        },
+        "occurrences": {
+          "lowerOccurrences": 0,
+          "upperOccurrences": 1
+        },
+        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]",
+        "ruleMandatory": [],
+        "ruleVisibility": [],
+        "xsi_type": "C_ARCHETYPE_ROOT"
+      },
+      {
+        "Functions": [],
+        "InternalFunctions": [],
+        "TaskEditable": [
+          "All"
+        ],
+        "TaskInReport": [
+          "All"
+        ],
+        "TaskVisible": [
+          "All"
+        ],
+        "archetype_id": "openEHR-EHR-EVALUATION.medication_summary.v0",
+        "data_type": "Title",
+        "itemName": "Sumário da medicação",
+        "itemPath": "items.0.10",
+        "items": [
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_TEXT",
+            "itemName": "Nome da medicação",
+            "itemPath": "items.0.5.items.0",
+            "node": {
+              "code": "at0002",
+              "description": "Nome da medicação usada.",
+              "text": "Nome da medicação"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": "*"
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]/[at0002]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "value": null
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_TEXT",
+            "itemName": "Efeito",
+            "itemPath": "items.0.5.items.1",
+            "node": {
+              "code": "at0007",
+              "description": "Efeito do uso da medicação.",
+              "text": "Efeito"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": "*"
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]/[at0007]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "value": null
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_CODED_TEXT",
+            "itemName": "Tipo de utilização",
+            "itemPath": "items.0.5.items.2",
+            "itemsList": [
+              {
+                "code": "continuous",
+                "description": "Terapia contínua de longo prazo",
+                "text": "Contínua"
+              },
+              {
+                "code": "seasonal",
+                "description": "Sazonal",
+                "text": "Sazonal"
+              },
+              {
+                "code": "acute",
+                "description": "Terapia de curta duração",
+                "text": "Esporádica"
+              }
+            ],
+            "node": {
+              "code": "at0028",
+              "description": "Indicação clínica do uso da medicação.",
+              "text": "Tipo de utilização"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": "*"
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]/[at0028]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "terminology_id": "local",
+            "uri": "terminology://fhir.hl7.org/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/medicationrequest-course-of-therapy",
+            "value": null
+          }
+        ],
+        "node": {
+          "code": "at0000",
+          "description": "Summary or persistent information about all use of a single medication by an individual.",
+          "text": "Sumário da medicação"
+        },
+        "occurrences": {
+          "lowerOccurrences": 0,
+          "upperOccurrences": 1
+        },
+        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]",
+        "ruleMandatory": [],
+        "ruleVisibility": [],
+        "xsi_type": "C_ARCHETYPE_ROOT"
+      },
+      {
+        "Functions": [],
+        "InternalFunctions": [],
+        "TaskEditable": [
+          "All"
+        ],
+        "TaskInReport": [
+          "All"
+        ],
+        "TaskVisible": [
+          "All"
+        ],
+        "archetype_id": "openEHR-EHR-OBSERVATION.scoff_questionnaire.v0",
+        "data_type": "Title",
+        "itemName": "Questionário SCOFF para diagnóstico precoce de transtornos alimentares",
+        "itemPath": "items.0.6",
+        "items": [
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
+            "dataType": "DV_ORDINAL",
+            "itemName": "Provoca o vómito quando se sente desconfortavelmente cheio?",
+            "itemPath": "items.0.6.items.0",
+            "itemsList": [
+              {
+                "code": "at0005",
+                "description": "*",
+                "text": "Não",
+                "value": 0
+              },
+              {
+                "code": "at0006",
+                "description": "*",
+                "text": "Sim",
+                "value": 1
+              }
+            ],
+            "node": {
+              "code": "at0004",
+              "description": "Provoca o vómito quando se sente desconfortavelmente cheio?",
               "text": "Provoca o vómito quando se sente desconfortavelmente cheio?"
             },
             "occurrences": {
@@ -816,23 +1438,25 @@ const json = {
               "All"
             ],
             "dataType": "DV_ORDINAL",
-            "itemName": "Do you worry that you have lost control over how much you eat?",
-            "itemPath": "items.0.4.items.1",
+            "itemName": "Preocupa-se com a perda de controlo da quantidade que come?",
+            "itemPath": "items.0.6.items.1",
             "itemsList": [
               {
                 "code": "at0008",
                 "description": "*",
-                "text": "Não"
+                "text": "Não",
+                "value": 0
               },
               {
                 "code": "at0009",
                 "description": "*",
-                "text": "Sim"
+                "text": "Sim",
+                "value": 1
               }
             ],
             "node": {
               "code": "at0007",
-              "description": "Do you worry that you have lost control over how much you eat?",
+              "description": "Preocupa-se com a perda de controlo da quantidade que come",
               "text": "Preocupa-se com a perda de controlo da quantidade que come?"
             },
             "occurrences": {
@@ -857,23 +1481,25 @@ const json = {
               "All"
             ],
             "dataType": "DV_ORDINAL",
-            "itemName": "Have you recently lost more than one stone (14 lb, 6,5 kg) in a 3-month period?",
-            "itemPath": "items.0.4.items.2",
+            "itemName": "Recentemente, perdeu mais de 5 kg num período de 3 meses?",
+            "itemPath": "items.0.6.items.2",
             "itemsList": [
               {
                 "code": "at0011",
                 "description": "*",
-                "text": "Não"
+                "text": "Não",
+                "value": 0
               },
               {
                 "code": "at0012",
                 "description": "*",
-                "text": "Sim"
+                "text": "Sim",
+                "value": 1
               }
             ],
             "node": {
               "code": "at0010",
-              "description": "Have you recently lost more than one stone (14 lb, 6,5 kg) in a 3-month period?",
+              "description": "Recentemente, perdeu mais de 5 kg num período de 3 meses?",
               "text": "Recentemente, perdeu mais de 5 kg num período de 3 meses?"
             },
             "occurrences": {
@@ -898,23 +1524,25 @@ const json = {
               "All"
             ],
             "dataType": "DV_ORDINAL",
-            "itemName": "Do you believe yourself to be fat when others say you are too thin?",
-            "itemPath": "items.0.4.items.3",
+            "itemName": "Acredita que tem peso a mais mesmo que outros digam que está magro?",
+            "itemPath": "items.0.6.items.3",
             "itemsList": [
               {
                 "code": "at0014",
                 "description": "*",
-                "text": "Não"
+                "text": "Não",
+                "value": 0
               },
               {
                 "code": "at0015",
                 "description": "*",
-                "text": "Sim"
+                "text": "Sim",
+                "value": 1
               }
             ],
             "node": {
               "code": "at0013",
-              "description": "Do you believe yourself to be fat when others say you are too thin?",
+              "description": "Acredita que tem peso a mais mesmo que outros digam que está magro?",
               "text": "Acredita que tem peso a mais mesmo que outros digam que está magro?"
             },
             "occurrences": {
@@ -939,23 +1567,25 @@ const json = {
               "All"
             ],
             "dataType": "DV_ORDINAL",
-            "itemName": "Would you say that food dominates your life?",
-            "itemPath": "items.0.4.items.4",
+            "itemName": "Diria que a comida domina a sua vida?",
+            "itemPath": "items.0.6.items.4",
             "itemsList": [
               {
                 "code": "at0017",
                 "description": "*",
-                "text": "Não"
+                "text": "Não",
+                "value": 0
               },
               {
                 "code": "at0018",
                 "description": "*",
-                "text": "Sim"
+                "text": "Sim",
+                "value": 1
               }
             ],
             "node": {
               "code": "at0016",
-              "description": "Would you say that food dominates your life?",
+              "description": "Diria que a comida domina a sua vida?",
               "text": "Diria que a comida domina a sua vida?"
             },
             "occurrences": {
@@ -980,11 +1610,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_COUNT",
-            "itemName": "Total score",
-            "itemPath": "items.0.4.items.5",
+            "itemName": "Pontuação total",
+            "itemPath": "items.0.6.items.5",
             "node": {
               "code": "at0019",
-              "description": "Atribui-se um ponto para cada \"Sim\"; uma pontuação maior que dois (≥2) indica um possível caso de anorexia nervosa ou bulimia nervosa.",
+              "description": "Um ponto é atribuído para cada \"sim\"; uma pontuação maior que dois (≥2) indica um possível caso de anorexia nervosa ou bulimia nervosa.",
               "text": "Pontuação total"
             },
             "occurrences": {
@@ -1009,11 +1639,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_TEXT",
-            "itemName": "Comment",
-            "itemPath": "items.0.4.items.6",
+            "itemName": "Comentário",
+            "itemPath": "items.0.6.items.6",
             "node": {
               "code": "at0020",
-              "description": "Additional narrative about the assessment of the SCOFF questionnaire, not captured in the structured elements.",
+              "description": "Narrativa adicional sobre a avaliação do questionário SCOFF, não capturada nos elementos estruturados.",
               "text": "Comentário"
             },
             "occurrences": {
@@ -1028,7 +1658,7 @@ const json = {
         ],
         "node": {
           "code": "at0000",
-          "description": "Screening tool for eating disorders.",
+          "description": "Ferramenta de triagem para transtornos alimentares.",
           "text": "Questionário SCOFF para diagnóstico precoce de transtornos alimentares"
         },
         "occurrences": {
@@ -1052,645 +1682,10 @@ const json = {
         "TaskVisible": [
           "All"
         ],
-        "archetype_id": "openEHR-EHR-OBSERVATION.substance_use.v0",
-        "data_type": "Title",
-        "itemName": "Substance Use",
-        "itemPath": "items.0.5",
-        "items": [
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_ORDINAL",
-            "itemName": "Alcohol",
-            "itemPath": "items.0.5.items.0",
-            "itemsList": [
-              {
-                "code": "at0017",
-                "description": "*",
-                "text": "Não"
-              },
-              {
-                "code": "at0018",
-                "description": "*",
-                "text": "Sim"
-              }
-            ],
-            "node": {
-              "code": "at0004",
-              "description": "Identification of substance",
-              "text": "Consome álcool?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]/[at0004]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "value": null
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_CODED_TEXT",
-            "itemName": "Frequency",
-            "itemPath": "items.0.5.items.1.items.0",
-            "itemsList": [
-              {
-                "code": "at0006",
-                "description": "Used every day",
-                "text": "Diariamente"
-              },
-              {
-                "code": "at0007",
-                "description": "Used at least weekly",
-                "text": "Semanalmente"
-              },
-              {
-                "code": "at0008",
-                "description": "Used irregularly",
-                "text": "Raramente"
-              },
-              {
-                "code": "at0009",
-                "description": "Not used at all",
-                "text": "Nunca"
-              }
-            ],
-            "node": {
-              "code": "at0005",
-              "description": "Frequency of use of substance",
-              "text": "Se sim, com que com que frequência"
-            },
-
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]/[at0010]/[at0005]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "terminology_id": "local",
-            "value": null
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_ORDINAL",
-            "itemName": "Alcohol",
-            "itemPath": "items.0.6.items.0",
-            "itemsList": [
-              {
-                "code": "at0017",
-                "description": "*",
-                "text": "Não"
-              },
-              {
-                "code": "at0018",
-                "description": "*",
-                "text": "Sim"
-              }
-            ],
-            "node": {
-              "code": "at0004",
-              "description": "Identification of substance",
-              "text": "É fumador?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]/[at0004]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "value": null
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Quantidade",
-            "itemPath": "items.0.6.items.1.items.0",
-            "node": {
-              "code": "at0008",
-              "description": "Quantidade",
-              "text": "Se sim, quantos cigarros fuma em média por dia?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": [
-              {
-                "range": {},
-                "unit": "cigarros"
-              },
-            ],
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          }
-        ],
-        "node": {
-          "code": "at0000",
-          "description": "Generic archetype to record the actual use or consumption of a defined substance at the present time, a specific time or over a period of time.",
-          "text": "Uso de substâncias"
-        },
-        "occurrences": {
-          "lowerOccurrences": 0,
-          "upperOccurrences": 1
-        },
-        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.substance_use.v0]",
-        "ruleMandatory": [],
-        "ruleVisibility": [],
-        "xsi_type": "C_ARCHETYPE_ROOT"
-      },    
-      {
-        "Functions": [],
-        "InternalFunctions": [],
-        "TaskEditable": [
-          "All"
-        ],
-        "TaskInReport": [
-          "All"
-        ],
-        "TaskVisible": [
-          "All"
-        ],
-        "archetype_id": "openEHR-EHR-EVALUATION.medication_summary.v0",
-        "data_type": "Title",
-        "itemName": "Medication summary",
-        "itemPath": "items.0.7",
-        "items": [
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_TEXT",
-            "itemName": "Medication name",
-            "itemPath": "items.0.7.items.0",
-            "node": {
-              "code": "at0002",
-              "description": "Name of medication used.",
-              "text": "Nome da medicação"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]/[at0002]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "value": null
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_TEXT",
-            "itemName": "Therapeutic intent",
-            "itemPath": "items.0.7.items.1",
-            "node": {
-              "code": "at0007",
-              "description": "The therapeutic intent for use of the medication during this episode.",
-              "text": "Para que efeito?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]/[at0007]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "value": null
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_CODED_TEXT",
-            "itemName": "Utilização",
-            "itemPath": "items.0.5.items.1.items.0",
-            "itemsList": [
-              {
-                "code": "at0006",
-                "description": "Terapia contínua de longo prazo",
-                "text": "Contínua"
-              },
-              {
-                "code": "at0007",
-                "description": "Sazonal",
-                "text": "Sazonal"
-              },
-              {
-                "code": "at0008",
-                "description": "Terapia de curta duração",
-                "text": "Esporádica"
-              }
-            ],
-            "node": {
-              "code": "at0028",
-              "description": "The overall clinical indication for the use of the medication.",
-              "text": "Utilização"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": "*"
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]/[at0028]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "terminology_id": "local",
-            "value": null
-          }
-        ],
-        "node": {
-          "code": "at0000",
-          "description": "Summary or persistent information about all use of a single medication by an individual.",
-          "text": "Sumário de medicação"
-        },
-        "occurrences": {
-          "lowerOccurrences": 0,
-          "upperOccurrences": 1
-        },
-        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.medication_summary.v0]",
-        "ruleMandatory": [],
-        "ruleVisibility": [],
-        "xsi_type": "C_ARCHETYPE_ROOT"
-      },
-      {
-        "Functions": [],
-        "InternalFunctions": [],
-        "TaskEditable": [
-          "All"
-        ],
-        "TaskInReport": [
-          "All"
-        ],
-        "TaskVisible": [
-          "All"
-        ],
-        "archetype_id": "openEHR-EHR-OBSERVATION.gpaq.v0",
-        "data_type": "Title",
-        "itemName": "Global Physical Activity Questionnaire (GPAQ)",
-        "itemPath": "items.0.8",
-        "items": [
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Sleep - hours/day?",
-            "itemPath": "items.0.8.items.2",
-            "node": {
-              "code": "at0006",
-              "description": "How much time do you sleep on a typical day?",
-              "text": "Quantas horas dorme por dia?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0006]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": {
-              "precision": {
-                "lowerPrecision": 0,
-                "upperPrecision": 0
-              },
-              "range": {
-                "lower": 0,
-                "lowerIncluded": "true",
-                "upper": 24,
-                "upperIncluded": "true"
-              },
-              "unit": "horas/dia"
-            },
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "9. Travel/day",
-            "itemPath": "items.0.8.items.4",
-            "node": {
-              "code": "at0023",
-              "description": "How much time do you spend  for travel on a typical day?",
-              "text": "Quanto tempo despende em viagens por dia?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0023]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": [
-              {
-                "range": {
-                  "lower": 0,
-                  "lowerIncluded": "true",
-                  "upper": 1000,
-                  "upperIncluded": "true"
-                },
-                "unit": "min/dia"
-              },
-            ],
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_CODED_TEXT",
-            "itemName": "Second Job?",
-            "itemPath": "items.0.8.items.0",
-            "itemsList": [
-              {
-                "code": "at0031",
-                "description": "*",
-                "text": "Sim"
-              },
-              {
-                "code": "at0032",
-                "description": "*",
-                "text": "Não"
-              }
-            ],
-            "node": {
-              "code": "at0004",
-              "description": "Do you have a second job?",
-              "text": "Exerce um outro trabalho renumerado?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0004]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "terminology_id": "local",
-            "value": null
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Second Job - hours/week?",
-            "itemPath": "items.0.8.items.1",
-            "node": {
-              "code": "at0005",
-              "description": "In a typical week, how many hours a week do you spend at your second job?",
-              "text": "Se sim, quantas horas por semana dedica ao seu outro trabalho?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0005]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": {
-              "precision": {
-                "lowerPrecision": 0,
-                "upperPrecision": 0
-              },
-              "range": {
-                "lower": 0,
-                "lowerIncluded": "true",
-                "upper": 168,
-                "upperIncluded": "true"
-              },
-              "unit": "hora(s)/semana"
-            },
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Housework - hours/week?",
-            "itemPath": "items.0.8.items.3",
-            "node": {
-              "code": "at0009",
-              "description": "How much time do you spend doing housework in a week?",
-              "text": "Quantas horas despende por semana em tarefas domésticas?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0009]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": {
-              "range": {
-                "lower": "0",
-                "lowerIncluded": "true",
-                "upper": "168",
-                "upperIncluded": "true"
-              },
-              "unit": "hora(s)/semana"
-            },
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-          {
-            "Functions": [],
-            "InternalFunctions": [],
-            "TaskEditable": [
-              "All"
-            ],
-            "TaskInReport": [
-              "All"
-            ],
-            "TaskVisible": [
-              "All"
-            ],
-            "dataType": "DV_QUANTITY",
-            "itemName": "Leisure - hours/week",
-            "itemPath": "items.0.8.items.5",
-            "node": {
-              "code": "at0025",
-              "description": "In a typical week, on how many days do you do vigorous-intensity sports, fitness or recreational activities?",
-              "text": "Quantas horas despende por semana em atividades de lazer?"
-            },
-            "occurrences": {
-              "lowerOccurrences": 0,
-              "upperOccurrences": 1
-            },
-            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]/[at0025]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
-            "units": {
-              "precision": {
-                "lowerPrecision": 0,
-                "upperPrecision": 0
-              },
-              "range": {
-                "lower": 0,
-                "lowerIncluded": "true",
-                "upper": 7,
-                "upperIncluded": "true"
-              },
-              "unit": "hora(s)/semana"
-            },
-            "value": {
-              "unit": null,
-              "value": null
-            }
-          },
-        ],
-        "node": {
-          "code": "at0000",
-          "description": "WHO surveillance tool to assess levels of physical activity.",
-          "text": "Gestão do tempo"
-        },
-        "occurrences": {
-          "lowerOccurrences": 0,
-          "upperOccurrences": 1
-        },
-        "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.gpaq.v0]",
-        "ruleMandatory": [],
-        "ruleVisibility": [],
-        "xsi_type": "C_ARCHETYPE_ROOT"
-      },
-      {
-        "Functions": [],
-        "InternalFunctions": [],
-        "TaskEditable": [
-          "All"
-        ],
-        "TaskInReport": [
-          "All"
-        ],
-        "TaskVisible": [
-          "All"
-        ],
         "archetype_id": "openEHR-EHR-OBSERVATION.kessler_k10_scale.v0",
         "data_type": "Title",
-        "itemName": "Kessler Psychological Distress Scale (K10)",
-        "itemPath": "items.0.9",
+        "itemName": "Escala de Angústia Psicológica Kessler (K10)",
+        "itemPath": "items.0.7",
         "items": [
           {
             "Functions": [],
@@ -1706,27 +1701,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu cansado sem razão aparente?",
-            "itemPath": "items.0.9.items.0",
+            "itemPath": "items.0.7.items.0",
             "itemsList": [
               {
                 "code": "at0005",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0006",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0007",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0008",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0009",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -1757,27 +1757,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu nervoso?",
-            "itemPath": "items.0.9.items.1",
+            "itemPath": "items.0.7.items.1",
             "itemsList": [
               {
                 "code": "at0016",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0017",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0018",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0019",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0020",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -1808,27 +1813,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu tão nervoso que nada o podia acalmar?",
-            "itemPath": "items.0.9.items.2",
+            "itemPath": "items.0.7.items.2",
             "itemsList": [
               {
                 "code": "at0022",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0023",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0024",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0025",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0026",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -1859,27 +1869,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu sem esperança?",
-            "itemPath": "items.0.9.items.3",
+            "itemPath": "items.0.7.items.3",
             "itemsList": [
               {
                 "code": "at0028",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0029",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0030",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0031",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0032",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -1910,27 +1925,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu inquieto?",
-            "itemPath": "items.0.9.items.4",
+            "itemPath": "items.0.7.items.4",
             "itemsList": [
               {
                 "code": "at0034",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0035",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0036",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0037",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0038",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -1961,27 +1981,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu tão inquieto que não se conseguia manter calmo?",
-            "itemPath": "items.0.9.items.5",
+            "itemPath": "items.0.7.items.5",
             "itemsList": [
               {
                 "code": "at0040",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0041",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0042",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0043",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0044",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -2012,27 +2037,31 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu deprimido?",
-            "itemPath": "items.0.9.items.6",
+            "itemPath": "items.0.7.items.6",
             "itemsList": [
               {
                 "code": "at0046",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0047",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0048",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0049",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0050",
-                "text": "Sempre"
+                "text": "Sempre", "value":5
               }
             ],
             "node": {
@@ -2063,27 +2092,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência sentiu que tudo era um fardo?",
-            "itemPath": "items.0.9.items.7",
+            "itemPath": "items.0.7.items.7",
             "itemsList": [
               {
                 "code": "at0052",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0053",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0054",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0055",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0056",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -2114,27 +2148,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu tão triste que nada o conseguia animar?",
-            "itemPath": "items.0.9.items.8",
+            "itemPath": "items.0.7.items.8",
             "itemsList": [
               {
                 "code": "at0058",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0059",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0060",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0061",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0062",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -2165,27 +2204,32 @@ const json = {
             ],
             "dataType": "DV_ORDINAL",
             "itemName": "Nos últimos 30 dias com que frequência se sentiu inútil?",
-            "itemPath": "items.0.9.items.9",
+            "itemPath": "items.0.7.items.9",
             "itemsList": [
               {
                 "code": "at0064",
-                "text": "Nunca"
+                "text": "Nunca", 
+                "value":1
               },
               {
                 "code": "at0065",
-                "text": "Raramente"
+                "text": "Raramente", 
+                "value":2
               },
               {
                 "code": "at0066",
-                "text": "Algumas vezes"
+                "text": "Algumas vezes", 
+                "value":3
               },
               {
                 "code": "at0067",
-                "text": "Frequentemente"
+                "text": "Frequentemente", 
+                "value":4
               },
               {
                 "code": "at0068",
-                "text": "Sempre"
+                "text": "Sempre", 
+                "value":5
               }
             ],
             "node": {
@@ -2215,11 +2259,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_COUNT",
-            "itemName": "Total score",
-            "itemPath": "items.0.9.items.10",
+            "itemName": "Pontuação total",
+            "itemPath": "items.0.7.items.10",
             "node": {
               "code": "at0014",
-              "description": "The total score on the Kessler Psychological Distress Scale (K10).",
+              "description": "Pontuação total na Escala Escala de Angústia Psicológica Kessler (K10).",
               "text": "Pontuação total"
             },
             "occurrences": {
@@ -2244,11 +2288,11 @@ const json = {
               "All"
             ],
             "dataType": "DV_TEXT",
-            "itemName": "Comment",
-            "itemPath": "items.0.9.items.11",
+            "itemName": "Comentário",
+            "itemPath": "items.0.7.items.11",
             "node": {
               "code": "at0069",
-              "description": "Additional narrative about the overall Kessler Psychological Distress Scale not captured in other fields.",
+              "description": "Narrativa adicional sobre a Escala de Angústia Psicológica Kessler geral não capturada em outros campos.",
               "text": "Comentário"
             },
             "occurrences": {
@@ -2263,8 +2307,8 @@ const json = {
         ],
         "node": {
           "code": "at0000",
-          "description": "The Kessler Psychological Distress Scale (K10) is a tool for measuring anxiety and depression through a 10-item questionnaire. Each question pertains to an emotional state and each has a five-level response scale.",
-          "text": "Kessler Psychological Distress Scale (K10)"
+          "description": "A Kessler Psychological Distress Scale (K10) é uma ferramenta para medir ansiedade e depressão por meio de um questionário de 10 itens. Cada questão pertence a um estado emocional e cada uma tem uma escala de resposta de cinco níveis.",
+          "text": "Escala de Angústia Psicológica Kessler (K10)"
         },
         "occurrences": {
           "lowerOccurrences": 0,
@@ -2274,13 +2318,13 @@ const json = {
         "ruleMandatory": [],
         "ruleVisibility": [],
         "xsi_type": "C_ARCHETYPE_ROOT"
-      },
+      }
     ]
   ],
   "node": {
     "code": "at0000",
-    "description": "Interaction, contact or care event between a subject of care and healthcare provider(s).",
-    "text": "Avaliação inicial"
+    "description": "Interação, contato ou evento de cuidado entre um utente e o(s) prestador(es) de saúde.",
+    "text": "Questionário geral"
   },
   "occurrences": {
     "lowerOccurrences": 1,
@@ -2291,8 +2335,7 @@ const json = {
   "ruleMandatory": [],
   "ruleVisibility": [],
   "templateId": "fa786fe0-4fac-449f-812a-2a7619370c89",
-  "templateName": "Avaliação inicial",
+  "templateName": "Initial Evaluation",
   "themeColor": "default"
-}
-
+};
 export default json;
