@@ -1,6 +1,11 @@
 const db = require("../models");
 const Utente = db.utente;
 const Op = db.Sequelize.Op;
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('teste', 'postgres', 'a2083ines', {
+  host: 'localhost',
+  dialect: 'postgres'
+});
 
 // Create and Save a new Patient
 exports.create = (req, res) => {
@@ -35,7 +40,26 @@ exports.create = (req, res) => {
 // Retrieve all Patients from the database.
 exports.findAll = (req, res) => {
   const nome_utente = req.query.nome_utente;
-  var condition = nome_utente ? { nome_utente: { [Op.iLike]: `%${nome_utente}%` } } : null;
+  const data_nascimento = req.query.data_nascimento;
+  const num_sequencial = req.query.num_sequencial;
+
+  var condition = {
+    nome_utente: nome_utente
+    ? {
+        [Sequelize.Op.and]: [
+          sequelize.where(
+            sequelize.fn('lower', sequelize.fn('unaccent', sequelize.col('nome_utente'))),
+            { [Sequelize.Op.like]: `%${nome_utente.normalize('NFD').toLowerCase()}%` }
+          )
+        ]
+      }
+    : undefined,
+    data_nascimento: data_nascimento ? { [Op.eq]: data_nascimento } : undefined,
+    num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
+  };
+
+  // Remove any undefined values from the condition object
+  condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
 
   Utente.findAll({ where: condition })
     .then(data => {
@@ -136,3 +160,4 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
+

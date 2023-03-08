@@ -159,6 +159,7 @@ const handleSave = (values, changedFields) => {
       });
   }, [num_sequencial]);
 
+  
   useEffect(() => {
     const pageReloaded = sessionStorage.getItem('pageReloaded');
     if (!pageReloaded) {
@@ -167,7 +168,7 @@ const handleSave = (values, changedFields) => {
     } else {
       sessionStorage.removeItem('pageReloaded');
     }
-  }, []);
+  }, []); 
 
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);

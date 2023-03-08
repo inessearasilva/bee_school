@@ -2335,7 +2335,7 @@ const json = {
   "ruleMandatory": [],
   "ruleVisibility": [],
   "templateId": "fa786fe0-4fac-449f-812a-2a7619370c89",
-  "templateName": "Initial Evaluation",
+  "templateName": "Questionário Geral",
   "themeColor": "default"
 };
 export default json;

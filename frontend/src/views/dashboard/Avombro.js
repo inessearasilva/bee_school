@@ -85,7 +85,7 @@ export default class Avombro extends Component {
                     <CIcon icon={cilPencil} />
                   </button>
                 </Link>
-                <Link to={`/submitted/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
+                <Link to={`/vizAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button">
                     <CIcon icon={cilUserX} />
                   </button>
