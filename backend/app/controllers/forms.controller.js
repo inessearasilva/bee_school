@@ -108,12 +108,12 @@ exports.findAll = (req, res) => {
 
   exports.findAll = (req, res) => {
     const idcomposition = req.query.idcomposition;
-    const state = req.query.state;
+    const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
     
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
-      state: state ? { [Op.eq]: state } : undefined,
+      isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
     };
   
@@ -134,12 +134,12 @@ exports.findAll = (req, res) => {
 
   exports.findAllAvini = (req, res) => {
     const idcomposition = req.query.idcomposition;
-    const state = req.query.state;
+    const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
   
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
-      state: state ? { [Op.eq]: state } : undefined,
+      isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
       idjdt: 0 // add condition for idjdt = 0
     };
@@ -162,12 +162,12 @@ exports.findAll = (req, res) => {
 
   exports.findAllAvombro = (req, res) => {
     const idcomposition = req.query.idcomposition;
-    const state = req.query.state;
+    const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
   
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
-      state: state ? { [Op.eq]: state } : undefined,
+      isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
       idjdt: 1 // add condition for idjdt = 1
     };

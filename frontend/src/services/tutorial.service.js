@@ -36,6 +36,30 @@ class UtenteDataService {
   findBynum_sequencial(num_sequencial) {
     return http.get(`/utente?num_sequencial=${num_sequencial}`);
   }
+
+  findAviniBynum_sequencial(num_sequencial) {
+    return http.get(`/forms/aviniforms/all?num_sequencial=${num_sequencial}`);
+  }
+
+  findAviniByidcomposition(idcomposition) {
+    return http.get(`/forms/aviniforms/all?idcomposition=${idcomposition}`);
+  }
+
+  findAviniByestado(estado) {
+    return http.get(`/forms/aviniforms/all?isCompleted=${estado}`);
+  }
+
+  findAvombroBynum_sequencial(num_sequencial) {
+    return http.get(`/forms/avombroforms/all?num_sequencial=${num_sequencial}`);
+  }
+
+  findAvombroByidcomposition(idcomposition) {
+    return http.get(`/forms/avombroforms/all?idcomposition=${idcomposition}`);
+  }
+
+  findAvombroByestado(estado) {
+    return http.get(`/forms/avombroforms/all?isCompleted=${estado}`);
+  }
   
   createform(data) {
     return http.post("/forms", data);
