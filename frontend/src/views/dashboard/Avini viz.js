@@ -101,7 +101,7 @@ const Aviniviz = () => {
   }, [formValues.composition]);
   
   useEffect(() => {
-    UtenteDataService.getvaluesAvini(num_sequencial)
+    UtenteDataService.getSubAvini(num_sequencial)
     .then(response => {
       setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
         //const compositionval = JSON.parse(response.data.composition);

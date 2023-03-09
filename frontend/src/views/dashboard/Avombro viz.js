@@ -101,7 +101,7 @@ const Avombroviz = () => {
   }, [formValues.composition]);
   
   useEffect(() => {
-    UtenteDataService.getvaluesAvombro(num_sequencial)
+    UtenteDataService.getSubAvombro(num_sequencial)
     .then(response => {
       setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
         //const compositionval = JSON.parse(response.data.composition);

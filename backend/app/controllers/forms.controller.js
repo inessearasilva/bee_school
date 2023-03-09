@@ -290,6 +290,32 @@ exports.findValuesAvini = (req, res) => {
   });
 };
 
+exports.findSubAvini = (req, res) => {
+  const num_sequencial = req.params.num_sequencial;
+
+  ClinicalCompositions.findAll({
+    where: { 
+      num_sequencial: num_sequencial, idjdt:0
+    },
+    order: [['createdat', 'DESC']]
+  }).then(data => {
+    if (data && data.length > 0) {
+      const mostRecentComposition = data[0];
+      console.log('Found the most recent ClinicalComposition');
+      console.log('composition:', mostRecentComposition.composition);
+      res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: mostRecentComposition.composition });
+    } else {
+      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
+    }
+  }).catch(err => {
+    console.log(err); // log the error message
+    res.status(500).send({
+      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
+    });
+  });
+};
+
+
 exports.findValuesAvombro = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
 
@@ -323,6 +349,32 @@ exports.findValuesAvombro = (req, res) => {
     });
   });
 };
+
+exports.findSubAvombro = (req, res) => {
+  const num_sequencial = req.params.num_sequencial;
+
+  ClinicalCompositions.findAll({
+    where: { 
+      num_sequencial: num_sequencial, idjdt:1
+    },
+    order: [['createdat', 'DESC']]
+  }).then(data => {
+    if (data && data.length > 0) {
+      const mostRecentComposition = data[0];
+      console.log('Found the most recent ClinicalComposition');
+      console.log('composition:', mostRecentComposition.composition);
+      res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: mostRecentComposition.composition });
+    } else {
+      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
+    }
+  }).catch(err => {
+    console.log(err); // log the error message
+    res.status(500).send({
+      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
+    });
+  });
+};
+
 
 
 exports.findInitialAvini = (req, res) => {

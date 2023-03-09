@@ -212,7 +212,7 @@ export default class Avini extends Component {
                 </div>
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
-              <Link to={`/avini/${ClinicalCompositions.num_sequencial}`}>
+              <Link to={`/subAvini/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button">
                     <CIcon icon={cilPencil} />
                   </button>

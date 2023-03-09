@@ -212,7 +212,7 @@ export default class Avombro extends Component {
                 </div>
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
-              <Link to={`/avombro/${ClinicalCompositions.num_sequencial}`}>
+              <Link to={`/subAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button">
                     <CIcon icon={cilPencil} />
                   </button>

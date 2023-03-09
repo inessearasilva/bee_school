@@ -85,6 +85,14 @@ class UtenteDataService {
     return http.get(`/forms/valuesAvombro/${num_sequencial}`);
   }
 
+  getSubAvini(num_sequencial) {
+    return http.get(`/forms/subAvini/${num_sequencial}`);
+  }
+
+  getSubAvombro(num_sequencial) {
+    return http.get(`/forms/subAvombro/${num_sequencial}`);
+  }
+
   getidAvini(num_sequencial) {
     return http.get(`/forms/initialAvini/${num_sequencial}`);
   }
