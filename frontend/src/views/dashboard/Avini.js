@@ -189,6 +189,7 @@ export default class Avini extends Component {
         <tr>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}>ID Form</th>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}>Número Sequencial</th>
+          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Data de submissão</th>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}>Estado</th>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}> </th>
         </tr>
@@ -199,6 +200,8 @@ export default class Avini extends Component {
             <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.num_sequencial}</td>
+              <td style={{backgroundColor: 'white', textAlign: 'center'}}>
+              {new Date(ClinicalCompositions.createdat).toLocaleDateString('pt-PT')}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                   {ClinicalCompositions.isCompleted === 0 ? (
