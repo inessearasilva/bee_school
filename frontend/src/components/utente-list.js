@@ -32,10 +32,10 @@ export default class Utentes extends Component {
     this.retrieveUtente();
   }
 
-  onChangeSearchnome_utente(e) {
-    const searchnome_utente = e.target.value;
-    this.setState({ searchnome_utente }, () => {
-      this.searchnome_utente();
+  onChangeSearchnum_sequencial(e) {
+    const searchnum_sequencial = e.target.value;
+    this.setState({ searchnum_sequencial }, () => {
+      this.searchnum_sequencial();
     });
   }
 
@@ -46,10 +46,10 @@ export default class Utentes extends Component {
     });
   }
 
-  onChangeSearchnum_sequencial(e) {
-    const searchnum_sequencial = e.target.value;
-    this.setState({ searchnum_sequencial }, () => {
-      this.searchnum_sequencial();
+  onChangeSearchnome_utente(e) {
+    const searchnome_utente = e.target.value;
+    this.setState({ searchnome_utente }, () => {
+      this.searchnome_utente();
     });
   }
 
@@ -92,9 +92,8 @@ export default class Utentes extends Component {
       });
   }
 
-  searchnome_utente() {
-    const normalizedSearch = this.state.searchnome_utente.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    UtenteDataService.findBynome_utente(normalizedSearch)
+  searchnum_sequencial() {
+    UtenteDataService.findBynum_sequencial(this.state.searchnum_sequencial)
       .then(response => {
         this.setState({
           Utente: response.data,
@@ -107,7 +106,6 @@ export default class Utentes extends Component {
         console.log(e);
       });
   }
-  
 
   searchdata_nascimento() {
     UtenteDataService.findBydata_nascimento(this.state.searchdata_nascimento)
@@ -124,8 +122,9 @@ export default class Utentes extends Component {
       });
   }
 
-  searchnum_sequencial() {
-    UtenteDataService.findBynum_sequencial(this.state.searchnum_sequencial)
+  searchnome_utente() {
+    const normalizedSearch = this.state.searchnome_utente.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    UtenteDataService.findBynome_utente(normalizedSearch)
       .then(response => {
         this.setState({
           Utente: response.data,
@@ -138,6 +137,7 @@ export default class Utentes extends Component {
         console.log(e);
       });
   }
+  
 
   render() {
     const { searchnome_utente, searchdata_nascimento, searchnum_sequencial, Utente, currentUtente} = this.state;

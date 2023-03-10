@@ -108,12 +108,12 @@ exports.findAll = (req, res) => {
 
   exports.findAll = (req, res) => {
     const idcomposition = req.query.idcomposition;
-    const state = req.query.state;
+    const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
     
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
-      state: state ? { [Op.eq]: state } : undefined,
+      isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
     };
   
@@ -134,12 +134,12 @@ exports.findAll = (req, res) => {
 
   exports.findAllAvini = (req, res) => {
     const idcomposition = req.query.idcomposition;
-    const state = req.query.state;
+    const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
   
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
-      state: state ? { [Op.eq]: state } : undefined,
+      isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
       idjdt: 0 // add condition for idjdt = 0
     };
@@ -162,12 +162,12 @@ exports.findAll = (req, res) => {
 
   exports.findAllAvombro = (req, res) => {
     const idcomposition = req.query.idcomposition;
-    const state = req.query.state;
+    const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
   
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
-      state: state ? { [Op.eq]: state } : undefined,
+      isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
       idjdt: 1 // add condition for idjdt = 1
     };
@@ -275,9 +275,9 @@ exports.findValuesAvini = (req, res) => {
         res.status(200).send({ num_sequencial: composition.num_sequencial, composition: composition.composition });
       } else if (mostRecentComposition.isCompleted === 1) {
         console.log('Found a more recent ClinicalComposition with isCompleted=1');
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       } else {
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       }
     } else {
       res.status(200).send({ num_sequencial: num_sequencial, composition: null });
@@ -289,6 +289,33 @@ exports.findValuesAvini = (req, res) => {
     });
   });
 };
+
+
+exports.findSubAvini = (req, res) => {
+  const num_sequencial = req.params.num_sequencial;
+
+  ClinicalCompositions.findAll({
+    where: { 
+      num_sequencial: num_sequencial, idjdt:0
+    },
+    order: [['createdat', 'DESC']]
+  }).then(data => {
+    if (data && data.length > 0) {
+      const mostRecentComposition = data[0];
+      console.log('Found the most recent ClinicalComposition');
+      console.log('composition:', mostRecentComposition.composition);
+      res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: mostRecentComposition.composition });
+    } else {
+      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
+    }
+  }).catch(err => {
+    console.log(err); // log the error message
+    res.status(500).send({
+      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
+    });
+  });
+};
+
 
 exports.findValuesAvombro = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
@@ -309,9 +336,9 @@ exports.findValuesAvombro = (req, res) => {
         res.status(200).send({ num_sequencial: composition.num_sequencial, composition: composition.composition });
       } else if (mostRecentComposition.isCompleted === 1) {
         console.log('Found a more recent ClinicalComposition with isCompleted=1');
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       } else {
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       }
     } else {
       res.status(200).send({ num_sequencial: num_sequencial, composition: null });
@@ -323,6 +350,33 @@ exports.findValuesAvombro = (req, res) => {
     });
   });
 };
+
+
+exports.findSubAvombro = (req, res) => {
+  const num_sequencial = req.params.num_sequencial;
+
+  ClinicalCompositions.findAll({
+    where: { 
+      num_sequencial: num_sequencial, idjdt:1
+    },
+    order: [['createdat', 'DESC']]
+  }).then(data => {
+    if (data && data.length > 0) {
+      const mostRecentComposition = data[0];
+      console.log('Found the most recent ClinicalComposition');
+      console.log('composition:', mostRecentComposition.composition);
+      res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: mostRecentComposition.composition });
+    } else {
+      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
+    }
+  }).catch(err => {
+    console.log(err); // log the error message
+    res.status(500).send({
+      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
+    });
+  });
+};
+
 
 
 exports.findInitialAvini = (req, res) => {
@@ -394,98 +448,6 @@ exports.findInitialAvombro = (req, res) => {
     } else {
       const randomNum = Math.floor(Math.random() * 1000);
       res.status(200).send({ id_initialcomposition: randomNum });
-    }
-  }).catch(err => {
-    console.log(err); // log the error message
-    res.status(500).send({
-      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
-    });
-  });
-};
-
-exports.findSubAvini = (req, res) => {
-  const num_sequencial = req.params.num_sequencial;
-  const idcomposition = req.params.idcomposition;
-
-  ClinicalCompositions.findOne({
-    where: { idcomposition: idcomposition , num_sequencial: num_sequencial, idjdt:0 },
-    order: [['createdat', 'DESC']]
-  }).then(data => {
-    if (data) {
-        console.log('Found the most recent ClinicalComposition');
-        console.log('composition:', data.composition);
-        res.status(200).send({ num_sequencial: data.num_sequencial, composition: data.composition });
-    } else {
-      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
-    }
-  }).catch(err => {
-    console.log(err); // log the error message
-    res.status(500).send({
-      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
-    });
-  });
-};
-
-exports.findSubAvombro = (req, res) => {
-  const num_sequencial = req.params.num_sequencial;
-  const idcomposition = req.params.idcomposition;
-
-  ClinicalCompositions.findOne({
-    where: { idcomposition: idcomposition , num_sequencial: num_sequencial, idjdt:1 },
-    order: [['createdat', 'DESC']]
-  }).then(data => {
-    if (data) {
-        console.log('Found the most recent ClinicalComposition');
-        console.log('composition:', data.composition);
-        res.status(200).send({ num_sequencial: data.num_sequencial, composition: data.composition });
-    } else {
-      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
-    }
-  }).catch(err => {
-    console.log(err); // log the error message
-    res.status(500).send({
-      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
-    });
-  });
-};
-
-exports.vizAvini = (req, res) => {
-  const num_sequencial = req.params.num_sequencial;
-  const idcomposition = req.params.idcomposition;
-
-  ClinicalCompositions.findOne({
-    where: { idcomposition: idcomposition , num_sequencial: num_sequencial, idjdt:0 },
-    order: [['createdat', 'DESC']]
-  }).then(data => {
-    if (data) {
-        console.log('Found the most recent ClinicalComposition');
-        console.log('composition:', data.composition);
-        res.status(200).send({ num_sequencial: data.num_sequencial, composition: data.composition });
-    } else {
-      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
-    }
-  }).catch(err => {
-    console.log(err); // log the error message
-    res.status(500).send({
-      message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
-    });
-  });
-};
-
-exports.vizAvombro = (req, res) => {
-  const num_sequencial = req.params.num_sequencial;
-  const idcomposition = req.params.idcomposition;
-
-  ClinicalCompositions.findOne({
-    where: { idcomposition: idcomposition , num_sequencial: num_sequencial, idjdt:1 },
-    order: [['createdat', 'DESC']]
-  }).then(data => {
-    if (data) {
-        console.log('Found the most recent ClinicalComposition');
-        console.log('composition:', data.composition);
-        res.status(200).send({ num_sequencial: data.num_sequencial, composition: data.composition });
-    } else {
-      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
     }
   }).catch(err => {
     console.log(err); // log the error message

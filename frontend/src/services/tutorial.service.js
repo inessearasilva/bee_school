@@ -36,6 +36,30 @@ class UtenteDataService {
   findBynum_sequencial(num_sequencial) {
     return http.get(`/utente?num_sequencial=${num_sequencial}`);
   }
+
+  findAviniBynum_sequencial(num_sequencial) {
+    return http.get(`/forms/aviniforms/all?num_sequencial=${num_sequencial}`);
+  }
+
+  findAviniByidcomposition(idcomposition) {
+    return http.get(`/forms/aviniforms/all?idcomposition=${idcomposition}`);
+  }
+
+  findAviniByestado(estado) {
+    return http.get(`/forms/aviniforms/all?isCompleted=${estado}`);
+  }
+
+  findAvombroBynum_sequencial(num_sequencial) {
+    return http.get(`/forms/avombroforms/all?num_sequencial=${num_sequencial}`);
+  }
+
+  findAvombroByidcomposition(idcomposition) {
+    return http.get(`/forms/avombroforms/all?idcomposition=${idcomposition}`);
+  }
+
+  findAvombroByestado(estado) {
+    return http.get(`/forms/avombroforms/all?isCompleted=${estado}`);
+  }
   
   createform(data) {
     return http.post("/forms", data);
@@ -61,28 +85,20 @@ class UtenteDataService {
     return http.get(`/forms/valuesAvombro/${num_sequencial}`);
   }
 
+  getSubAvini(num_sequencial) {
+    return http.get(`/forms/subAvini/${num_sequencial}`);
+  }
+
+  getSubAvombro(num_sequencial) {
+    return http.get(`/forms/subAvombro/${num_sequencial}`);
+  }
+
   getidAvini(num_sequencial) {
     return http.get(`/forms/initialAvini/${num_sequencial}`);
   }
 
   getidAvombro(num_sequencial) {
     return http.get(`/forms/initialAvombro/${num_sequencial}`);
-  }
-
-  getsubAvini(idcomposition,num_sequencial) {
-    return http.get(`/forms/subAvini/${idcomposition}/${num_sequencial}`);
-  }
-
-  getsubAvombro(idcomposition,num_sequencial) {
-    return http.get(`/forms/subAvombro/${idcomposition}/${num_sequencial}`);
-  }
-
-  getvizAvini(idcomposition,num_sequencial) {
-    return http.get(`/forms/vizAvini/${idcomposition}/${num_sequencial}`);
-  }
-
-  getvizAvombro(idcomposition,num_sequencial) {
-    return http.get(`/forms/vizAvombro/${idcomposition}/${num_sequencial}`);
   }
 
   updateform(num_sequencial, data) {
