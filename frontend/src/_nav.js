@@ -27,11 +27,11 @@ const _nav = [
   },
   {
     component: CNavTitle,
-    name: 'Avaliação',
+    name: 'Questionários',
   },
   {
     component: CNavItem,
-    name: 'Avaliação Inicial',
+    name: 'Questionário Geral',
     to: '/avini',
     icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
   },

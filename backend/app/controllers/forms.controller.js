@@ -275,9 +275,9 @@ exports.findValuesAvini = (req, res) => {
         res.status(200).send({ num_sequencial: composition.num_sequencial, composition: composition.composition });
       } else if (mostRecentComposition.isCompleted === 1) {
         console.log('Found a more recent ClinicalComposition with isCompleted=1');
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       } else {
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       }
     } else {
       res.status(200).send({ num_sequencial: num_sequencial, composition: null });
@@ -289,6 +289,7 @@ exports.findValuesAvini = (req, res) => {
     });
   });
 };
+
 
 exports.findSubAvini = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
@@ -335,9 +336,9 @@ exports.findValuesAvombro = (req, res) => {
         res.status(200).send({ num_sequencial: composition.num_sequencial, composition: composition.composition });
       } else if (mostRecentComposition.isCompleted === 1) {
         console.log('Found a more recent ClinicalComposition with isCompleted=1');
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       } else {
-        res.status(200).send({ num_sequencial: composition.num_sequencial, composition: null });
+        res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: null });
       }
     } else {
       res.status(200).send({ num_sequencial: num_sequencial, composition: null });
@@ -349,6 +350,7 @@ exports.findValuesAvombro = (req, res) => {
     });
   });
 };
+
 
 exports.findSubAvombro = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
