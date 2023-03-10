@@ -3,6 +3,7 @@ import UtenteDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser} from '@coreui/icons'
+import {BsXLg} from 'react-icons/bs';
 
 export default class Utentes extends Component {
   constructor(props) {
@@ -163,20 +164,48 @@ export default class Utentes extends Component {
               this.searchnum_sequencial();
             }}
           />
+          {searchnum_sequencial && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchnum_sequencial({ target: { value: "" } });
+                    this.searchnum_sequencial();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="col-md-2">
           <div className="input-group mb-3">
-          <input
-            type="date"
-            className="form-control"
-            placeholder="Data Nascimento"
-            value={searchdata_nascimento}
-            onChange={(e) => {
-              this.onChangeSearchdata_nascimento(e);
-              this.searchdata_nascimento();
-            }}
-          />
+            <input
+              type="date"
+              className="form-control"
+              placeholder="Data Nascimento"
+              value={searchdata_nascimento}
+              onChange={(e) => {
+                this.onChangeSearchdata_nascimento(e);
+                this.searchdata_nascimento();
+              }}
+            />
+            {searchdata_nascimento && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchdata_nascimento({ target: { value: "" } });
+                    this.searchdata_nascimento();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="col-md-4">
@@ -191,6 +220,20 @@ export default class Utentes extends Component {
                 this.searchnome_utente();
               }}
             />
+            {searchnome_utente && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchnome_utente({ target: { value: "" } });
+                    this.searchnome_utente();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
           <br></br>

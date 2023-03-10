@@ -671,7 +671,7 @@ const json = {
             },
             "occurrences": {
               "lowerOccurrences": 0,
-              "upperOccurrences": 1
+              "upperOccurrences": "*"
             },
             "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/[at0002]",
             "ruleMandatory": [],
@@ -691,9 +691,53 @@ const json = {
             "TaskVisible": [
               "All"
             ],
+            "dataType": "DV_CODED_TEXT",
+            "itemName": "Local do corpo",
+            "itemPath": "items.0.2.items.1",
+            "itemsList": [
+              {
+                "code": "hl7VS-armStick::L",
+                "text": "Braço esquerdo"
+              },
+              {
+                "code": "hl7VS-armStick::R",
+                "text": "Braço direito"
+              },
+              {
+                "code": "hl7VS-armStick::B",
+                "text": "Ambos os braços"
+              }
+            ],
+            "node": {
+              "code": "at0002",
+              "description": "Identificação de um sítio corporal simples para a localização do problema ou diagnóstico.",
+              "text": "Local do corpo"
+            },
+            "occurrences": {
+              "lowerOccurrences": 0,
+              "upperOccurrences": 1
+            },
+            "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/[at0012]",
+            "ruleMandatory": [],
+            "ruleVisibility": [],
+            "terminology_id": "hl7VS-armStick",
+            "value": null
+          },
+          {
+            "Functions": [],
+            "InternalFunctions": [],
+            "TaskEditable": [
+              "All"
+            ],
+            "TaskInReport": [
+              "All"
+            ],
+            "TaskVisible": [
+              "All"
+            ],
             "dataType": "DV_TEXT",
             "itemName": "Descrição clínica",
-            "itemPath": "items.0.2.items.1",
+            "itemPath": "items.0.2.items.2",
             "node": {
               "code": "at0009",
               "description": "Descrição narrativa do problema ou diagnóstico.",
@@ -722,7 +766,7 @@ const json = {
             ],
             "dataType": "DV_DATE_TIME",
             "itemName": "Data de início",
-            "itemPath": "items.0.2.items.2",
+            "itemPath": "items.0.2.items.3",
             "node": {
               "code": "at0077",
               "description": "Data estimada de início da condição.",
@@ -754,7 +798,7 @@ const json = {
             ],
             "dataType": "DV_CODED_TEXT",
             "itemName": "Severidade",
-            "itemPath": "items.0.2.items.3",
+            "itemPath": "items.0.2.items.4",
             "itemsList": [
               {
                 "code": "at0047",
@@ -801,7 +845,7 @@ const json = {
             ],
             "dataType": "DV_CODED_TEXT",
             "itemName": "Pós-operatório?",
-            "itemPath": "items.0.2.items.4",
+            "itemPath": "items.0.2.items.5",
             "itemsList": [
               {
                 "code": "NCDHC Generic Yes No::373067005",

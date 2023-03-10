@@ -3,7 +3,7 @@ import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tut
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, ciley} from '@coreui/icons'
-import { BsFillCheckCircleFill, BsFillPauseCircleFill, BsEye} from "react-icons/bs";
+import { BsFillCheckCircleFill, BsFillPauseCircleFill, BsEye, BsXLg} from "react-icons/bs";
 export default class Avini extends Component {
   constructor(props) {
     super(props);
@@ -144,20 +144,6 @@ export default class Avini extends Component {
           <input
             type="text"
             className="form-control"
-            placeholder="Número Sequencial"
-            value={searchnum_sequencial}
-            onChange={(e) => {
-              this.onChangeSearchnum_sequencial(e);
-              this.searchnum_sequencial();
-            }}
-          />
-          </div>
-        </div>
-        <div className="col-md-2">
-          <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
             placeholder="ID Form"
             value={searchidcomposition}
             onChange={(e) => {
@@ -165,6 +151,48 @@ export default class Avini extends Component {
               this.searchidcomposition();
             }}
           />
+          {searchidcomposition && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchidcomposition({ target: { value: "" } });
+                    this.searchidcomposition();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="col-md-2">
+          <div className="input-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Número Sequencial"
+            value={searchnum_sequencial}
+            onChange={(e) => {
+              this.onChangeSearchnum_sequencial(e);
+              this.searchnum_sequencial();
+            }}
+          />
+          {searchnum_sequencial && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchnum_sequencial({ target: { value: "" } });
+                    this.searchnum_sequencial();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="col-md-2">
@@ -181,6 +209,20 @@ export default class Avini extends Component {
             <option value={0}>Rascunho</option>
             <option value={1}>Terminado</option>
           </select>
+          {searchestado && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchestado({ target: { value: "" } });
+                    this.searchestado();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
         </div>
         </div>
           <br></br>
