@@ -65,6 +65,14 @@ class UtenteDataService {
     return http.post("/forms", data);
   }
 
+  getformAvini(num_sequencial) {
+    return http.get(`/forms/avini/${num_sequencial}`);
+  }
+
+  getformAvombro(num_sequencial) {
+    return http.get(`/forms/avombro/${num_sequencial}`);
+  }
+
   getAllform() {
     return http.get("/forms");
   }

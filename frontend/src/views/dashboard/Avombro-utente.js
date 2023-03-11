@@ -30,6 +30,11 @@ const Avombronum = () => {
     data_nascimento: ''
   });
 
+  const [currentClinicalCompositions, setCurrentClinicalCompositions] = useState({
+    num_sequencial,
+    idcomposition: ''
+  });
+
   const [initialComposition, setInitialComposition] = useState({
     num_sequencial,
     id_initialcomposition: ''
@@ -43,6 +48,16 @@ const Avombronum = () => {
     UtenteDataService.get(num_sequencial)
       .then(response => {
         setCurrentUtente(prevState => ({ ...prevState, nome_utente: response.data.nome_utente, data_nascimento: response.data.data_nascimento }));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [num_sequencial]);
+
+  useEffect(() => {
+    UtenteDataService.getformAvini(num_sequencial)
+      .then(response => {
+        setCurrentUtente(prevState => ({ ...prevState, num_sequencial: response.num_sequencial, idcomposition: response.data.idcomposition }));
       })
       .catch(error => {
         console.log(error);
@@ -202,7 +217,8 @@ const handleSave = (values, changedFields) => {
         "numSequencial": currentUtente.num_sequencial,
         "nome": currentUtente.nome_utente,
         "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo
+        "sexo": currentUtente.sexo,
+        "episodio":  currentClinicalCompositions.idcomposition
         }}
         reportData={{
         dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,

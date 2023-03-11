@@ -67,10 +67,31 @@ exports.create = (req, res) => {
 };
 
 // Find a single Clinical Composition with an num_sequencial
-exports.findOne = (req, res) => {
+exports.findOneAvini = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
 
-  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial } })
+  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial, idjdt:0 } })
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Clinical Composition with num_sequencial=${num_sequencial}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Clinical Composition with num_sequencial=" + num_sequencial
+      });
+    });
+};
+
+// Find a single Clinical Composition with an num_sequencial
+exports.findOneAvombro = (req, res) => {
+  const num_sequencial = req.params.num_sequencial;
+
+  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial, idjdt:1 } })
     .then(data => {
       if (data) {
         res.send(data);
