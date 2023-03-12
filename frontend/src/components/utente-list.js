@@ -145,6 +145,8 @@ export default class Utentes extends Component {
 
     return (
       <div className="list row d-flex justify-content-center">
+        <h3 className="my-heading">Utentes</h3>
+        <br></br><br></br><br></br>
         <table className="table" style={{ tableLayout: 'fixed', width: '170%' }}>
           <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
             <tr>
@@ -180,34 +182,6 @@ export default class Utentes extends Component {
             )}
           </div>
         </div>
-        <div className="col-md-2">
-          <div className="input-group mb-3">
-            <input
-              type="date"
-              className="form-control"
-              placeholder="Data Nascimento"
-              value={searchdata_nascimento}
-              onChange={(e) => {
-                this.onChangeSearchdata_nascimento(e);
-                this.searchdata_nascimento();
-              }}
-            />
-            {searchdata_nascimento && (
-              <div className="input-group-append">
-                <button
-                  type="button"
-                  className="btn"
-                  onClick={() => {
-                    this.onChangeSearchdata_nascimento({ target: { value: "" } });
-                    this.searchdata_nascimento();
-                  }}
-                >
-                  <div><BsXLg color="red"/></div>
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
         <div className="col-md-4">
           <div className="input-group mb-3">
             <input
@@ -228,6 +202,34 @@ export default class Utentes extends Component {
                   onClick={() => {
                     this.onChangeSearchnome_utente({ target: { value: "" } });
                     this.searchnome_utente();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="col-md-2">
+          <div className="input-group mb-3">
+            <input
+              type="date"
+              className="form-control"
+              placeholder="Data Nascimento"
+              value={searchdata_nascimento}
+              onChange={(e) => {
+                this.onChangeSearchdata_nascimento(e);
+                this.searchdata_nascimento();
+              }}
+            />
+            {searchdata_nascimento && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchdata_nascimento({ target: { value: "" } });
+                    this.searchdata_nascimento();
                   }}
                 >
                   <div><BsXLg color="red"/></div>
@@ -281,9 +283,6 @@ export default class Utentes extends Component {
           ))}
       </tbody>
     </table>
-          <button onClick={this.removeAllUtente} type="button" className="btn btn-danger" style={{color: "white", width: '10%', textAlign: 'center'}}>    
-            Eliminar tudo
-          </button>
         </div>
     );
   }

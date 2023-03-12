@@ -1,10 +1,12 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
+import {BsFileMedical} from 'react-icons/bs'
 import {
   cilUserFollow,
   cilUser,
-  cilPencil,
-  cilUserX
+  cilPeople,
+  cilNotes,
+  cilClipboard
 } from '@coreui/icons'
 import { CNavItem, CNavTitle } from '@coreui/react'
 
@@ -16,12 +18,12 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Utentes',
-    to: '/utente',
-    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
+    to: '/',
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Registo Utente',
+    name: 'Registo de Utentes',
     to: '/add',
     icon: <CIcon icon={cilUserFollow} customClassName="nav-icon" />,
   },
@@ -33,13 +35,13 @@ const _nav = [
     component: CNavItem,
     name: 'Questionário Geral',
     to: '/avini',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilClipboard} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Avaliação Ombro',
+    name: 'Avaliação do Ombro',
     to: '/avombro',
-    icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
   },
   /*{
     component: CNavGroup,

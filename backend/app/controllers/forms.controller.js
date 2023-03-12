@@ -45,9 +45,9 @@ exports.create = (req, res) => {
             idjdt: idjdt
           }
         }).then(() => {
-          console.log("Eliminated");
+          console.log("Updated");
         }).catch((err) => {
-          console.log("Error while deleting previous form:", err);
+          console.log("Error while updating previous form:", err);
         });
       } 
     }
@@ -155,13 +155,17 @@ exports.findAll = (req, res) => {
 
   exports.findAllAvini = (req, res) => {
     const idcomposition = req.query.idcomposition;
+    const id_initialcomposition = req.query.id_initialcomposition;
     const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
+    const createdat = req.query.createdat;
   
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
+      id_initialcomposition: id_initialcomposition ? { [Op.eq]: id_initialcomposition } : undefined,
       isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
+      createdat: createdat ? { [Op.eq]: createdat } : undefined,
       idjdt: 0 // add condition for idjdt = 0
     };
   
@@ -183,13 +187,17 @@ exports.findAll = (req, res) => {
 
   exports.findAllAvombro = (req, res) => {
     const idcomposition = req.query.idcomposition;
+    const id_initialcomposition = req.query.id_initialcomposition;
     const isCompleted = req.query.isCompleted;
     const num_sequencial = req.query.num_sequencial;
+    const createdat = req.query.createdat;
   
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
+      id_initialcomposition: id_initialcomposition ? { [Op.eq]: id_initialcomposition } : undefined,
       isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
+      createdat: createdat ? { [Op.eq]: createdat } : undefined,
       idjdt: 1 // add condition for idjdt = 1
     };
   
@@ -212,10 +220,10 @@ exports.findAll = (req, res) => {
 
 // Update a Patient by the num_sequencial in the request
 exports.update = (req, res) => {
-  const id_initialcomposition = req.params.id_initialcomposition;
+  const idcomposition = req.params.idcomposition;
 
   ClinicalCompositions.update(req.body, {
-    where: { id_initialcomposition: id_initialcomposition }, order: [['createdat', 'DESC']]
+    where: { idcomposition: idcomposition }, order: [['createdat', 'DESC']]
   })
     .then(num => {
       if (num == 1) {
@@ -224,13 +232,13 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update form with id_inititalcomposition=${id_initialcomposition}. Maybe form was not found or req.body is empty!`
+          message: `Cannot update form with id_inititalcomposition=${idcomposition}. Maybe form was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating form with id_initialcomposition=" + id_initialcomposition
+        message: "Error updating form with id_initialcomposition=" + idcomposition
       });
     });
 };
@@ -398,8 +406,6 @@ exports.findSubAvombro = (req, res) => {
   });
 };
 
-
-
 exports.findInitialAvini = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
 
@@ -420,7 +426,7 @@ exports.findInitialAvini = (req, res) => {
       } else if (mostRecentComposition.isCompleted === 1) {
         console.log('Found a more recent ClinicalComposition with isCompleted=1');
         console.log('Generating random number...');
-        const randomNumber = Math.floor(Math.random() * 1000000);
+        const randomNumber = Math.floor(Math.random() * 1000);
         console.log('randomNumber:', randomNumber);
         res.status(200).send({ id_initialcomposition: randomNumber });
       } else {
@@ -438,6 +444,7 @@ exports.findInitialAvini = (req, res) => {
     });
   });
 };
+
 
 exports.findInitialAvombro = (req, res) => {
   const num_sequencial = req.params.num_sequencial;

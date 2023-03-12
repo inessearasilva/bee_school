@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UtenteDataService from "../services/tutorial.service";
+import image from "../assets/images/patient-icon-9247.png"
 
 export default class Registo_Utente extends Component {
   constructor(props) {
@@ -80,6 +81,16 @@ export default class Registo_Utente extends Component {
 
   render() {
     return (
+      <div className="list row d-flex justify-content-center">
+        <h3 className="my-heading">Registo de Utentes</h3>
+        <br></br><br></br><br></br>
+        <table className="table" style={{ tableLayout: 'fixed', width: '100%' }}>
+          <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
+            <tr>
+              <th scope="col" style={{textAlign:'center', height: '40px'}}>Dados Pessoais</th>
+            </tr>
+          </thead>
+          </table>
       <div className="submit-form">
         {this.state.submitted ? (
           <div className="submitted">
@@ -88,55 +99,67 @@ export default class Registo_Utente extends Component {
           </div>
         ) : (
           <div>
-            <div className="form-group">
-              <label htmlFor="nome_utente"><strong>Nome</strong></label>
-              <input
-                type="text"
-                className="form-control"
-                id="nome_utente"
-                required
-                value={this.state.nome_utente}
-                onChange={this.onChangenome_utente}
-                name="nome_utente"
-              />
-            </div>
-            <br></br>
-            <div className="form-group">
-              <label htmlFor="sexo"><strong>Sexo</strong></label>
-              <select
-                className="form-control"
-                num_sequencial="sexo"
-                required
-                value={this.state.sexo}
-                onChange={this.onChangeSexo}
-                name="sexo"
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Feminino">Feminino</option>
-                <option value="Prefiro não dizer">Prefiro não dizer</option>
-                <option value="Outro">Outro</option>
-              </select>
-            </div>
-            <br></br>
-            <div className="form-group">
-            <label htmlFor="data_nascimento"><strong>Data de Nascimento</strong></label>
-              <input
-                type="date"
-                className="form-control"
-                id="data_nascimento"
-                required
-                value={this.state.data_nascimento}
-                onChange={this.onChangeData}
-                name="data_nascimento"
-              />
-            </div>
-            <br></br>
-            <button onClick={this.saveUtente} type="button" className="btn btn-primary" style={{backgroundColor: "#57a9d9", borderColor: "#57a9d9"}}>
-              Adicionar
-            </button>
-          </div>
+            <div className="submit-form" style={{ display: 'flex', alignItems: 'center' }}>
+  <div style={{ width: '60%' }}>
+    <div className="form-group" style={{ width: '80%' }}>
+      <label htmlFor="nome_utente" style={{color: '#3c4b64', fontFamily: 'Arial, sans-serif'}}><strong>Nome</strong></label>
+      <input
+        type="text"
+        className="form-control"
+        id="nome_utente"
+        required
+        value={this.state.nome_utente}
+        onChange={this.onChangenome_utente}
+        name="nome_utente"
+      />
+    </div>
+    <br />
+    <div className="form-group" style={{ width: '80%', color: '#f8f9fa'}} >
+  <label htmlFor="sexo" style={{color: '#3c4b64', fontFamily: 'Arial, sans-serif'}}><strong>Sexo</strong></label>
+  <div className="select-wrapper">
+    <select
+      className="form-control"
+      id="sexo"
+      required
+      value={this.state.sexo}
+      onChange={this.onChangeSexo}
+      name="sexo"
+    >
+      <option value="">Selecione uma opção</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+      <option value="Prefiro não dizer">Prefiro não dizer</option>
+      <option value="Outro">Outro</option>
+    </select>
+    <span className="arrow"></span>
+  </div>
+</div>
+
+    <br />
+    <div className="form-group" style={{ width: '80%' }}>
+      <label htmlFor="data_nascimento" style={{color: '#3c4b64', fontFamily: 'Arial, sans-serif'}}><strong>Data de Nascimento</strong></label>
+      <input
+        type="date"
+        className="form-control"
+        id="data_nascimento"
+        required
+        value={this.state.data_nascimento}
+        onChange={this.onChangeData}
+        name="data_nascimento"
+      />
+    </div>
+    <br />
+    <button onClick={this.saveUtente} type="button" className="btn btn-primary" style={{backgroundColor: "#57a9d9", borderColor: "#57a9d9"}}>
+      Adicionar
+    </button>
+  </div>
+  <div className="d-flex justify-content-center" style={{ width: '40%' }}>
+    <img src={image} alt="image" style={{ width: '45%' }} />
+  </div>
+</div>
+</div>
         )}
+      </div>
       </div>
     );
   }

@@ -13,9 +13,11 @@ export default class Avombro extends Component {
     this.onChangeSearchidcomposition = this.onChangeSearchidcomposition.bind(this);
     this.onChangeSearchnum_sequencial = this.onChangeSearchnum_sequencial.bind(this);
     this.onChangeSearchestado = this.onChangeSearchestado.bind(this);
+    this.onChangeSearchdata = this.onChangeSearchdata.bind(this);
     this.searchidcomposition = this.searchidcomposition.bind(this);
     this.searchnum_sequencial = this.searchnum_sequencial.bind(this);
     this.searchestado = this.searchestado.bind(this);
+    this.searchdata = this.searchdata.bind(this);
 
     this.state = {
       ClinicalCompositions: [],
@@ -49,6 +51,13 @@ export default class Avombro extends Component {
     const searchestado = e.target.value;
     this.setState({ searchestado }, () => {
       this.searchestado();
+    });
+  }  
+
+  onChangeSearchdata(e) {
+    const searchdata = e.target.value;
+    this.setState({ searchdata }, () => {
+      this.searchdata();
     });
   }  
 
@@ -125,13 +134,31 @@ export default class Avombro extends Component {
         console.log(e);
       });
   }
+
+  searchdata() {
+    const { searchdata } = this.state;
+    UtenteDataService.findAvombroBydata(searchdata)
+      .then(response => {
+        this.setState({
+          ClinicalCompositions: response.data,
+          currentClinicalCompositions: null,
+          currentIndex: -1
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
   
   
 
   render() {
-    const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial } = this.state;
+    const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial, searchdata } = this.state;
     return (
       <div className="list row d-flex justify-content-center">
+        <h3 className="my-heading">Questionários de Avaliação do Ombro</h3>
+        <br></br><br></br><br></br>
         <table className="table" style={{ tableLayout: 'fixed', width: '170%' }}>
           <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
             <tr>
@@ -139,6 +166,7 @@ export default class Avombro extends Component {
             </tr>
           </thead>
         </table>
+        <div className="d-flex justify-content-between">
         <div className="col-md-2">
           <div className="input-group mb-3">
           <input
@@ -196,35 +224,53 @@ export default class Avombro extends Component {
           </div>
         </div>
         <div className="col-md-2">
-        <div className="input-group mb-3">
-          <select
+          <div className="input-group mb-3">
+          <input
+            type="date"
             className="form-control"
-            value={searchestado}
+            placeholder="Data de submissão"
+            value={searchdata}
             onChange={(e) => {
-              this.onChangeSearchestado(e);
-              this.searchestado();
+              this.onChangeSearchdata(e);
+              this.searchdata();
             }}
-          >
-            <option value="">Estado</option>
-            <option value={0}>Rascunho</option>
-            <option value={1}>Terminado</option>
-          </select>
-          {searchestado && (
+          />
+          {searchdata && (
               <div className="input-group-append">
                 <button
                   type="button"
                   className="btn"
                   onClick={() => {
-                    this.onChangeSearchestado({ target: { value: "" } });
-                    this.searchestado();
+                    this.onChangeSearchdata({ target: { value: "" } });
+                    this.searchdata();
                   }}
                 >
                   <div><BsXLg color="red"/></div>
                 </button>
               </div>
             )}
+          </div>
         </div>
-        </div>
+        <div className="col-md-2">
+        <div className="select-wrapper">
+          <select
+            className="form-control"
+            id="estado"
+            required
+            value={searchestado}
+            onChange={(e) => {
+              this.onChangeSearchestado(e);
+              this.searchestado();
+            }}
+            name="estado"
+          >
+            <option value="">Estado</option>
+            <option value={0}>Rascunho</option>
+            <option value={1}>Terminado</option>
+          </select>
+          <span className="arrow"></span>
+        </div></div>
+          </div>
           <br></br>
           <table className="table" style={{tableLayout: 'fixed', width: '170%'}}>
           <thead style={{backgroundColor: '#57a9d9', color: 'white'}}>

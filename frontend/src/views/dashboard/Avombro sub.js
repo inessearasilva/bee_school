@@ -100,7 +100,7 @@ const Avombrosub = () => {
           //console.log("Form data submitted successfully:", response.data);
           setDtaCriada(new Date());
           swal("", "Formulário submetido com sucesso.", "success"); // Show SweetAlert success message
-          window.history.back();
+          window.location.href = "http://localhost:3000/#/avombro";
         })
         .catch(error => {
           console.log("Error submitting form data:", error);
@@ -123,7 +123,7 @@ const handleSave = (values, changedFields) => {
       //console.log("Form data saved successfully:", response.data);
       setDtaCriada(new Date());
       swal("", "Formulário salvo com sucesso.", "success"); // Show SweetAlert success message
-      window.history.back();
+      window.location.href = "http://localhost:3000/#/avombro";
     })
     .catch(error => {
       console.log("Error saving form data:", error);
@@ -132,6 +132,7 @@ const handleSave = (values, changedFields) => {
 
   const [formValues, setFormValues] = useState({
     num_sequencial,
+    idcomposition,
     composition: ''
   });
 
@@ -202,7 +203,8 @@ const handleSave = (values, changedFields) => {
         "numSequencial": currentUtente.num_sequencial,
         "nome": currentUtente.nome_utente,
         "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo
+        "sexo": currentUtente.sexo,
+        "episodio":  formValues.idcomposition
         }}
         reportData={{
         dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,

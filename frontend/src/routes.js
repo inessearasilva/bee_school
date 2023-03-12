@@ -14,11 +14,10 @@ const Avombrosub = React.lazy(() => import('./views/dashboard/Avombro sub'))
 const Avinisub = React.lazy(() => import('./views/dashboard/Avini sub'))
 
 const routes = [
-  { path: '/', exact: true, name: 'Home' },
   { path: '/consultas', name: 'Consultas', element: Consultas },
   { path: '/avini', name: 'Avaliação Inicial', element: Avini },
   { path: '/avombro', name: 'Avaliação Ombro', element: Avombro },
-  { path: '/utente', name: 'Utentes', element: Utentes },
+  { path: '/', name: 'Utentes', element: Utentes },
   { path: '/add', name: 'Registo Utente', element: Registo_Utente },
   { path: '/utente/:num_sequencial', name: 'Utentenum', element: Utentenum },
   { path: '/avini/:num_sequencial', name: 'Avininum', element: Avininum },

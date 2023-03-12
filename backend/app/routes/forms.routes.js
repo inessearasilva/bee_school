@@ -22,7 +22,7 @@ module.exports = app => {
   router.get("/avombroforms/all", clinicalCompositions.findAllAvombro);
 
   // Update a Clinical Composition with num_sequencial
-  router.put("/:id_initialcomposition", clinicalCompositions.update);
+  router.put("/:idcomposition", clinicalCompositions.update);
 
   // Delete a Clinical Composition with num_sequencial
   router.delete("/:num_sequencial", clinicalCompositions.delete);

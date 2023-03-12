@@ -75,6 +75,7 @@ const Avombroviz = () => {
 
   const [formValues, setFormValues] = useState({
     num_sequencial,
+    idcomposition,
     composition: ''
   });
 
@@ -133,55 +134,77 @@ const Avombroviz = () => {
 
   return ( 
     <>
-      {currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
-        <Form
-        ref={formRef} // pass the reference to the form component
-        onSubmit={(values, changedFields) => console.log("SUBMITTED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
-        onSave={(values, changedFields) => console.log("SAVED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
-        onCancel={status => console.log("CANCELLED:", status)}
-        template={newJDT}
-        dlm={{}}
-        showPrint={true}
-        editMode={false}
-        professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
-        canSubmit={true}
-        canSave={true}
-        canCancel={true}
-        patientData={{
-        "numSequencial": currentUtente.num_sequencial,
-        "nome": currentUtente.nome_utente,
-        "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo
-        }}
-        reportData={{
-        dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
-        dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null,
-        realizada: "Inês Silva",
-        responsavel: "Inês Silva"
-        }}
-        referenceModel={[
-         {"itemName": "Número sequencial",
-         "item": "num_seq",
-         "value": currentUtente.num_sequencial,
-         "formVisible": true
-         },
-         {"itemName": "Nome",
-         "item": "Nome",
-         "value": currentUtente.nome_utente,
-         "formVisible": true
-         },
-         {
-          "itemName": "Data de nascimento",
-          "item": "dtaNascimento",
-          "value": formattedDate,
-          "formVisible": true
-        }
-         ]}
-         submitButtonDisabled={false}
-         saveButtonDisabled={false}
-         />
-         )}
-       </>
+        {currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
+          <div>
+          <Form
+          ref={formRef} // pass the reference to the form component
+          onSubmit={(values, changedFields) => console.log("SUBMITTED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
+          onSave={(values, changedFields) => console.log("SAVED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
+          onCancel={status => console.log("CANCELLED:", status)}
+          template={newJDT}
+          dlm={{}}
+          showPrint={true}
+          editMode={false}
+          professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
+          canSubmit={true}
+          canSave={true}
+          canCancel={true}
+          patientData={{
+          "numSequencial": currentUtente.num_sequencial,
+          "nome": currentUtente.nome_utente,
+          "dtaNascimento": currentUtente.data_nascimento,
+          "sexo": currentUtente.sexo,
+          "episodio":  formValues.idcomposition
+          }}
+          reportData={{
+          dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
+          dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null,
+          realizada: "Inês Silva",
+          responsavel: "Inês Silva"
+          }}
+          referenceModel={[
+           {"itemName": "Número sequencial",
+           "item": "num_seq",
+           "value": currentUtente.num_sequencial,
+           "formVisible": true
+           },
+           {"itemName": "Nome",
+           "item": "Nome",
+           "value": currentUtente.nome_utente,
+           "formVisible": true
+           },
+           {
+            "itemName": "Data de nascimento",
+            "item": "dtaNascimento",
+            "value": formattedDate,
+            "formVisible": true
+          }
+           ]}
+           submitButtonDisabled={false}
+           saveButtonDisabled={false}
+           />
+           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor:'white' }}>
+            <br></br><br></br><br></br><br></br>
+            <button onClick={() => window.history.back()} type="button" className="btn btn-primary" 
+            style={{
+              backgroundColor: "#60b1e0",
+              borderColor: "#60b1e0",
+              borderRadius: "0.15rem",
+              width: "4.2rem",
+              height: "2.2rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#fff",
+              fontSize: "0.8rem"
+            }}>
+              Voltar
+            </button>
+            <br></br><br></br><br></br><br></br><br></br>
+          </div>
+           </div>
+           )}
+         </>
      );
   
 };

@@ -13,6 +13,12 @@ select option::before {
   pointer-events: none;
 }
 
+.my-heading {
+  font-family: Arial, sans-serif;
+  color:#3c4b64;
+  font-weight: 500;
+}
+
 .blue-button {
   display: inline-flex;
   align-items: center;
@@ -26,6 +32,37 @@ select option::before {
   margin-right: 30px;
 }
 
+.select-wrapper {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 16px; /* adjust this value as needed */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #000000;
+  cursor: pointer;
+  z-index: 1; /* add a z-index value to position the arrow above the select element */
+}
+
+.arrow::after {
+  content: "";
+  display: none;
+}
+
+.select-wrapper select:focus + .arrow {
+  border-top: 6px solid #000000;
+}
+
+.select-wrapper select:focus + .arrow::after {
+  content: "";
+  display: none;
+}
 
 .react-calendar {
     width: 250px;

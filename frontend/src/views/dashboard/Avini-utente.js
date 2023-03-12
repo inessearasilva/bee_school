@@ -20,6 +20,7 @@ const Avininum = () => {
     }
   }, []);
 
+
   const { num_sequencial } = useParams(); // get the value of num_sequencial from the route parameter
   const { idcomposition } = useParams();
 
@@ -28,11 +29,6 @@ const Avininum = () => {
     nome_utente: '',
     data_nascimento: '',
     sexo:''
-  });
-
-  const [currentClinicalCompositions, setCurrentClinicalCompositions] = useState({
-    num_sequencial,
-    idcomposition: ''
   });
 
   const [initialComposition, setInitialComposition] = useState({
@@ -55,19 +51,9 @@ const Avininum = () => {
   }, [num_sequencial]);
 
   useEffect(() => {
-    UtenteDataService.getformAvini(num_sequencial)
-      .then(response => {
-        setCurrentUtente(prevState => ({ ...prevState, num_sequencial: response.num_sequencial, idcomposition: response.data.idcomposition }));
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, [num_sequencial]);
-
-  useEffect(() => {
     UtenteDataService.getidAvini(num_sequencial)
       .then(response => {
-        setCurrentClinicalCompositions(prevState => ({ ...prevState, id_initialcomposition: response.data.id_initialcomposition }));
+        setInitialComposition(prevState => ({ ...prevState, id_initialcomposition: response.data.id_initialcomposition }));
       })
       .catch((error) => {
         console.log(error);
@@ -115,7 +101,7 @@ const Avininum = () => {
           //console.log("Form data submitted successfully:", response.data);
           setDtaCriada(new Date());
           swal("", "Formulário submetido com sucesso.", "success"); // Show SweetAlert success message
-          window.history.back();
+          window.location.href = "http://localhost:3000/#/avini";
         })
         .catch(error => {
           console.log("Error submitting form data:", error);
@@ -138,7 +124,7 @@ const handleSave = (values, changedFields) => {
       //console.log("Form data saved successfully:", response.data);
       setDtaCriada(new Date());
       swal("", "Formulário salvo com sucesso.", "success"); // Show SweetAlert success message
-      window.history.back();
+      window.location.href = "http://localhost:3000/#/avini";
     })
     .catch(error => {
       console.log("Error saving form data:", error);
@@ -171,7 +157,7 @@ const handleSave = (values, changedFields) => {
       setNewJDT(newJDT);
     }
   }, [formValues.composition]);
-
+  
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
@@ -185,6 +171,7 @@ const handleSave = (values, changedFields) => {
       });
   }, [num_sequencial]);
 
+
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);
 
@@ -195,7 +182,7 @@ const handleSave = (values, changedFields) => {
 
   return ( 
     <>
-      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
+      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && formValues.idcomposition !== '' && (
         <Form
         ref={formRef} // pass the reference to the form component
         onSubmit={handleSubmit}
@@ -206,7 +193,7 @@ const handleSave = (values, changedFields) => {
         }}
         template={newJDT}
         dlm={{}}
-        showPrint={true}
+        showPrint={false}
         editMode={true}
         professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
         canSubmit={true}
@@ -216,8 +203,7 @@ const handleSave = (values, changedFields) => {
         "numSequencial": currentUtente.num_sequencial,
         "nome": currentUtente.nome_utente,
         "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo,
-        "episodio":  currentClinicalCompositions.idcomposition
+        "sexo": currentUtente.sexo
         }}
         reportData={{
         dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
