@@ -133,7 +133,8 @@ const handleSave = (values, changedFields) => {
   const [formValues, setFormValues] = useState({
     num_sequencial,
     idcomposition,
-    composition: ''
+    composition: '',
+    createdat:''
   });
 
   const [newJDT, setNewJDT] = useState(jdt);
@@ -163,13 +164,24 @@ const handleSave = (values, changedFields) => {
   useEffect(() => {
     UtenteDataService.getSubAvini(num_sequencial)
       .then(response => {
-        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
+        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition, createdat: response.data.createdat }));
         setIsLoading(false);
       })
       .catch((error) => {
         console.log('Novo forms');
+        console.log('created', formValues.createdat);
       });
   }, [num_sequencial]);
+
+  const createdDate = new Date(formValues.createdat);
+  const formattedcreatedDate = createdDate.toLocaleString('pt-PT', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
 
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);
@@ -203,14 +215,18 @@ const handleSave = (values, changedFields) => {
         "nome": currentUtente.nome_utente,
         "dtaNascimento": formattedDate,
         "sexo": currentUtente.sexo,
-        "episodio":  formValues.idcomposition
+        "processo":  formValues.idcomposition
         }}
         reportData={{
-        dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
-        dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null,
+        dtaEncerrada: "Hello",
+        dtaCriada: formattedcreatedDate,
         realizada: "Inês Silva",
         responsavel: "Inês Silva"
         }}
+        formData={{
+          dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
+          dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null
+          }}
         referenceModel={[
          {"itemName": "Número sequencial",
          "item": "num_seq",

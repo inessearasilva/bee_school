@@ -333,9 +333,9 @@ exports.findSubAvini = (req, res) => {
       const mostRecentComposition = data[0];
       console.log('Found the most recent ClinicalComposition');
       console.log('composition:', mostRecentComposition.composition);
-      res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: mostRecentComposition.composition });
+      res.status(200).send({ num_sequencial: mostRecentComposition.num_sequencial, composition: mostRecentComposition.composition, createdat: mostRecentComposition.createdat });
     } else {
-      res.status(200).send({ num_sequencial: num_sequencial, composition: null });
+      res.status(200).send({ num_sequencial: num_sequencial, composition: null, createdat: null });
     }
   }).catch(err => {
     console.log(err); // log the error message
