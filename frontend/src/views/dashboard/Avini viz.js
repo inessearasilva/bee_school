@@ -16,7 +16,8 @@ const Aviniviz = () => {
   const [currentUtente, setCurrentUtente] = useState({
     num_sequencial,
     nome_utente: '',
-    data_nascimento: ''
+    data_nascimento: '',
+    sexo: ''
   });
 
   const [initialComposition, setInitialComposition] = useState({
@@ -31,7 +32,7 @@ const Aviniviz = () => {
   useEffect(() => {
     UtenteDataService.get(num_sequencial)
       .then(response => {
-        setCurrentUtente(prevState => ({ ...prevState, nome_utente: response.data.nome_utente, data_nascimento: response.data.data_nascimento }));
+        setCurrentUtente(prevState => ({ ...prevState, nome_utente: response.data.nome_utente, data_nascimento: response.data.data_nascimento, sexo: response.data.sexo }));
       })
       .catch(error => {
         console.log(error);
@@ -152,7 +153,7 @@ const Aviniviz = () => {
         patientData={{
         "numSequencial": currentUtente.num_sequencial,
         "nome": currentUtente.nome_utente,
-        "dtaNascimento": currentUtente.data_nascimento,
+        "dtaNascimento": formattedDate,
         "sexo": currentUtente.sexo,
         "episodio":  formValues.idcomposition
         }}
