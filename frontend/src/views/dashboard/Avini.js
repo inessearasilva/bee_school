@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, ciley} from '@coreui/icons'
 import { BsFillCheckCircleFill, BsFillPauseCircleFill, BsEye, BsXLg} from "react-icons/bs";
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs';
+
 export default class Avini extends Component {
   constructor(props) {
     super(props);
@@ -25,12 +27,20 @@ export default class Avini extends Component {
       currentIndex: -1,
       searchestado: "",
       searchidcomposition: "",
-      searchnum_sequencial: ""
+      searchnum_sequencial: "",
+      currentPage: 1,
+      itemsPerPage: 6
     };
   }
 
   componentDidMount() {
     this.retrieveForm();
+  }
+
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   }
 
   onChangeSearchnum_sequencial(e) {
@@ -154,7 +164,47 @@ export default class Avini extends Component {
   
 
   render() {
-    const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial, searchdata } = this.state;
+    const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial, searchdata, currentPage, itemsPerPage} = this.state;
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = ClinicalCompositions && ClinicalCompositions.length > 0 ? ClinicalCompositions.slice(indexOfFirstItem, indexOfLastItem) : [];
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(ClinicalCompositions.length / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map((number) => {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={this.handleClick.bind(this)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </li>
+      );
+    });
+  
+    const totalPages = Math.ceil(ClinicalCompositions.length / itemsPerPage);
+    const prevPage = currentPage > 1 ? currentPage - 1 : null;
+    const nextPage =
+      currentPage < Math.ceil(ClinicalCompositions.length / itemsPerPage) ? currentPage + 1 : null;
+  
+    const handlePrevClick = () => {
+      if (prevPage) {
+        this.setState({ currentPage: prevPage });
+      }
+    };
+  
+    const handleNextClick = () => {
+      if (nextPage) {
+        this.setState({ currentPage: nextPage });
+      }
+    };
+
     return (
       <div className="list row d-flex justify-content-center">
         <h3 className="my-heading">Questionários Gerais</h3>
@@ -283,9 +333,11 @@ export default class Avini extends Component {
         </tr>
       </thead>
       <tbody>
-        {ClinicalCompositions && ClinicalCompositions.length > 0 ? (
-          ClinicalCompositions.map((ClinicalCompositions, index) => (
-            <tr key={index}>
+        {currentItems.length > 0 ? (
+              currentItems
+                .sort((a, b) => a.num_sequencial - b.num_sequencial)
+                .map((ClinicalCompositions, index) => (
+                  <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.num_sequencial}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
@@ -330,6 +382,38 @@ export default class Avini extends Component {
         )}
       </tbody>
     </table>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button onClick={handlePrevClick} type="button" className="btn btn-outline-primary button-no-focus"
+          style={{
+            borderColor: "#60b1e0",
+            borderRadius: "0.15rem",
+            width: "4rem",
+            height: "2.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.8rem"
+          }}>
+            <div><BsChevronLeft color="black"/></div>
+          </button> 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{currentPage} de {totalPages}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+          onClick={handleNextClick}
+          type="button"
+          className="btn btn-outline-primary button-no-focus"
+          style={{
+            borderColor: "#60b1e0",
+            borderRadius: "0.15rem",
+            width: "4rem",
+            height: "2.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.8rem"
+          }}>
+            <div><BsChevronRight color="black"/></div>
+          </button>
+        </div>   
         </div>
     );
   }

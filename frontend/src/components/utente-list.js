@@ -3,7 +3,7 @@ import UtenteDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, cilClipboard, cilNotes} from '@coreui/icons'
-import {BsXLg} from 'react-icons/bs';
+import {BsXLg, BsChevronLeft, BsChevronRight} from 'react-icons/bs';
 
 export default class Utentes extends Component {
   constructor(props) {
@@ -25,12 +25,20 @@ export default class Utentes extends Component {
       currentIndex: -1,
       searchnome_utente: "",
       searchdata_nascimento: "",
-      searchnum_sequencial: ""
+      searchnum_sequencial: "",
+      currentPage: 1,
+      itemsPerPage: 6
     };
   }
 
   componentDidMount() {
     this.retrieveUtente();
+  }
+
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   }
 
   onChangeSearchnum_sequencial(e) {
@@ -141,7 +149,46 @@ export default class Utentes extends Component {
   
 
   render() {
-    const { searchnome_utente, searchdata_nascimento, searchnum_sequencial, Utente, currentUtente} = this.state;
+    const { searchnome_utente, searchdata_nascimento, searchnum_sequencial, Utente, currentUtente, currentPage, itemsPerPage} = this.state;
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = Utente && Utente.length > 0 ? Utente.slice(indexOfFirstItem, indexOfLastItem) : [];
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(Utente.length / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map((number) => {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={this.handleClick.bind(this)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </li>
+      );
+    });
+  
+    const totalPages = Math.ceil(Utente.length / itemsPerPage);
+    const prevPage = currentPage > 1 ? currentPage - 1 : null;
+    const nextPage =
+      currentPage < Math.ceil(Utente.length / itemsPerPage) ? currentPage + 1 : null;
+  
+    const handlePrevClick = () => {
+      if (prevPage) {
+        this.setState({ currentPage: prevPage });
+      }
+    };
+  
+    const handleNextClick = () => {
+      if (nextPage) {
+        this.setState({ currentPage: nextPage });
+      }
+    };
 
     return (
       <div className="list row d-flex justify-content-center">
@@ -251,9 +298,11 @@ export default class Utentes extends Component {
         </tr>
       </thead>
       <tbody>
-        {Utente && Utente.length > 0 ? (
-          Utente.sort((a, b) => a.num_sequencial - b.num_sequencial).map((Utente, index) => (
-            <tr key={index}>
+        {currentItems.length > 0 ? (
+              currentItems
+                .sort((a, b) => a.num_sequencial - b.num_sequencial)
+                .map((Utente, index) => (
+                  <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{Utente.num_sequencial}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{Utente.nome_utente}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{Utente.sexo}</td>
@@ -278,16 +327,51 @@ export default class Utentes extends Component {
                 </Link>
                 
               </td>
-            </tr>
+            </tr> 
           ))
         ) : (
           <tr>
-            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem utentes registados</td>
+            <td colSpan="5" style={{ backgroundColor: 'white', textAlign: 'center' }}>
+              Não existem utentes registados
+            </td>
           </tr>
-        )}
-      </tbody>
-    </table>
-        </div>
-    );
+        )} </tbody>
+        </table>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button onClick={handlePrevClick} type="button" className="btn btn-outline-primary button-no-focus"
+          style={{
+            borderColor: "#60b1e0",
+            borderRadius: "0.15rem",
+            width: "4rem",
+            height: "2.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.8rem"
+          }}>
+            <div><BsChevronLeft color="black"/></div>
+          </button> 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{currentPage} de {totalPages}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+          onClick={handleNextClick}
+          type="button"
+          className="btn btn-outline-primary button-no-focus"
+          style={{
+            borderColor: "#60b1e0",
+            borderRadius: "0.15rem",
+            width: "4rem",
+            height: "2.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.8rem"
+          }}>
+            <div><BsChevronRight color="black"/></div>
+          </button>
+        </div>      
+      
+
+  </div>
+);
   }
 }

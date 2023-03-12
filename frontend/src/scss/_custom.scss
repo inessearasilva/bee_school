@@ -38,6 +38,18 @@ select option::before {
   text-decoration: none;
 }
 
+.button-no-focus:hover {
+  background-color: #60b1e0;
+}
+
+.button-no-focus:focus {
+  background-color: #f8f9fa78;
+}
+
+.button-no-focus:active {
+  background-color: #f8f9fa78 !important;
+}
+
 .blue-button button {
   text-decoration: none;
   display: inline-block;
