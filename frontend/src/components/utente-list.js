@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import UtenteDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
-import {cilPencil, cilUserX, cilUser} from '@coreui/icons'
+import {cilPencil, cilUserX, cilUser, cilClipboard, cilNotes} from '@coreui/icons'
 import {BsXLg} from 'react-icons/bs';
 
 export default class Utentes extends Component {
@@ -243,16 +243,16 @@ export default class Utentes extends Component {
           <table className="table" style={{tableLayout: 'fixed', width: '170%'}}>
           <thead style={{backgroundColor: '#57a9d9', color: 'white'}}>
         <tr>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Número Sequencial</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Nome</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Sexo</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Data de nascimento</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}> </th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}>Número Sequencial</th>
+          <th scope="col" style={{width: '25%', textAlign: 'center'}}>Nome</th>
+          <th scope="col" style={{width: '16%', textAlign: 'center'}}>Sexo</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}>Data de nascimento</th>
+          <th scope="col" style={{width: '25%', textAlign: 'center'}}> </th>
         </tr>
       </thead>
       <tbody>
-        {Utente &&
-          Utente.map((Utente, index) => (
+        {Utente && Utente.length > 0 ? (
+          Utente.sort((a, b) => a.num_sequencial - b.num_sequencial).map((Utente, index) => (
             <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{Utente.num_sequencial}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{Utente.nome_utente}</td>
@@ -261,26 +261,30 @@ export default class Utentes extends Component {
                 {new Date(Utente.data_nascimento).toLocaleDateString('pt-PT')}
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
-              <Link to={`/avini/${Utente.num_sequencial}`}>
-                  <button className="blue-button">
+              <Link to={`/edit/${Utente.num_sequencial}`} style={{ textDecoration: 'none' }}>
+                  <button className="blue-button-small">
                     <CIcon icon={cilPencil} />
                   </button>
-              </Link>
-              <Link to={`/avombro/${Utente.num_sequencial}`}>
+                </Link>
+                <Link to={`/avini/${Utente.num_sequencial}`} style={{ textDecoration: 'none' }}>
                   <button className="blue-button">
-                    <CIcon icon={cilUserX} />
-                  </button>
-              </Link>
-                {/*
-                <Link to={`/edit/${Utente.num_sequencial}`}>
-                  <button className="blue-button">
-                    <CIcon icon={cilUser} />
+                    <CIcon icon={cilClipboard}/><span>&nbsp;Geral</span>
                   </button>
                 </Link>
-                */}
-            </td>
+                <Link to={`/avombro/${Utente.num_sequencial}`} style={{ textDecoration: 'none' }}>
+                  <button className="blue-button">
+                    <CIcon icon={cilNotes} /> <span>&nbsp;Ombro</span>
+                  </button>
+                </Link>
+                
+              </td>
             </tr>
-          ))}
+          ))
+        ) : (
+          <tr>
+            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem utentes registados</td>
+          </tr>
+        )}
       </tbody>
     </table>
         </div>

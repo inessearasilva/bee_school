@@ -77,7 +77,9 @@ const Avombroviz = () => {
   const [formValues, setFormValues] = useState({
     num_sequencial,
     idcomposition,
-    composition: ''
+    composition: '',
+    createdat:'',
+    isCompleted:''
   });
 
   const [newJDT, setNewJDT] = useState(jdt);
@@ -105,7 +107,7 @@ const Avombroviz = () => {
   useEffect(() => {
     UtenteDataService.getSubAvombro(num_sequencial)
     .then(response => {
-      setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
+      setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition, createdat: response.data.createdat, isCompleted: response.data.isCompleted }));
         //const compositionval = JSON.parse(response.data.composition);
         console.log("newJDT", newJDT);
         //setFormValues(compositionval);
@@ -124,6 +126,18 @@ const Avombroviz = () => {
       sessionStorage.removeItem('pageReloaded');
     }
   }, []);
+
+  const createdDate = new Date(formValues.createdat);
+  const formattedcreatedDate = createdDate.toLocaleString('pt-PT', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+
+  const estado = formValues.isCompleted === true || formValues.isCompleted === 1 ? "Terminado" : "Rascunho";
 
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);
@@ -151,18 +165,18 @@ const Avombroviz = () => {
           canSave={true}
           canCancel={true}
           patientData={{
-          "numSequencial": currentUtente.num_sequencial,
-          "nome": currentUtente.nome_utente,
-          "dtaNascimento": formattedDate,
-          "sexo": currentUtente.sexo,
-          "episodio":  formValues.idcomposition
-          }}
-          reportData={{
-          dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
-          dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null,
-          realizada: "Inês Silva",
-          responsavel: "Inês Silva"
-          }}
+            "numSequencial": currentUtente.num_sequencial,
+            "nome": currentUtente.nome_utente,
+            "dtaNascimento": formattedDate,
+            "sexo": currentUtente.sexo,
+            "processo":  formValues.idcomposition
+            }}
+            reportData={{
+            estado: estado,
+            dtaCriada: formattedcreatedDate,
+            realizada: "Inês Silva",
+            responsavel: "Inês Silva"
+            }}
           referenceModel={[
            {"itemName": "Número sequencial",
            "item": "num_seq",

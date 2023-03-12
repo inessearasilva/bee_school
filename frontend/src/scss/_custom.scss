@@ -23,13 +23,57 @@ select option::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 15px;
+  width: 85px;
+  height: 30px;
+  background-color: #60bcf2;
+  color: white;
+  border: none;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.blue-button:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.blue-button button {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.blue-button-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
   width: 50px;
   height: 30px;
   background-color: #60bcf2;
   color: white;
   border: none;
-  margin-right: 30px;
+  margin-right: 20px;
+}
+
+.yellow-button-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  width: 50px;
+  height: 30px;
+  background-color: #FFC82E;
+  color: white;
+  border: none;
+  margin-right: 20px;
 }
 
 .select-wrapper {

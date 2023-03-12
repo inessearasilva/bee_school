@@ -9,7 +9,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
       },
       num_sequencial: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'utente', // name of the referenced table
+          key: 'num_sequencial' // primary key of the referenced table
+        }
       },
       version: {
         type: Sequelize.INTEGER

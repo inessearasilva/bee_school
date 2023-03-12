@@ -283,7 +283,7 @@ export default class Avombro extends Component {
         </tr>
       </thead>
       <tbody>
-        {ClinicalCompositions &&
+      {ClinicalCompositions && ClinicalCompositions.length > 0 ? (
           ClinicalCompositions.map((ClinicalCompositions, index) => (
             <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
@@ -322,7 +322,12 @@ export default class Avombro extends Component {
                 */}
             </td>
             </tr>
-          ))}
+          ))
+        ) : (
+          <tr>
+            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
+          </tr>
+        )}
       </tbody>
     </table>
         </div>

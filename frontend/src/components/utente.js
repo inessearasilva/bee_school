@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import UtenteDataService from 'C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js';
 import swal from 'sweetalert';
+import image from "../assets/images/patient-icon-9247.png";
 
 const Edit = () => {
   const { num_sequencial } = useParams();
@@ -46,6 +47,7 @@ const Edit = () => {
           text: 'A ficha de utente foi atualizada com sucesso!',
           icon: 'success',
         });
+        window.location.href = "http://localhost:3000/#/";
       })
       .catch((e) => {
         console.log(e);
@@ -80,11 +82,21 @@ const Edit = () => {
   return (
     <div>
       {currentUtente ? (
-        <div className='edit-form'>
-          <h4>Editar Utente</h4>
+        <div className="list row d-flex justify-content-center">
+          <h3 className="my-heading">Edição da Ficha de Utente</h3>
+        <br></br><br></br><br></br>
+        <table className="table" style={{ tableLayout: 'fixed', width: '100%' }}>
+          <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
+            <tr>
+              <th scope="col" style={{textAlign:'center', height: '40px'}}>Dados Pessoais</th>
+            </tr>
+          </thead>
+          </table>
+          <div className="submit-form" style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: '60%' }}>
           <form onSubmit={onSubmit}>
-            <div className='form-group'>
-              <label htmlFor='nome_utente'>Nome</label>
+            <div className='form-group' style={{ width: '80%' }}>
+            <label htmlFor="nome_utente" style={{color: '#3c4b64', fontFamily: 'Arial, sans-serif'}}><strong>Nome</strong></label>
               <input
                 type='text'
                 className='form-control'
@@ -93,20 +105,30 @@ const Edit = () => {
                 onChange={onChangeNomeUtente}
               />
             </div>
-
-            <div className='form-group'>
-              <label htmlFor='sexo'>Sexo</label>
-              <input
-                type='text'
-                className='form-control'
-                id='sexo'
+            <br />
+            <div className='form-group' style={{ width: '80%' }}>
+            <label htmlFor="sexo" style={{color: '#3c4b64', fontFamily: 'Arial, sans-serif'}}><strong>Sexo</strong></label>
+            <div className="select-wrapper">
+              <select
+                className="form-control"
+                id="sexo"
+                required
                 value={currentUtente.sexo}
                 onChange={onChangeSexo}
-              />
+                name="sexo"
+              >
+                <option value="">Selecione uma opção</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Prefiro não dizer">Prefiro não dizer</option>
+                <option value="Outro">Outro</option>
+              </select>
+              <span className="arrow"></span>
             </div>
-
-            <div className='form-group'>
-              <label htmlFor='data_nascimento'>Data de Nascimento</label>
+            </div>
+            <br />
+            <div className='form-group' style={{ width: '80%' }}>
+            <label htmlFor="data_nascimento" style={{color: '#3c4b64', fontFamily: 'Arial, sans-serif'}}><strong>Data de Nascimento</strong></label>
               <input
                 type='date'
                 className='form-control'
@@ -115,12 +137,16 @@ const Edit = () => {
                 onChange={onChangeDataNascimento}
               />
             </div>
-    
-                <button type="submit" className="btn btn-success">
+            <br />
+                <button type="submit" className="btn btn-primary" style={{backgroundColor: "#57a9d9", borderColor: "#57a9d9"}}>
                   Salvar
                 </button>
               </form>
-            </div>
+              </div>
+              <div className="d-flex justify-content-center" style={{ width: '40%' }}>
+              <img src={image} alt="image" style={{ width: '45%' }} />
+              </div>
+            </div></div>
           ) : (
             <div>
               <br />

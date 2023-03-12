@@ -134,7 +134,8 @@ const handleSave = (values, changedFields) => {
     num_sequencial,
     idcomposition,
     composition: '',
-    createdat:''
+    createdat:'',
+    isCompleted:''
   });
 
   const [newJDT, setNewJDT] = useState(jdt);
@@ -164,12 +165,11 @@ const handleSave = (values, changedFields) => {
   useEffect(() => {
     UtenteDataService.getSubAvini(num_sequencial)
       .then(response => {
-        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition, createdat: response.data.createdat }));
+        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition, createdat: response.data.createdat, isCompleted: response.data.isCompleted }));
         setIsLoading(false);
       })
       .catch((error) => {
         console.log('Novo forms');
-        console.log('created', formValues.createdat);
       });
   }, [num_sequencial]);
 
@@ -182,6 +182,8 @@ const handleSave = (values, changedFields) => {
     minute: '2-digit',
     second: '2-digit'
   });
+
+  const estado = formValues.isCompleted === true || formValues.isCompleted === 1 ? "Terminado" : "Rascunho";
 
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);
@@ -218,15 +220,11 @@ const handleSave = (values, changedFields) => {
         "processo":  formValues.idcomposition
         }}
         reportData={{
-        dtaEncerrada: "Hello",
+        estado: estado,
         dtaCriada: formattedcreatedDate,
         realizada: "Inês Silva",
         responsavel: "Inês Silva"
         }}
-        formData={{
-          dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
-          dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null
-          }}
         referenceModel={[
          {"itemName": "Número sequencial",
          "item": "num_seq",

@@ -134,7 +134,9 @@ const handleSave = (values, changedFields) => {
   const [formValues, setFormValues] = useState({
     num_sequencial,
     idcomposition,
-    composition: ''
+    composition: '',
+    createdat:'',
+    isCompleted:''
   });
 
   const [newJDT, setNewJDT] = useState(jdt);
@@ -164,7 +166,7 @@ const handleSave = (values, changedFields) => {
   useEffect(() => {
     UtenteDataService.getSubAvombro(num_sequencial)
       .then(response => {
-        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition }));
+        setFormValues(prevState => ({ ...prevState, num_sequencial: response.data.num_sequencial, composition: response.data.composition, createdat: response.data.createdat, isCompleted: response.data.isCompleted }));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -172,6 +174,18 @@ const handleSave = (values, changedFields) => {
       });
   }, [num_sequencial]);
 
+
+  const createdDate = new Date(formValues.createdat);
+  const formattedcreatedDate = createdDate.toLocaleString('pt-PT', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+
+  const estado = formValues.isCompleted === true || formValues.isCompleted === 1 ? "Terminado" : "Rascunho";
 
   //const novoJDT = replaceValuesJDT(jdt, compositionval);
   //console.log("new:", novoJDT);
@@ -201,18 +215,18 @@ const handleSave = (values, changedFields) => {
         canSave={true}
         canCancel={true}
         patientData={{
-        "numSequencial": currentUtente.num_sequencial,
-        "nome": currentUtente.nome_utente,
-        "dtaNascimento": formattedDate,
-        "sexo": currentUtente.sexo,
-        "episodio":  formValues.idcomposition
-        }}
-        reportData={{
-        dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
-        dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null,
-        realizada: "Inês Silva",
-        responsavel: "Inês Silva"
-        }}
+          "numSequencial": currentUtente.num_sequencial,
+          "nome": currentUtente.nome_utente,
+          "dtaNascimento": formattedDate,
+          "sexo": currentUtente.sexo,
+          "processo":  formValues.idcomposition
+          }}
+          reportData={{
+          estado: estado,
+          dtaCriada: formattedcreatedDate,
+          realizada: "Inês Silva",
+          responsavel: "Inês Silva"
+          }}
         referenceModel={[
          {"itemName": "Número sequencial",
          "item": "num_seq",

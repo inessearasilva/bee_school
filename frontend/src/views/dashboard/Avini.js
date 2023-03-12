@@ -283,7 +283,7 @@ export default class Avini extends Component {
         </tr>
       </thead>
       <tbody>
-        {ClinicalCompositions &&
+        {ClinicalCompositions && ClinicalCompositions.length > 0 ? (
           ClinicalCompositions.map((ClinicalCompositions, index) => (
             <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
@@ -304,12 +304,12 @@ export default class Avini extends Component {
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
               <Link to={`/subAvini/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
-                  <button className="blue-button">
+                  <button className="blue-button-small">
                     <CIcon icon={cilPencil} />
                   </button>
                 </Link>
                 <Link to={`/vizAvini/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
-                  <button className="blue-button">
+                  <button className="blue-button-small">
                   <div><BsEye style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '110%', height: '110%' }}/></div>
                   </button>
                 </Link>
@@ -322,7 +322,12 @@ export default class Avini extends Component {
                 */}
             </td>
             </tr>
-          ))}
+          ))
+        ) : (
+          <tr>
+            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
+          </tr>
+        )}
       </tbody>
     </table>
         </div>

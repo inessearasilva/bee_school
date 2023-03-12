@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UtenteDataService from "../services/tutorial.service";
-import image from "../assets/images/patient-icon-9247.png"
+import image from "../assets/images/patient-icon-9247.png";
+import swal from 'sweetalert';
 
 export default class Registo_Utente extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class Registo_Utente extends Component {
 
   saveUtente() {
     if (!this.state.nome_utente || !this.state.sexo || this.state.data_nascimento === "dd/mm/aaaa") {
-      alert("Preencha todos os campos, por favor.");
+      swal("", "Preencha todos os campos, por favor.", "warning");
       return;
   }
   var data = {
@@ -57,15 +58,27 @@ export default class Registo_Utente extends Component {
           sexo: response.data.sexo,
           nome_utente: response.data.nome_utente,
           data_nascimento: response.data.data_nascimento,
-          
-
           submitted: true
+
         });
+        this.clearFields();
+        swal("", "Utente registado com sucesso.", "success");
+        window.location.href = "http://localhost:3000/#/"
         console.log(response.data);
       })
       .catch(e => {
         console.log(e);
       });
+  }
+
+  clearFields() {
+    this.setState({
+      num_sequencial: null,
+      sexo: "",
+      nome_utente: "", 
+      data_nascimento: "dd/mm/aaaa",
+      submitted: false
+    });
   }
 
   newUtente() {
@@ -92,12 +105,6 @@ export default class Registo_Utente extends Component {
           </thead>
           </table>
       <div className="submit-form">
-        {this.state.submitted ? (
-          <div className="submitted">
-            <h4 className="submitted-message">Utente adicionado com sucesso!</h4>
-            <button className="btn btn-success" onClick={this.newUtente}>Voltar</button>
-          </div>
-        ) : (
           <div>
             <div className="submit-form" style={{ display: 'flex', alignItems: 'center' }}>
   <div style={{ width: '60%' }}>
@@ -150,7 +157,7 @@ export default class Registo_Utente extends Component {
     </div>
     <br />
     <button onClick={this.saveUtente} type="button" className="btn btn-primary" style={{backgroundColor: "#57a9d9", borderColor: "#57a9d9"}}>
-      Adicionar
+      Registar
     </button>
   </div>
   <div className="d-flex justify-content-center" style={{ width: '40%' }}>
@@ -158,7 +165,6 @@ export default class Registo_Utente extends Component {
   </div>
 </div>
 </div>
-        )}
       </div>
       </div>
     );
