@@ -7,7 +7,10 @@ module.exports = app => {
   router.post("/", clinicalCompositions.create);
 
   // Retrieve a single Clinical Composition with num_sequencial
-  router.get("/:num_sequencial", clinicalCompositions.findOne);
+  router.get("/avini/:num_sequencial", clinicalCompositions.findOneAvini);
+
+  // Retrieve a single Clinical Composition with num_sequencial
+  router.get("/avombro/:num_sequencial", clinicalCompositions.findOneAvombro);
 
   // Retrieve all Clinical Compositions
   router.get("/", clinicalCompositions.findAll);
@@ -19,7 +22,7 @@ module.exports = app => {
   router.get("/avombroforms/all", clinicalCompositions.findAllAvombro);
 
   // Update a Clinical Composition with num_sequencial
-  router.put("/:id_initialcomposition", clinicalCompositions.update);
+  router.put("/:idcomposition", clinicalCompositions.update);
 
   // Delete a Clinical Composition with num_sequencial
   router.delete("/:num_sequencial", clinicalCompositions.delete);

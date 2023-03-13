@@ -3,7 +3,8 @@ import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tut
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, ciley} from '@coreui/icons'
-import { BsFillCheckCircleFill, BsFillPauseCircleFill, BsEye} from "react-icons/bs";
+import { BsFillCheckCircleFill, BsFillPauseCircleFill, BsEye, BsXLg} from "react-icons/bs";
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs';
 export default class Avombro extends Component {
   constructor(props) {
     super(props);
@@ -13,9 +14,11 @@ export default class Avombro extends Component {
     this.onChangeSearchidcomposition = this.onChangeSearchidcomposition.bind(this);
     this.onChangeSearchnum_sequencial = this.onChangeSearchnum_sequencial.bind(this);
     this.onChangeSearchestado = this.onChangeSearchestado.bind(this);
+    this.onChangeSearchdata = this.onChangeSearchdata.bind(this);
     this.searchidcomposition = this.searchidcomposition.bind(this);
     this.searchnum_sequencial = this.searchnum_sequencial.bind(this);
     this.searchestado = this.searchestado.bind(this);
+    this.searchdata = this.searchdata.bind(this);
 
     this.state = {
       ClinicalCompositions: [],
@@ -23,12 +26,20 @@ export default class Avombro extends Component {
       currentIndex: -1,
       searchestado: "",
       searchidcomposition: "",
-      searchnum_sequencial: ""
+      searchnum_sequencial: "",
+      currentPage: 1,
+      itemsPerPage: 6
     };
   }
 
   componentDidMount() {
     this.retrieveForm();
+  }
+
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   }
 
   onChangeSearchnum_sequencial(e) {
@@ -49,6 +60,13 @@ export default class Avombro extends Component {
     const searchestado = e.target.value;
     this.setState({ searchestado }, () => {
       this.searchestado();
+    });
+  }  
+
+  onChangeSearchdata(e) {
+    const searchdata = e.target.value;
+    this.setState({ searchdata }, () => {
+      this.searchdata();
     });
   }  
 
@@ -125,13 +143,72 @@ export default class Avombro extends Component {
         console.log(e);
       });
   }
+
+  searchdata() {
+    const { searchdata } = this.state;
+    UtenteDataService.findAvombroBydata(searchdata)
+      .then(response => {
+        this.setState({
+          ClinicalCompositions: response.data,
+          currentClinicalCompositions: null,
+          currentIndex: -1
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
   
   
 
   render() {
-    const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial } = this.state;
+    const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial, searchdata, currentPage, itemsPerPage} = this.state;
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = ClinicalCompositions && ClinicalCompositions.length > 0 ? ClinicalCompositions.slice(indexOfFirstItem, indexOfLastItem) : [];
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(ClinicalCompositions.length / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map((number) => {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={this.handleClick.bind(this)}
+          className={currentPage === number ? "active" : ""}
+        >
+          {number}
+        </li>
+      );
+    });
+
+    const totalPages = Math.ceil(ClinicalCompositions.length / itemsPerPage);
+  
+    const prevPage = currentPage > 1 ? currentPage - 1 : null;
+    const nextPage =
+      currentPage < Math.ceil(ClinicalCompositions.length / itemsPerPage) ? currentPage + 1 : null;
+  
+    const handlePrevClick = () => {
+      if (prevPage) {
+        this.setState({ currentPage: prevPage });
+      }
+    };
+  
+    const handleNextClick = () => {
+      if (nextPage) {
+        this.setState({ currentPage: nextPage });
+      }
+    };
+
     return (
       <div className="list row d-flex justify-content-center">
+        <h3 className="my-heading">Questionários Gerais</h3>
+        <br></br><br></br><br></br>
         <table className="table" style={{ tableLayout: 'fixed', width: '170%' }}>
           <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
             <tr>
@@ -139,20 +216,7 @@ export default class Avombro extends Component {
             </tr>
           </thead>
         </table>
-        <div className="col-md-2">
-          <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Número Sequencial"
-            value={searchnum_sequencial}
-            onChange={(e) => {
-              this.onChangeSearchnum_sequencial(e);
-              this.searchnum_sequencial();
-            }}
-          />
-          </div>
-        </div>
+        <div className="d-flex justify-content-between">
         <div className="col-md-2">
           <div className="input-group mb-3">
           <input
@@ -165,40 +229,119 @@ export default class Avombro extends Component {
               this.searchidcomposition();
             }}
           />
+          {searchidcomposition && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchidcomposition({ target: { value: "" } });
+                    this.searchidcomposition();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="col-md-2">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Número Sequencial"
+            value={searchnum_sequencial}
+            onChange={(e) => {
+              this.onChangeSearchnum_sequencial(e);
+              this.searchnum_sequencial();
+            }}
+          />
+          {searchnum_sequencial && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchnum_sequencial({ target: { value: "" } });
+                    this.searchnum_sequencial();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="col-md-2">
+          <div className="input-group mb-3">
+          <input
+            type="date"
+            className="form-control"
+            placeholder="Data de submissão"
+            value={searchdata}
+            onChange={(e) => {
+              this.onChangeSearchdata(e);
+              this.searchdata();
+            }}
+          />
+          {searchdata && (
+              <div className="input-group-append">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    this.onChangeSearchdata({ target: { value: "" } });
+                    this.searchdata();
+                  }}
+                >
+                  <div><BsXLg color="red"/></div>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="col-md-2">
+        <div className="select-wrapper">
           <select
             className="form-control"
+            id="estado"
+            required
             value={searchestado}
             onChange={(e) => {
               this.onChangeSearchestado(e);
               this.searchestado();
             }}
+            name="estado"
           >
             <option value="">Estado</option>
             <option value={0}>Rascunho</option>
             <option value={1}>Terminado</option>
           </select>
-        </div>
-        </div>
+          <span className="arrow"></span>
+        </div></div>
+          </div>
           <br></br>
           <table className="table" style={{tableLayout: 'fixed', width: '170%'}}>
           <thead style={{backgroundColor: '#57a9d9', color: 'white'}}>
         <tr>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}>ID Form</th>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}>Número Sequencial</th>
+          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Data de submissão</th>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}>Estado</th>
           <th scope="col" style={{width: '20%', textAlign: 'center'}}> </th>
         </tr>
       </thead>
       <tbody>
-        {ClinicalCompositions &&
-          ClinicalCompositions.map((ClinicalCompositions, index) => (
-            <tr key={index}>
+        {currentItems.length > 0 ? (
+              currentItems
+                .sort((a, b) => a.idcomposition - b.idcomposition)
+                .map((ClinicalCompositions, index) => (
+                  <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.num_sequencial}</td>
+              <td style={{backgroundColor: 'white', textAlign: 'center'}}>
+              {new Date(ClinicalCompositions.createdat).toLocaleDateString('pt-PT')}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                   {ClinicalCompositions.isCompleted === 0 ? (
@@ -212,13 +355,15 @@ export default class Avombro extends Component {
                 </div>
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
-              <Link to={`/subAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
-                  <button className="blue-button">
+              {ClinicalCompositions.isCompleted === 0 ? (
+                <Link to={`/subAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
+                  <button className="blue-button-small">
                     <CIcon icon={cilPencil} />
                   </button>
                 </Link>
+              ) : null}
                 <Link to={`/vizAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
-                  <button className="blue-button">
+                  <button className="blue-button-small">
                   <div><BsEye style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '110%', height: '110%' }}/></div>
                   </button>
                 </Link>
@@ -231,9 +376,46 @@ export default class Avombro extends Component {
                 */}
             </td>
             </tr>
-          ))}
+          ))
+        ) : (
+          <tr>
+            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
+          </tr>
+        )}
       </tbody>
     </table>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button onClick={handlePrevClick} type="button" className="btn btn-outline-primary button-no-focus"
+          style={{
+            borderColor: "#60b1e0",
+            borderRadius: "0.15rem",
+            width: "4rem",
+            height: "2.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.8rem"
+          }}>
+            <div><BsChevronLeft color="black"/></div>
+          </button> 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{currentPage} de {totalPages}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+          onClick={handleNextClick}
+          type="button"
+          className="btn btn-outline-primary button-no-focus"
+          style={{
+            borderColor: "#60b1e0",
+            borderRadius: "0.15rem",
+            width: "4rem",
+            height: "2.2rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "0.8rem"
+          }}>
+            <div><BsChevronRight color="black"/></div>
+          </button>
+        </div>   
         </div>
     );
   }

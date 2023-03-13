@@ -27,7 +27,8 @@ const Avombronum = () => {
   const [currentUtente, setCurrentUtente] = useState({
     num_sequencial,
     nome_utente: '',
-    data_nascimento: ''
+    data_nascimento: '',
+    sexo:''
   });
 
   const [initialComposition, setInitialComposition] = useState({
@@ -42,7 +43,7 @@ const Avombronum = () => {
   useEffect(() => {
     UtenteDataService.get(num_sequencial)
       .then(response => {
-        setCurrentUtente(prevState => ({ ...prevState, nome_utente: response.data.nome_utente, data_nascimento: response.data.data_nascimento }));
+        setCurrentUtente(prevState => ({ ...prevState, nome_utente: response.data.nome_utente, data_nascimento: response.data.data_nascimento, sexo: response.data.sexo }));
       })
       .catch(error => {
         console.log(error);
@@ -100,7 +101,7 @@ const Avombronum = () => {
           //console.log("Form data submitted successfully:", response.data);
           setDtaCriada(new Date());
           swal("", "Formulário submetido com sucesso.", "success"); // Show SweetAlert success message
-          window.history.back();
+          window.location.href = "http://localhost:3000/#/avombro";
         })
         .catch(error => {
           console.log("Error submitting form data:", error);
@@ -122,8 +123,8 @@ const handleSave = (values, changedFields) => {
     .then(response => {
       //console.log("Form data saved successfully:", response.data);
       setDtaCriada(new Date());
-      swal("", "Formulário salvo com sucesso.", "success"); // Show SweetAlert success message
-      window.history.back();
+      swal("", "Formulário guardado com sucesso.", "success"); // Show SweetAlert success message
+      window.location.href = "http://localhost:3000/#/avombro";
     })
     .catch(error => {
       console.log("Error saving form data:", error);
@@ -192,7 +193,7 @@ const handleSave = (values, changedFields) => {
         }}
         template={newJDT}
         dlm={{}}
-        showPrint={true}
+        showPrint={false}
         editMode={true}
         professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
         canSubmit={true}
@@ -202,7 +203,8 @@ const handleSave = (values, changedFields) => {
         "numSequencial": currentUtente.num_sequencial,
         "nome": currentUtente.nome_utente,
         "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo
+        "sexo": currentUtente.sexo,
+        "episodio":  initialComposition.id_initialcomposition
         }}
         reportData={{
         dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,

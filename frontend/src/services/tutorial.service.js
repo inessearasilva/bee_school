@@ -49,6 +49,10 @@ class UtenteDataService {
     return http.get(`/forms/aviniforms/all?isCompleted=${estado}`);
   }
 
+  findAviniBydata(data) {
+    return http.get(`/forms/aviniforms/all?createdat=${data}`);
+  }
+
   findAvombroBynum_sequencial(num_sequencial) {
     return http.get(`/forms/avombroforms/all?num_sequencial=${num_sequencial}`);
   }
@@ -60,9 +64,21 @@ class UtenteDataService {
   findAvombroByestado(estado) {
     return http.get(`/forms/avombroforms/all?isCompleted=${estado}`);
   }
+
+  findAvombroBydata(data) {
+    return http.get(`/forms/avombroforms/all?createdat=${data}`);
+  }
   
   createform(data) {
     return http.post("/forms", data);
+  }
+
+  getformAvini(num_sequencial) {
+    return http.get(`/forms/avini/${num_sequencial}`);
+  }
+
+  getformAvombro(num_sequencial) {
+    return http.get(`/forms/avombro/${num_sequencial}`);
   }
 
   getAllform() {
