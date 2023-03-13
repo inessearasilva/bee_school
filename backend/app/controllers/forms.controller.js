@@ -171,7 +171,7 @@ exports.findAll = (req, res) => {
     // Remove any undefined values from the condition object
     condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
   
-    ClinicalCompositions.findAll({ where: condition })
+    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']] })
       .then(data => {
         res.send(data);
       })
@@ -203,7 +203,7 @@ exports.findAll = (req, res) => {
     // Remove any undefined values from the condition object
     condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
   
-    ClinicalCompositions.findAll({ where: condition })
+    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']] })
       .then(data => {
         res.send(data);
       })
