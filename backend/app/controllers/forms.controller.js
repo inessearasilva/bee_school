@@ -79,6 +79,7 @@ exports.create = (req, res) => {
   });
 };
 
+
 // Find a single Clinical Composition with an num_sequencial
 exports.findOneAvini = (req, res) => {
   const num_sequencial = req.params.num_sequencial;

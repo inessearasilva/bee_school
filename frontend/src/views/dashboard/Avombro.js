@@ -355,11 +355,13 @@ export default class Avombro extends Component {
                 </div>
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
-              <Link to={`/subAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
+              {ClinicalCompositions.isCompleted === 0 ? (
+                <Link to={`/subAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button-small">
                     <CIcon icon={cilPencil} />
                   </button>
                 </Link>
+              ) : null}
                 <Link to={`/vizAvombro/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button-small">
                   <div><BsEye style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '110%', height: '110%' }}/></div>

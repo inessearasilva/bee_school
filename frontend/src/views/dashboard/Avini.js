@@ -357,11 +357,13 @@ export default class Avini extends Component {
                 </div>
               </td>
               <td style={{ backgroundColor: 'white', textAlign: 'center' }}>
-              <Link to={`/subAvini/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
+              {ClinicalCompositions.isCompleted === 0 ? (
+                <Link to={`/subAvini/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button-small">
                     <CIcon icon={cilPencil} />
                   </button>
                 </Link>
+              ) : null}
                 <Link to={`/vizAvini/${ClinicalCompositions.idcomposition}/${ClinicalCompositions.num_sequencial}`}>
                   <button className="blue-button-small">
                   <div><BsEye style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '110%', height: '110%' }}/></div>
