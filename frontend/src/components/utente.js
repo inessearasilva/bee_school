@@ -39,6 +39,23 @@ const Edit = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+  
+  // Get the current date
+  const currentDate = new Date();
+  
+  // Convert the entered date string to a Date object
+  const enteredDate = new Date(currentUtente.data_nascimento);
+  
+  // Compare the entered date with the current date
+  if (enteredDate > currentDate) {
+    swal({
+      title: 'Erro!',
+      text: 'A data de nascimento não pode ser no futuro.',
+      icon: 'error',
+    });
+    return;
+  }
+  
     UtenteDataService.update(currentUtente.num_sequencial, currentUtente)
       .then((response) => {
         console.log(response.data);
@@ -139,7 +156,7 @@ const Edit = () => {
             </div>
             <br />
                 <button type="submit" className="btn btn-primary" style={{backgroundColor: "#57a9d9", borderColor: "#57a9d9"}}>
-                  Salvar
+                  Guardar
                 </button>
               </form>
               </div>

@@ -44,13 +44,30 @@ export default class Registo_Utente extends Component {
     if (!this.state.nome_utente || !this.state.sexo || this.state.data_nascimento === "dd/mm/aaaa") {
       swal("", "Preencha todos os campos, por favor.", "warning");
       return;
-  }
-  var data = {
+    }
+    
+    // Get the current date
+    const currentDate = new Date();
+    
+    // Convert the entered date string to a Date object
+    const enteredDate = new Date(this.state.data_nascimento);
+    
+    // Compare the entered date with the current date
+    if (enteredDate > currentDate) {
+      swal({
+        title: 'Erro!',
+        text: 'A data de nascimento não pode ser no futuro.',
+        icon: 'error',
+      });
+      return;
+    }
+    
+    var data = {
       sexo: this.state.sexo,
       nome_utente: this.state.nome_utente,
       data_nascimento: this.state.data_nascimento
-  };
-
+    };
+  
     UtenteDataService.create(data)
       .then(response => {
         this.setState({
@@ -59,7 +76,6 @@ export default class Registo_Utente extends Component {
           nome_utente: response.data.nome_utente,
           data_nascimento: response.data.data_nascimento,
           submitted: true
-
         });
         this.clearFields();
         swal("", "Utente registado com sucesso.", "success");
@@ -70,6 +86,7 @@ export default class Registo_Utente extends Component {
         console.log(e);
       });
   }
+  
 
   clearFields() {
     this.setState({

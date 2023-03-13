@@ -25,7 +25,6 @@ exports.create = (req, res) => {
     reference_model: req.body.reference_model,
     isCompleted: req.body.isCompleted
   };
-
     
   ClinicalCompositions.findOne({
     where: {
@@ -45,9 +44,9 @@ exports.create = (req, res) => {
             idjdt: idjdt
           }
         }).then(() => {
-          console.log("Updated");
+          console.log("Eliminated");
         }).catch((err) => {
-          console.log("Error while updating previous form:", err);
+          console.log("Error while deleting previous form:", err);
         });
       } 
     }

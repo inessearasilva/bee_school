@@ -123,7 +123,7 @@ const handleSave = (values, changedFields) => {
     .then(response => {
       //console.log("Form data saved successfully:", response.data);
       setDtaCriada(new Date());
-      swal("", "Formulário salvo com sucesso.", "success"); // Show SweetAlert success message
+      swal("", "Formulário guardado com sucesso.", "success"); // Show SweetAlert success message
       window.location.href = "http://localhost:3000/#/avombro";
     })
     .catch(error => {

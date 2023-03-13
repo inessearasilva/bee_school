@@ -73,6 +73,11 @@ select option::before {
   color: white;
   border: none;
   margin-right: 20px;
+  vertical-align: middle;
+}
+
+.blue-button-small img {
+  vertical-align: middle;
 }
 
 .yellow-button-small {

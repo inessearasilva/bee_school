@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, cilClipboard, cilNotes} from '@coreui/icons'
 import {BsXLg, BsChevronLeft, BsChevronRight} from 'react-icons/bs';
+import shoulder from '../assets/images/shoulder.png'
 
 export default class Utentes extends Component {
   constructor(props) {
@@ -316,13 +317,13 @@ export default class Utentes extends Component {
                   </button>
                 </Link>
                 <Link to={`/avini/${Utente.num_sequencial}`} style={{ textDecoration: 'none' }}>
-                  <button className="blue-button">
-                    <CIcon icon={cilClipboard}/><span>&nbsp;Geral</span>
+                  <button className="blue-button-small">
+                    <CIcon icon={cilClipboard}/>
                   </button>
                 </Link>
                 <Link to={`/avombro/${Utente.num_sequencial}`} style={{ textDecoration: 'none' }}>
-                  <button className="blue-button">
-                    <CIcon icon={cilNotes} /> <span>&nbsp;Ombro</span>
+                  <button className="blue-button-small">
+                  <img src={shoulder} alt="image" style={{ width: '36%', color:'white' }} />
                   </button>
                 </Link>
                 

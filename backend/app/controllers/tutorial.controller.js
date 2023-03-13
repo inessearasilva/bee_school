@@ -61,7 +61,7 @@ exports.findAll = (req, res) => {
   // Remove any undefined values from the condition object
   condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
 
-  Utente.findAll({ where: condition })
+  Utente.findAll({ where: condition, order: [['num_sequencial', 'ASC']] })
     .then(data => {
       res.send(data);
     })

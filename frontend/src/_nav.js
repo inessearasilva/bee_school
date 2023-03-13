@@ -9,6 +9,7 @@ import {
   cilClipboard
 } from '@coreui/icons'
 import { CNavItem, CNavTitle } from '@coreui/react'
+import shoulderNav from '../src/assets/images/shoulder-nav.png'
 
 const _nav = [
   {
@@ -41,7 +42,9 @@ const _nav = [
     component: CNavItem,
     name: 'Avaliação do Ombro',
     to: '/avombro',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    icon: (
+      <img src={shoulderNav} alt="image" style={{ width: '11%', marginLeft: '6.5px', marginRight: '17px' }} />
+    ),
   },
   /*{
     component: CNavGroup,
