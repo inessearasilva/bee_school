@@ -335,7 +335,7 @@ export default class Avombro extends Component {
       <tbody>
         {currentItems.length > 0 ? (
               currentItems
-                .sort((a, b) => a.num_sequencial - b.num_sequencial)
+                .sort((a, b) => a.idcomposition - b.idcomposition)
                 .map((ClinicalCompositions, index) => (
                   <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>

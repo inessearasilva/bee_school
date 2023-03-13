@@ -43,17 +43,17 @@ export default class Avini extends Component {
     });
   }
 
-  onChangeSearchnum_sequencial(e) {
-    const searchnum_sequencial = e.target.value;
-    this.setState({ searchnum_sequencial }, () => {
-      this.searchnum_sequencial();
-    });
-  }
-
   onChangeSearchidcomposition(e) {
     const searchidcomposition = e.target.value;
     this.setState({ searchidcomposition }, () => {
       this.searchidcomposition();
+    });
+  }
+
+  onChangeSearchnum_sequencial(e) {
+    const searchnum_sequencial = e.target.value;
+    this.setState({ searchnum_sequencial }, () => {
+      this.searchnum_sequencial();
     });
   }
 
@@ -74,15 +74,17 @@ export default class Avini extends Component {
   retrieveForm() {
     UtenteDataService.getAllformAvini()
       .then(response => {
+        const sortedData = response.data.sort((a, b) => a.idcomposition - b.idcomposition);
         this.setState({
-          ClinicalCompositions: response.data
+          ClinicalCompositions: sortedData
         });
-        console.log(response.data);
+        console.log(sortedData);
       })
       .catch(e => {
         console.log(e);
       });
   }
+  
 
   refreshList() {
     this.retrieveForm();
@@ -335,7 +337,7 @@ export default class Avini extends Component {
       <tbody>
         {currentItems.length > 0 ? (
               currentItems
-                .sort((a, b) => a.num_sequencial - b.num_sequencial)
+                .sort((a, b) => a.idcomposition - b.idcomposition)
                 .map((ClinicalCompositions, index) => (
                   <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>

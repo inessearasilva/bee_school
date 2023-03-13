@@ -5,7 +5,7 @@ const { Sequelize } = require('sequelize');
 
 // Create and Save a new Form
 exports.create = (req, res) => {
-  // Valnum_sequencialate request
+  // Validate request
   if (!req.body.num_sequencial) {
     res.status(400).send({
       message: "Content can not be empty!"
@@ -13,55 +13,69 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a form
-  const clinicalCompositions = {
-    idjdt: req.body.idjdt,
-    num_sequencial: req.body.num_sequencial,
-    version: req.body.version,
-    createdat: req.body.createdat ? new Date(req.body.createdat) : null,
-    state: req.body.state,
-    id_initialcomposition: req.body.id_initialcomposition,
-    composition: req.body.composition,
-    reference_model: req.body.reference_model,
-    isCompleted: req.body.isCompleted
-  };
-    
+  // Check if there is an existing form with the same num_sequencial
   ClinicalCompositions.findOne({
     where: {
       num_sequencial: req.body.num_sequencial
-    }
+    },
+    order: [['createdat', 'DESC']]
   }).then(async (existingForm) => {
     if (existingForm) {
-      const id_initialcomposition = req.body.id_initialcomposition;
-      const num_sequencial = req.body.num_sequencial;
-      const idjdt = req.body.idjdt;
-      // Delete previous form with the same id_initialcomposition if isCompleted equals 0
+      // Check if the existing form is not completed
       if (existingForm.isCompleted === 0) {
-        await ClinicalCompositions.destroy({
+        // Update the existing form
+        const updatedForm = {
+          idjdt: req.body.idjdt,
+          num_sequencial: req.body.num_sequencial,
+          version: req.body.version,
+          createdat: req.body.createdat ? new Date(req.body.createdat) : null,
+          state: req.body.state,
+          id_initialcomposition: req.body.id_initialcomposition,
+          composition: req.body.composition,
+          reference_model: req.body.reference_model,
+          isCompleted: req.body.isCompleted
+        };
+
+        await ClinicalCompositions.update(updatedForm, {
           where: {
-            id_initialcomposition: id_initialcomposition,
-            num_sequencial: num_sequencial,
-            idjdt: idjdt
+            id_initialcomposition: req.body.id_initialcomposition,
+            num_sequencial: req.body.num_sequencial,
+            idjdt: req.body.idjdt
           }
         }).then(() => {
-          console.log("Eliminated");
+          console.log("Updated existing form");
         }).catch((err) => {
-          console.log("Error while deleting previous form:", err);
+          console.log("Error while updating existing form:", err);
         });
-      } 
+
+        res.send("Updated existing form");
+        return;
+      }
     }
 
-  // Save new form
-  ClinicalCompositions.create(clinicalCompositions)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Form."
+    // Create a new form
+    const newForm = {
+      idjdt: req.body.idjdt,
+      num_sequencial: req.body.num_sequencial,
+      version: req.body.version,
+      createdat: req.body.createdat ? new Date(req.body.createdat) : null,
+      state: req.body.state,
+      id_initialcomposition: req.body.id_initialcomposition,
+      composition: req.body.composition,
+      reference_model: req.body.reference_model,
+      isCompleted: req.body.isCompleted
+    };
+
+    ClinicalCompositions.create(newForm)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Form."
+        });
       });
-    });
   });
 };
 
@@ -69,7 +83,7 @@ exports.create = (req, res) => {
 exports.findOneAvini = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
 
-  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial, idjdt:0 } })
+  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial, idjdt:0 }, order: [['createdat', 'DESC']] })
     .then(data => {
       if (data) {
         res.send(data);
@@ -90,7 +104,7 @@ exports.findOneAvini = (req, res) => {
 exports.findOneAvombro = (req, res) => {
   const num_sequencial = req.params.num_sequencial;
 
-  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial, idjdt:1 } })
+  ClinicalCompositions.findOne({ where: { num_sequencial: num_sequencial, idjdt:1 }, order: [['createdat', 'DESC']] })
     .then(data => {
       if (data) {
         res.send(data);
@@ -182,6 +196,7 @@ exports.findAll = (req, res) => {
         });
       });
   };
+  
   
 
   exports.findAllAvombro = (req, res) => {
