@@ -110,13 +110,20 @@ export default class Avini extends Component {
 
   searchnum_sequencial() {
     UtenteDataService.findAviniBynum_sequencial(this.state.searchnum_sequencial)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -125,13 +132,20 @@ export default class Avini extends Component {
 
   searchidcomposition() {
     UtenteDataService.findAviniByidcomposition(this.state.searchidcomposition)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -141,13 +155,20 @@ export default class Avini extends Component {
   searchestado() {
     const { searchestado } = this.state;
     UtenteDataService.findAviniByestado(searchestado)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -157,13 +178,20 @@ export default class Avini extends Component {
   searchdata() {
     const { searchdata } = this.state;
     UtenteDataService.findAviniBydata(searchdata)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);

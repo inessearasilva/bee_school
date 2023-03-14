@@ -108,13 +108,20 @@ export default class Avombro extends Component {
 
   searchnum_sequencial() {
     UtenteDataService.findAvombroBynum_sequencial(this.state.searchnum_sequencial)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -123,13 +130,20 @@ export default class Avombro extends Component {
 
   searchidcomposition() {
     UtenteDataService.findAvombroByidcomposition(this.state.searchidcomposition)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -139,13 +153,20 @@ export default class Avombro extends Component {
   searchestado() {
     const { searchestado } = this.state;
     UtenteDataService.findAvombroByestado(searchestado)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -155,13 +176,20 @@ export default class Avombro extends Component {
   searchdata() {
     const { searchdata } = this.state;
     UtenteDataService.findAvombroBydata(searchdata)
-      .then(response => {
+    .then(response => {
+      const clinicalCompositions = response.data.map((item) => {
+        const utente = item.utente || {};
+        return {
+          ...item,
+          nome_utente: utente.nome_utente
+        };
+      });
         this.setState({
-          ClinicalCompositions: response.data,
+          ClinicalCompositions: clinicalCompositions,
           currentClinicalCompositions: null,
           currentIndex: -1
         });
-        console.log(response.data);
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
