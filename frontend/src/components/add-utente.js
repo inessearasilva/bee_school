@@ -112,7 +112,7 @@ export default class Registo_Utente extends Component {
   render() {
     return (
       <div className="list row d-flex justify-content-center">
-        <h3 className="my-heading">Registo de Utentes</h3>
+        <span className="my-heading">Registo de Utentes</span>
         <br></br><br></br><br></br>
         <table className="table" style={{ tableLayout: 'fixed', width: '100%' }}>
           <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>

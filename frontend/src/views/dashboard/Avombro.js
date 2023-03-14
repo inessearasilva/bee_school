@@ -243,7 +243,7 @@ export default class Avombro extends Component {
 
     return (
       <div className="list row d-flex justify-content-center">
-        <h3 className="my-heading">Questionários de Avaliação do Ombro</h3>
+        <span className="my-heading">Questionários de Avaliação do Ombro</span>
         <br></br><br></br><br></br>
         <table className="table" style={{ tableLayout: 'fixed', width: '170%' }}>
           <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
