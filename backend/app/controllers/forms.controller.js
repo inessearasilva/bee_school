@@ -1,5 +1,6 @@
 const db = require("../models");
 const ClinicalCompositions = db.clinicalCompositions;
+const Utente = db.utente;
 const Op = db.Sequelize.Op;
 const { Sequelize } = require('sequelize');
 
@@ -186,7 +187,14 @@ exports.findAll = (req, res) => {
     // Remove any undefined values from the condition object
     condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
   
-    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']] })
+    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']],
+    include: [
+      {
+        model: Utente, as: 'utente',
+        attributes: ['nome_utente']
+      }
+    ]
+  })
       .then(data => {
         res.send(data);
       })
@@ -219,7 +227,13 @@ exports.findAll = (req, res) => {
     // Remove any undefined values from the condition object
     condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
   
-    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']] })
+    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']],
+    include: [
+      {
+        model: Utente, as: 'utente',
+        attributes: ['nome_utente']
+      }
+    ] })
       .then(data => {
         res.send(data);
       })

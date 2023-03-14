@@ -22,4 +22,10 @@ db.utente = require("./tutorial.model.js")(sequelize, Sequelize);
 
 db.clinicalCompositions = require("./forms.js")(sequelize, Sequelize);
 
+db.utente.hasMany(db.clinicalCompositions, {
+  foreignKey: 'num_sequencial'
+});
+
+db.clinicalCompositions.belongsTo(db.utente, { foreignKey: 'num_sequencial', as: 'utente' });
+
 module.exports = db;
