@@ -73,10 +73,18 @@ export default class Avombro extends Component {
   retrieveForm() {
     UtenteDataService.getAllformAvombro()
       .then(response => {
-        this.setState({
-          ClinicalCompositions: response.data
+        const sortedData = response.data.sort((a, b) => a.idcomposition - b.idcomposition);
+        const clinicalCompositions = sortedData.map((item) => {
+          const utente = item.utente || {};
+          return {
+            ...item,
+            nome_utente: utente.nome_utente
+          };
         });
-        console.log(response.data);
+        this.setState({
+          ClinicalCompositions: clinicalCompositions
+        });
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -207,7 +215,7 @@ export default class Avombro extends Component {
 
     return (
       <div className="list row d-flex justify-content-center">
-        <h3 className="my-heading">Questionários Gerais</h3>
+        <h3 className="my-heading">Questionários de Avaliação do Ombro</h3>
         <br></br><br></br><br></br>
         <table className="table" style={{ tableLayout: 'fixed', width: '170%' }}>
           <thead style={{ backgroundColor: '#57a9d9', color: 'white' }}>
@@ -222,7 +230,7 @@ export default class Avombro extends Component {
           <input
             type="text"
             className="form-control"
-            placeholder="ID Form"
+            placeholder="Número de Processo"
             value={searchidcomposition}
             onChange={(e) => {
               this.onChangeSearchidcomposition(e);
@@ -325,11 +333,12 @@ export default class Avombro extends Component {
           <table className="table" style={{tableLayout: 'fixed', width: '170%'}}>
           <thead style={{backgroundColor: '#57a9d9', color: 'white'}}>
         <tr>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>ID Form</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Número Sequencial</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Data de submissão</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Estado</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}> </th>
+          <th scope="col" style={{width: '15%', textAlign: 'center'}}>Número de Processo</th>
+          <th scope="col" style={{width: '15%', textAlign: 'center'}}>Número Sequencial</th>
+          <th scope="col" style={{width: '19%', textAlign: 'center'}}>Nome</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}>Data de submissão</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}>Estado</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}> </th>
         </tr>
       </thead>
       <tbody>
@@ -340,6 +349,7 @@ export default class Avombro extends Component {
                   <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.num_sequencial}</td>
+              <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.nome_utente}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
               {new Date(ClinicalCompositions.createdat).toLocaleDateString('pt-PT')}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
@@ -379,7 +389,7 @@ export default class Avombro extends Component {
           ))
         ) : (
           <tr>
-            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
+            <td colSpan="6" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
           </tr>
         )}
       </tbody>

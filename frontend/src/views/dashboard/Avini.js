@@ -75,10 +75,17 @@ export default class Avini extends Component {
     UtenteDataService.getAllformAvini()
       .then(response => {
         const sortedData = response.data.sort((a, b) => a.idcomposition - b.idcomposition);
-        this.setState({
-          ClinicalCompositions: sortedData
+        const clinicalCompositions = sortedData.map((item) => {
+          const utente = item.utente || {};
+          return {
+            ...item,
+            nome_utente: utente.nome_utente
+          };
         });
-        console.log(sortedData);
+        this.setState({
+          ClinicalCompositions: clinicalCompositions
+        });
+        console.log(clinicalCompositions);
       })
       .catch(e => {
         console.log(e);
@@ -224,7 +231,7 @@ export default class Avini extends Component {
           <input
             type="text"
             className="form-control"
-            placeholder="ID Form"
+            placeholder="Número de Processo"
             value={searchidcomposition}
             onChange={(e) => {
               this.onChangeSearchidcomposition(e);
@@ -327,11 +334,12 @@ export default class Avini extends Component {
           <table className="table" style={{tableLayout: 'fixed', width: '170%'}}>
           <thead style={{backgroundColor: '#57a9d9', color: 'white'}}>
         <tr>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>ID Form</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Número Sequencial</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Data de submissão</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}>Estado</th>
-          <th scope="col" style={{width: '20%', textAlign: 'center'}}> </th>
+        <th scope="col" style={{width: '15%', textAlign: 'center'}}>Número de Processo</th>
+          <th scope="col" style={{width: '15%', textAlign: 'center'}}>Número Sequencial</th>
+          <th scope="col" style={{width: '19%', textAlign: 'center'}}>Nome</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}>Data de submissão</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}>Estado</th>
+          <th scope="col" style={{width: '17%', textAlign: 'center'}}> </th>
         </tr>
       </thead>
       <tbody>
@@ -342,6 +350,7 @@ export default class Avini extends Component {
                   <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.num_sequencial}</td>
+              <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.nome_utente}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
               {new Date(ClinicalCompositions.createdat).toLocaleDateString('pt-PT')}</td>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>
@@ -381,7 +390,7 @@ export default class Avini extends Component {
           ))
         ) : (
           <tr>
-            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
+            <td colSpan="6" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
           </tr>
         )}
       </tbody>

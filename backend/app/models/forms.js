@@ -38,8 +38,22 @@ module.exports = (sequelize, Sequelize) => {
       } 
     }, 
     {freezeTableName: true,
-      timestamps: false // disable timestamps
+      timestamps: false, // disable timestamps
+      // Add foreign key constraint
+      foreignKeys: {
+        fk_num_sequencial: {
+          name: 'fk_num_sequencial',
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'utente',
+            key: 'num_sequencial'
+          },
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE'
+        }
+      }
     });
-
+    
     return ClinicalCompositions;
   };
