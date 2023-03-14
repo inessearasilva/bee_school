@@ -230,7 +230,7 @@ export default class Avombro extends Component {
           <input
             type="text"
             className="form-control"
-            placeholder="ID Form"
+            placeholder="Número de Processo"
             value={searchidcomposition}
             onChange={(e) => {
               this.onChangeSearchidcomposition(e);
@@ -333,7 +333,7 @@ export default class Avombro extends Component {
           <table className="table" style={{tableLayout: 'fixed', width: '170%'}}>
           <thead style={{backgroundColor: '#57a9d9', color: 'white'}}>
         <tr>
-          <th scope="col" style={{width: '15%', textAlign: 'center'}}>ID Form</th>
+          <th scope="col" style={{width: '15%', textAlign: 'center'}}>Número de Processo</th>
           <th scope="col" style={{width: '15%', textAlign: 'center'}}>Número Sequencial</th>
           <th scope="col" style={{width: '19%', textAlign: 'center'}}>Nome</th>
           <th scope="col" style={{width: '17%', textAlign: 'center'}}>Data de submissão</th>
@@ -389,7 +389,7 @@ export default class Avombro extends Component {
           ))
         ) : (
           <tr>
-            <td colSpan="5" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
+            <td colSpan="6" style={{backgroundColor:'white', textAlign: 'center'}}>Não existem questionários registados</td>
           </tr>
         )}
       </tbody>
