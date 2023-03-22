@@ -56,6 +56,20 @@ const replaceValuesJDT = (jdt, composition) => {
 
         }
     }
+    // calculate total score
+    let totalScore = 0;
+    compositionKeys.forEach((itemPath) => {
+    const obj = objPath.get(newJDT, itemPath);
+    if (obj !== undefined && obj.dataType === 'DV_COUNT') {
+        totalScore += composition[itemPath.concat('.value')];
+    }
+    });
+    // update Total Score item
+    const totalScoreObj = objPath.get(newJDT, '.../.../items[openEHR-EHR-OBSERVATION.symptom_sign_screening_tool.v1]/data/items[at0002]');
+    if (totalScoreObj !== undefined && totalScoreObj.dataType === 'DV_COUNT') {
+    totalScoreObj.value = totalScore;
+    }
+
     return newJDT;
 }
 
