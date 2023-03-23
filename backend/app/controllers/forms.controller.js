@@ -17,7 +17,8 @@ exports.create = (req, res) => {
   // Check if there is an existing form with the same num_sequencial
   ClinicalCompositions.findOne({
     where: {
-      num_sequencial: req.body.num_sequencial
+      num_sequencial: req.body.num_sequencial,
+      idjdt: req.body.idjdt
     },
     order: [['createdat', 'DESC']]
   }).then(async (existingForm) => {
@@ -49,7 +50,7 @@ exports.create = (req, res) => {
           console.log("Error while updating existing form:", err);
         });
 
-        res.send("Updated existing form");
+        res.send("Here");
         return;
       }
     }
@@ -455,7 +456,7 @@ exports.findInitialAvini = (req, res) => {
       } else if (mostRecentComposition.isCompleted === 1) {
         console.log('Found a more recent ClinicalComposition with isCompleted=1');
         console.log('Generating random number...');
-        const randomNumber = Math.floor(Math.random() * 1000);
+        const randomNumber = Math.floor(Math.random() * 1000000);
         console.log('randomNumber:', randomNumber);
         res.status(200).send({ id_initialcomposition: randomNumber });
       } else {

@@ -4,7 +4,7 @@ import { json, useParams } from 'react-router-dom'; // import the useParams hook
 import jdt from './InitialEvaluation';
 import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js"
 import swal from 'sweetalert';
-import { replaceValuesJDT } from './SavedValues.js';
+import { replaceValuesJDT } from './SavedValues geral';
 
 console.log('first', jdt);
 
@@ -120,7 +120,7 @@ const handleSave = (values, changedFields) => {
     isCompleted: 0
   })
     .then(response => {
-      //console.log("Form data saved successfully:", response.data);
+      console.log("Form data saved successfully:");
       setDtaCriada(new Date());
       swal("", "Formulário guardado com sucesso.", "success"); // Show SweetAlert success message
       window.location.href = "http://localhost:3000/#/avini";

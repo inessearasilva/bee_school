@@ -14,28 +14,11 @@ const dlm = {
   }],
   "input": [{
     "rm_type": "STATE_VARIABLE",
-    "name": "Decisão",
-    "variable": "items.0.0.items.0.items.2"
+    "name": "CHUP",
+    "variable": ""
   }],
   "rules": [{
     "uid": "regra1",
-    "conditions": {
-      "all": [{
-        "fact": "items.0.0.items.0.items.0.items.1",
-        "operator": "equal",
-        "value": "Secundário"
-      }]
-    },
-    "event": {
-      "type": "items.0.0.items.0.items.5.items.0",
-      "params": {
-        "message": {
-          "action": "isMandatory"
-        }
-      }
-    }
-  }, {
-    "uid": "regra2",
     "conditions": {
       "all": [{
         "fact": "items.0.0.items.0.items.0.items.1",
@@ -44,13 +27,39 @@ const dlm = {
       }]
     },
     "event": {
-      "type": "items.0.0.items.0.items.3",
+      "type": "events",
       "params": {
         "message": {
-          "action": "isNotEditable"
+          "item": "items.0.0.items.0.items.3",
+          "action": "isNotEditable",
+          "value": "Sim"
         }
       }
     }
   }]
 };
 export default dlm;
+
+/*
+  "rules": [{
+    "uid": "regra1",
+    "conditions": {
+      "all": [{
+        "fact": "items.0.0.items.4",
+        "operator": "greaterThanInclusive",
+        "value": "50"
+      }]
+    },
+    "event": {
+      "type": "events",
+      "params": {
+        "message": [{
+          "item": "items.0.1.items.7",
+          "action": "isVisible",
+          "value": "Sim"
+        }]
+      }
+    }
+  }]
+};
+export default dlm;*/

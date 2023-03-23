@@ -2315,8 +2315,10 @@ const json = {
               "upperOccurrences": 1
             },
             "path": "[openEHR-EHR-COMPOSITION.encounter.v2]/[openEHR-EHR-OBSERVATION.kessler_k10_scale.v0]/[at0014]",
-            "ruleMandatory": [],
-            "ruleVisibility": [],
+            "ruleMandatory": [
+            ],
+            "ruleVisibility": [
+            ],
             "value": null
           },
           {

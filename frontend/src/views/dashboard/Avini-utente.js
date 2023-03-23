@@ -4,7 +4,7 @@ import { json, useParams } from 'react-router-dom'; // import the useParams hook
 import jdt from './InitialEvaluation';
 import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js"
 import swal from 'sweetalert';
-import { replaceValuesJDT } from './SavedValues.js';
+import { replaceValuesJDT } from './SavedValues geral';
 
 console.log('first', jdt);
 
@@ -182,7 +182,7 @@ const handleSave = (values, changedFields) => {
 
   return ( 
     <>
-      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && formValues.idcomposition !== '' && (
+      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
         <Form
         ref={formRef} // pass the reference to the form component
         onSubmit={handleSubmit}
@@ -203,7 +203,8 @@ const handleSave = (values, changedFields) => {
         "numSequencial": currentUtente.num_sequencial,
         "nome": currentUtente.nome_utente,
         "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo
+        "sexo": currentUtente.sexo,
+        "episodio":  initialComposition.id_initialcomposition
         }}
         reportData={{
         dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,

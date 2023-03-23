@@ -1,3 +1,5 @@
+import objPath from "object-path";
+
 const replaceValuesJDT = (jdt, composition) => {
     if (!composition) {
       // handle the case where composition is undefined or null
@@ -56,11 +58,13 @@ const replaceValuesJDT = (jdt, composition) => {
             break;
           default:
             // for all other data types, replace the value property
-            obj.value = composition[itemPath.concat(".value")];
-            
-            // if the value property is a number, add it to the selectedOptionValues array
-            if (typeof obj.value === "number") {
-              selectedOptionValues.push(obj.value);
+            if (composition[itemPath.concat(".value")]) {
+                obj.value = composition[itemPath.concat(".value")];
+      
+                // if the value property is a number, add it to the selectedOptionValues array
+                if (obj.value && typeof obj.value.value === "number") {
+                  selectedOptionValues.push(obj.value.value);
+            }
             }
         }
       }
@@ -71,7 +75,33 @@ const replaceValuesJDT = (jdt, composition) => {
   
     // update the Total Score item in the JDT with the calculated value
     objPath.set(newJDT, "items.0.0.items.12.value", totalScore);
+
+    // calculate the average score 
+    const numSelectedOptions = selectedOptionValues.length;
+    const avgScore = (totalScore * 12) / numSelectedOptions;
   
+    // update the Total Score item in the JDT with the calculated value
+    objPath.set(newJDT, "items.0.0.items.13.value", avgScore);
+
+    console.log('avg',avgScore);
+
+    
+    const gradingItem = objPath.get(newJDT, "items.0.0.items.14");
+
+    if (avgScore < 20) {
+        gradingItem.value = gradingItem.itemsList[0];
+    } else if (avgScore >= 20 && avgScore < 30) {
+        gradingItem.value = gradingItem.itemsList[1];
+    } else if (avgScore >= 30 && avgScore < 40) {
+        gradingItem.value = gradingItem.itemsList[2];
+    } else {
+        gradingItem.value = gradingItem.itemsList[3];
+    }
+
+    objPath.set(newJDT, "items.0.0.items.14.value", gradingItem.value);
+    console.log('Grading',gradingItem.value);
+    
+
     return newJDT;
   };
   
