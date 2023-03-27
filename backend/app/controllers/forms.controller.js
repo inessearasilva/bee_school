@@ -188,7 +188,7 @@ exports.findAll = (req, res) => {
     // Remove any undefined values from the condition object
     condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
   
-    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']],
+    ClinicalCompositions.findAll({ where: condition, order: [['createdat', 'DESC']],
     include: [
       {
         model: Utente, as: 'utente',
@@ -228,7 +228,7 @@ exports.findAll = (req, res) => {
     // Remove any undefined values from the condition object
     condition = Object.fromEntries(Object.entries(condition).filter(([_, v]) => v !== undefined));
   
-    ClinicalCompositions.findAll({ where: condition, order: [['idcomposition', 'ASC']],
+    ClinicalCompositions.findAll({ where: condition, order: [['createdat', 'DESC']],
     include: [
       {
         model: Utente, as: 'utente',

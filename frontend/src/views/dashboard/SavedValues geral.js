@@ -77,15 +77,33 @@ const replaceValuesJDT = (jdt, composition) => {
   
     // calculate the total score by summing the values of selected options 
     const totalScoreSet1 = selectedOptionValuesSet1.reduce((acc, curr) => acc + curr, 0);
-
-    if (totalScoreSet1 >1) {
+    
+    if (totalScoreSet1 > 1) {
       objPath.set(newJDT, "items.0.6.items.6.value", 'Possível caso de anorexia nervosa ou bulimia nervosa.');
-    } else {
+    } else if ( (selectedOptionValuesSet1.length === 4 && totalScoreSet1 === 0 ) || (selectedOptionValuesSet1.length === 5 && totalScoreSet1 < 2 ) ){
       objPath.set(newJDT, "items.0.6.items.6.value", 'Risco relativamente baixo de ter um transtorno alimentar.');
+    } else {
+      objPath.set(newJDT, "items.0.6.items.6.value", null);
     }
   
     // calculate the total score by summing the values of selected options
     const totalScoreSet2 = selectedOptionValuesSet2.reduce((acc, curr) => acc + curr, 0);
+
+    if (totalScoreSet2 > 9 && totalScoreSet2 < 51) {
+      if (totalScoreSet2 > 0 && totalScoreSet2 < 20 ) {
+        objPath.set(newJDT, "items.0.7.items.11.value", 'Probabilidade de estar bem mentalmente.');
+      } else if ( totalScoreSet2 > 19 && totalScoreSet2 < 25 ){
+        objPath.set(newJDT, "items.0.7.items.11.value", 'Probabilidade de ter um transtorno mental leve.');
+      } else if ( totalScoreSet2 > 24 && totalScoreSet2 < 30 ){
+        objPath.set(newJDT, "items.0.7.items.11.value", 'Probabilidade de ter um transtorno mental moderado.');
+      } else if ( totalScoreSet2 > 29 ){
+        objPath.set(newJDT, "items.0.7.items.11.value", 'Probabilidade de ter um transtorno mental grave.');
+      } else {
+        objPath.set(newJDT, "items.0.7.items.11.value", null);
+      } 
+    } else {
+    objPath.set(newJDT, "items.0.7.items.11.value", null);
+    }
 
     // update the Total Score item in the JDT with the calculated value
     objPath.set(newJDT, "items.0.6.items.5.value", totalScoreSet1);

@@ -73,7 +73,7 @@ export default class Avombro extends Component {
   retrieveForm() {
     UtenteDataService.getAllformAvombro()
       .then(response => {
-        const sortedData = response.data.sort((a, b) => a.idcomposition - b.idcomposition);
+        const sortedData = response.data.sort((a, b) => a.createdat - b.createdat);
         const clinicalCompositions = sortedData.map((item) => {
           const utente = item.utente || {};
           return {
@@ -372,7 +372,7 @@ export default class Avombro extends Component {
       <tbody>
         {currentItems.length > 0 ? (
               currentItems
-                .sort((a, b) => a.idcomposition - b.idcomposition)
+                .sort((a, b) => a.createdat - b.createdat)
                 .map((ClinicalCompositions, index) => (
                   <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>

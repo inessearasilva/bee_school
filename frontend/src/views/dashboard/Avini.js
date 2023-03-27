@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, ciley} from '@coreui/icons'
 import { BsFillCheckCircleFill, BsFillPauseCircleFill, BsEye, BsXLg} from "react-icons/bs";
-import {BsChevronLeft, BsChevronRight} from 'react-icons/bs';
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'; 
 
 export default class Avini extends Component {
   constructor(props) {
@@ -74,7 +74,7 @@ export default class Avini extends Component {
   retrieveForm() {
     UtenteDataService.getAllformAvini()
       .then(response => {
-        const sortedData = response.data.sort((a, b) => a.idcomposition - b.idcomposition);
+        const sortedData = response.data.sort((a, b) => a.createdat - b.createdat);
         const clinicalCompositions = sortedData.map((item) => {
           const utente = item.utente || {};
           return {
@@ -241,7 +241,7 @@ export default class Avini extends Component {
         this.setState({ currentPage: nextPage });
       }
     };
-
+    
     return (
       <div className="list row d-flex justify-content-center">
         <span className="my-heading">Questionários Gerais</span>
@@ -373,7 +373,7 @@ export default class Avini extends Component {
       <tbody>
         {currentItems.length > 0 ? (
               currentItems
-                .sort((a, b) => a.idcomposition - b.idcomposition)
+                .sort((a, b) => a.createdat - b.createdat)
                 .map((ClinicalCompositions, index) => (
                   <tr key={index}>
               <td style={{backgroundColor: 'white', textAlign: 'center'}}>{ClinicalCompositions.idcomposition}</td>
