@@ -152,9 +152,33 @@ export default class Utentes extends Component {
   render() {
     const { searchnome_utente, searchdata_nascimento, searchnum_sequencial, Utente, currentUtente, currentPage, itemsPerPage} = this.state;
 
+    const filteredUtente = Utente.filter((utente) => {
+      // Filter by num_sequencial
+      const utenteNumSequencial = utente.num_sequencial;
+      if (searchnum_sequencial && parseInt(searchnum_sequencial) !== utenteNumSequencial) {
+        return false;
+      }
+      
+      
+      // Filter by nome_utente
+      const normalizedSearch = searchnome_utente.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      const utenteNomeUtente = utente.nome_utente.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      if (normalizedSearch && !utenteNomeUtente.includes(normalizedSearch)) {
+        return false;
+      }
+  
+      // Filter by data_nascimento
+      const utenteDataNascimento = utente.data_nascimento;
+      if (searchdata_nascimento && searchdata_nascimento !== utenteDataNascimento) {
+        return false;
+      }
+  
+      return true;
+    });
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = Utente && Utente.length > 0 ? Utente.slice(indexOfFirstItem, indexOfLastItem) : [];
+    const currentItems = filteredUtente.slice(indexOfFirstItem, indexOfLastItem);
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(Utente.length / itemsPerPage); i++) {

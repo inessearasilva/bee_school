@@ -27,7 +27,7 @@ class UtenteDataService {
 
   findBynome_utente(nome_utente) {
     return http.get(`/utente?nome_utente=${nome_utente}`);
-  }
+  }  
 
   findBydata_nascimento(data_nascimento) {
     return http.get(`/utente?data_nascimento=${data_nascimento}`);

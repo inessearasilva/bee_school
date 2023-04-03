@@ -176,12 +176,19 @@ exports.findAll = (req, res) => {
     const num_sequencial = req.query.num_sequencial;
     const createdat = req.query.createdat;
   
+    // Get the start and end of the given date
+    const startOfDay = new Date(createdat);
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date(createdat);
+    endOfDay.setHours(23, 59, 59, 999);
+
+    // Modify the condition object
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
       id_initialcomposition: id_initialcomposition ? { [Op.eq]: id_initialcomposition } : undefined,
       isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
-      createdat: createdat ? { [Op.eq]: createdat } : undefined,
+      createdat: createdat ? { [Op.between]: [startOfDay, endOfDay] } : undefined,
       idjdt: 0 // add condition for idjdt = 0
     };
   
@@ -216,12 +223,19 @@ exports.findAll = (req, res) => {
     const num_sequencial = req.query.num_sequencial;
     const createdat = req.query.createdat;
   
+    // Get the start and end of the given date
+    const startOfDay = new Date(createdat);
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date(createdat);
+    endOfDay.setHours(23, 59, 59, 999);
+
+    // Modify the condition object
     var condition = {
       idcomposition: idcomposition ? { [Op.eq]: idcomposition } : undefined,
       id_initialcomposition: id_initialcomposition ? { [Op.eq]: id_initialcomposition } : undefined,
       isCompleted: isCompleted ? { [Op.eq]: isCompleted } : undefined,
       num_sequencial: num_sequencial ? { [Op.eq]: num_sequencial } : undefined,
-      createdat: createdat ? { [Op.eq]: createdat } : undefined,
+      createdat: createdat ? { [Op.between]: [startOfDay, endOfDay] } : undefined,
       idjdt: 1 // add condition for idjdt = 1
     };
   

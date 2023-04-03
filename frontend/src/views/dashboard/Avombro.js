@@ -201,9 +201,40 @@ export default class Avombro extends Component {
   render() {
     const { ClinicalCompositions, searchestado, searchidcomposition, searchnum_sequencial, searchdata, currentPage, itemsPerPage} = this.state;
 
+    const filteredClinical = ClinicalCompositions.filter((cli) => {
+
+      // Filter by idcomposition
+      const cliIdComposition = cli.idcomposition;
+      if (searchidcomposition && searchidcomposition !== cli.idcomposition.toString()) {
+        return false;
+      }
+      
+      // Filter by num_sequencial
+      const cliNumSequencial = cli.num_sequencial;
+      if (searchnum_sequencial && searchnum_sequencial !== cli.num_sequencial.toString()) {
+        return false;
+      }
+        
+      // Filter by estado
+      const cliEstado = cli.isCompleted;
+      if (searchestado !== "" && (searchestado === "0" ? cli.isCompleted !== 0 : cli.isCompleted !== 1)) {
+        return false;
+      }
+
+
+      // Filter by data_nascimento
+      const cliData = new Date(cli.createdat).toISOString().slice(0, 10); // Convert timestamp to date string
+      if (searchdata && searchdata !== cliData) {
+        return false;
+      }
+
+
+      return true;
+    });
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = ClinicalCompositions && ClinicalCompositions.length > 0 ? ClinicalCompositions.slice(indexOfFirstItem, indexOfLastItem) : [];
+    const currentItems = filteredClinical.slice(indexOfFirstItem, indexOfLastItem);
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(ClinicalCompositions.length / itemsPerPage); i++) {
