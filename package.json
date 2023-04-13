@@ -36,6 +36,7 @@
     "bulma": "^0.9.4",
     "moment": "^2.29.4",
     "object-path": "^0.11.8",
+    "protected-aidaforms": "file:protected-aidaforms-1.5.9.tgz",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-calendar": "^4.0.0",
