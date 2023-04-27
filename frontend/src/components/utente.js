@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import UtenteDataService from 'C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js';
+import UtenteDataService from 'C:/Users/ines_/bee_school/frontend/src/services/tutorial.service.js';
 import swal from 'sweetalert';
 import image from "../assets/images/patient-icon-9247.png";
 

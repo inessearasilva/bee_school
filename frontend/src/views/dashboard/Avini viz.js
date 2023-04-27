@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Form } from 'protected-aidaforms';
 import { json, useParams, withRouter } from 'react-router-dom'; // import the useParams hook
 import jdt from './InitialEvaluation';
-import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js"
+import UtenteDataService from "C:/Users/ines_/bee_school/frontend/src/services/tutorial.service.js"
 import swal from 'sweetalert';
 import { replaceValuesJDT } from './SavedValues geral.js';
 
@@ -149,76 +148,7 @@ const Aviniviz = () => {
 
   return ( 
     <>
-      {currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
-        <div>
-        <Form
-        ref={formRef} // pass the reference to the form component
-        onSubmit={(values, changedFields) => console.log("SUBMITTED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
-        onSave={(values, changedFields) => console.log("SAVED VALUES: ", values, "CHANGED FIELDS: ", changedFields)}
-        onCancel={status => console.log("CANCELLED:", status)}
-        template={newJDT}
-        dlm={{}}
-        showPrint={true}
-        editMode={false}
-        professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
-        canSubmit={true}
-        canSave={true}
-        canCancel={true}
-        patientData={{
-          "numSequencial": currentUtente.num_sequencial,
-          "nome": currentUtente.nome_utente,
-          "dtaNascimento": formattedDate,
-          "sexo": currentUtente.sexo,
-          "processo":  formValues.idcomposition
-          }}
-          reportData={{
-          estado: estado,
-          dtaCriada: formattedcreatedDate,
-          realizada: "Inês Silva",
-          responsavel: "Inês Silva"
-          }}
-        referenceModel={[
-         {"itemName": "Número sequencial",
-         "item": "num_seq",
-         "value": currentUtente.num_sequencial,
-         "formVisible": true
-         },
-         {"itemName": "Nome",
-         "item": "Nome",
-         "value": currentUtente.nome_utente,
-         "formVisible": true
-         },
-         {
-          "itemName": "Data de nascimento",
-          "item": "dtaNascimento",
-          "value": formattedDate,
-          "formVisible": true
-        }
-         ]}
-         submitButtonDisabled={false}
-         saveButtonDisabled={false}
-         />
-         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor:'white' }}>
-          <br></br><br></br><br></br><br></br>
-          <button onClick={() => window.history.back()} type="button" className="btn btn-primary" 
-          style={{
-            backgroundColor: "#60b1e0",
-            borderColor: "#60b1e0",
-            borderRadius: "0.15rem",
-            width: "4.2rem",
-            height: "2.2rem",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "#fff",
-            fontSize: "0.8rem"
-          }}>
-            Voltar
-          </button>
-          <br></br><br></br><br></br><br></br><br></br>
-        </div>
-         </div>
-         )}
+      <h1>Hello</h1>
        </>
      );
   

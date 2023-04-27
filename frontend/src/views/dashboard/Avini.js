@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js"
+import UtenteDataService from "C:/Users/ines_/bee_school/frontend/src/services/tutorial.service.js"
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, ciley} from '@coreui/icons'

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Form } from 'protected-aidaforms';
 import { json, useParams } from 'react-router-dom'; // import the useParams hook
 import jdt from './JSON';
-import UtenteDataService from "C:/Users/ines_/fisiosys/frontend/src/services/tutorial.service.js"
+import UtenteDataService from "C:/Users/ines_/bee_school/frontend/src/services/tutorial.service.js"
 import swal from 'sweetalert';
 import { replaceValuesJDT } from './SavedValues.js';
 
@@ -182,58 +181,7 @@ const handleSave = (values, changedFields) => {
 
   return ( 
     <>
-      {!isLoading && currentUtente.nome_utente !== '' && initialComposition.id_initialcomposition !== '' && newJDT !== '' && (
-        <Form
-        ref={formRef} // pass the reference to the form component
-        onSubmit={handleSubmit}
-        onSave={handleSave}
-        onCancel={() => {
-          swal("", "Cancelado com sucesso", "warning"); // Show SweetAlert warning message
-          window.history.back(); // Go back to previous page
-        }}
-        template={newJDT}
-        dlm={{}}
-        showPrint={false}
-        editMode={true}
-        professionalTasks={["Registar Pedido", "Consultar Pedido", "Anular Pedido"]}
-        canSubmit={true}
-        canSave={true}
-        canCancel={true}
-        patientData={{
-        "numSequencial": currentUtente.num_sequencial,
-        "nome": currentUtente.nome_utente,
-        "dtaNascimento": currentUtente.data_nascimento,
-        "sexo": currentUtente.sexo,
-        "episodio":  initialComposition.id_initialcomposition
-        }}
-        reportData={{
-        dtaEncerrada: dtaEncerrada ? dtaEncerrada.toLocaleString() : null,
-        dtaCriada: dtaCriada ? dtaCriada.toLocaleString() : null,
-        realizada: "Inês Silva",
-        responsavel: "Inês Silva"
-        }}
-        referenceModel={[
-         {"itemName": "Número sequencial",
-         "item": "num_seq",
-         "value": currentUtente.num_sequencial,
-         "formVisible": true
-         },
-         {"itemName": "Nome",
-         "item": "Nome",
-         "value": currentUtente.nome_utente,
-         "formVisible": true
-         },
-         {
-          "itemName": "Data de nascimento",
-          "item": "dtaNascimento",
-          "value": formattedDate,
-          "formVisible": true
-        }
-         ]}
-         submitButtonDisabled={false}
-         saveButtonDisabled={false}
-         />
-         )}
+      <h1>Hello</h1>
        </>
      );
   
