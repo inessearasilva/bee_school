@@ -39,7 +39,7 @@ const AppSidebar = () => {
       unfoldable={unfoldable}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <img src={logo} alt="Logo" height='60' width='110' />
+        <img src={logo} alt="Logo" height='60' width='60' />
       </CSidebarBrand>
       <CSidebarNav>
         <br></br>
