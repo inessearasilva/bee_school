@@ -8,7 +8,7 @@ import { CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/r
 
 import { AppSidebarNav } from './AppSidebarNav'
 
-import logo from '../assets/fisiminho/fisiminho.png'
+import logo from '../assets/bee/bee.png'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
@@ -39,7 +39,7 @@ const AppSidebar = () => {
       unfoldable={unfoldable}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <img src={logo} alt="Logo" height='50' width='170' />
+        <img src={logo} alt="Logo" height='60' width='110' />
       </CSidebarBrand>
       <CSidebarNav>
         <br></br>
