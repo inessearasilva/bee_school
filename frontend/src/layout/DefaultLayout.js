@@ -1,15 +1,15 @@
 import React from 'react'
-import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
+import { AppContent, AppFooter, AppHeader } from '../components/index'
 
 const DefaultLayout = () => {
   return (
     <div>
-      <AppSidebar />
+      <AppHeader />
       <div className="wrapper d-flex flex-column min-vh-100 bg-white">
-        <AppHeader />
         <div className="body flex-grow-1 px-3">
           <AppContent />
         </div>
+        <AppFooter />
       </div>
     </div>
   )

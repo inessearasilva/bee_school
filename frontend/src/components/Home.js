@@ -1,27 +1,22 @@
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../assets/bee/bee.png'
 
 function BrandExample() {
   return (
     <>
-      <Navbar class="navbar navbar-expand-lg navbar-light bg-light">
+      <Navbar className="navbar navbar-expand-lg navbar-white bg-white">
         <Container>
-          {/*
-          <Navbar.Brand>
-            <img
-              src={logo}
-              width="100"
-              height="100"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
-  */}
-          <div>
-      <h1>Objetivo</h1>
-      <br></br>
-      <h5>Aqui vais encontrar estatísticas sobre doenças crónicas não transmissíveis.</h5>
-      </div>
+        <div class="container text">
+        <div class="row align-items-start">
+          <div class="col-4">
+            One column of 1/3 Hello. I am tetsing these columns in order to see if they 
+          </div>
+          <div class="col-8">
+            One column of 2/3. Despite the size being here. it is fixed
+          </div>
+        </div>
+        </div>
         </Container>
       </Navbar>
     </>

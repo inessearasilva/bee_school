@@ -13,6 +13,24 @@ select option::before {
   pointer-events: none;
 }
 
+.my-custom-class {
+  /* Define your custom styles here */
+  margin-left: 100px; /* Example style to add left margin */
+  margin-right: 30px;
+}
+
+
+.app-sidebar-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 12rem; /* Adjust the width as needed */
+  background-color: #ffffff;
+  /* Add any additional styles for the sidebar */
+}
+
+
 .my-heading {
   font-family: Arial, sans-serif;
   color:#3c4b64;
