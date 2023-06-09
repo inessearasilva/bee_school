@@ -19,7 +19,7 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Facto ou Mito?',
+    name: 'Fact or Cap?',
     to: '/desmistificação',
     icon: <CIcon icon={cilZoom} customClassName="nav-icon" />,
   }

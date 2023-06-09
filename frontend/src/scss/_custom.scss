@@ -148,7 +148,6 @@ select option::before {
 
 .home-table {
   border: 1px solid #d8d7d7;
-  min-width: 390px;
   font-family: Cambria;
   font-size: 18px;
   border-radius: 8px;
@@ -162,7 +161,7 @@ select option::before {
   padding: 15px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  background: linear-gradient(to bottom, #ffe02e 9%, transparent 0%);
+  background: linear-gradient(to bottom, #ffe432 9%, transparent 0%);
 }
 
 
@@ -180,6 +179,24 @@ select option::before {
   white-space: nowrap;
   margin-left: 120px;
 }
+
+.about-us-table {
+  border: 1px solid #d8d7d7;
+  font-family: Cambria;
+  background-color: #666666;
+  font-size: 18px;
+  border-radius: 8px;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+
+// ->>>>>>>>>>>>>>>>>>>>>>>>>>> Text Styles <<<<<<<<<<<<<<<<<<<<<<<<<<<- 
+
+.outline {
+  -webkit-text-stroke: 0.4px black; 
+}
+
 
 
 

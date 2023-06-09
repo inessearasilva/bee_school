@@ -1,6 +1,8 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import image from '../assets/images/monitor.png';
+import world from '../assets/images/world.jpg';
 
 function Home() {
   return (
@@ -10,7 +12,7 @@ function Home() {
           <div className="container text">
             <div className="row align-items-start">
               <div className="col-4">
-                <table className="home-table">
+                <table className="home-table" style={{ minWidth: '390px' }}>
                   <thead>
                     <tr>
                     <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
@@ -64,7 +66,7 @@ function Home() {
                   </tfoot>
                 </table>
                 <br></br>
-                <table className="home-table">
+                <table className="home-table" style={{ minWidth: '390px' }}>
                   <thead>
                     <tr>
                     <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
@@ -118,8 +120,14 @@ function Home() {
                   </tfoot>
                 </table>
           </div>
-          <div className="col-8">
-            One column of 2/3. Despite the size being here, it is fixed.
+          <div className="col-1"></div>
+          <div className="col-7">
+          <img src={image} alt="Background" width="730"/>
+          <br></br><br></br>
+          <h2 style={{fontFamily: 'Cambria'}}><b>Tweets density</b></h2>
+          <h6 style={{fontFamily: 'Cambria'}}>The number of tweets per country</h6>
+          <br></br>
+          <img src={world} alt="Metrics" width="730"/>
           </div>
         </div>
         </div>
