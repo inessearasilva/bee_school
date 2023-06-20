@@ -1,45 +1,29 @@
 const express = require("express");
-// const bodyParser = require("body-parser"); /* deprecated */
+const mongoose = require("mongoose");
+const Router = require("./app/routes/tweets")
 const cors = require("cors");
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
+app.use(express.json());
 
-app.use(cors(corsOptions));
+app.use(express.json());
+app.use(cors()); // Add this line to enable CORS
 
-// parse requests of content-type - application/json
-app.use(express.json());  /* bodyParser.json() is deprecated */
+require("dotenv").config();
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));   /* bodyParser.urlencoded() is deprecated */
+const uri = process.env.ATLAS_URI;
 
-// const db = require("./app/models");
-// db.sequelize.sync();
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology:true });
 
-// simple route
-// app.get("/", (req, res) => {
-//   res.json({ message: "Welcome." });
-// });
-
-require("./app/routes/turorial.routes")(app);
-
-require("./app/routes/forms.routes")(app);
-
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
 });
 
-app.use(express.static("frontend/build"));
+app.use(Router);
 
-app.get("*", (req, res)=> {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
-})
+app.listen(5050, () => {
+  console.log("Server is running at port 5050");
+});

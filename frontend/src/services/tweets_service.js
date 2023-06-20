@@ -1,12 +1,12 @@
 import http from "../http-common";
 
-class UtenteDataService {
+class TweetDataService {
   getAll() {
-    return http.get("/utente");
+    return http.get("/tweets");
   }
 
-  get(num_sequencial) {
-    return http.get(`/utente/${num_sequencial}`);
+  get(id) {
+    return http.get(`/tweets/${id}`);
   }
 
   create(data) {
@@ -131,4 +131,4 @@ class UtenteDataService {
 
 }
 
-export default new UtenteDataService();
+export default new TweetDataService();

@@ -190,6 +190,12 @@ select option::before {
   border-collapse: separate;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+
 
 // ->>>>>>>>>>>>>>>>>>>>>>>>>>> Text Styles <<<<<<<<<<<<<<<<<<<<<<<<<<<- 
 

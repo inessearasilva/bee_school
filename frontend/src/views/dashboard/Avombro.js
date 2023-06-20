@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UtenteDataService from "C:/Users/ines_/bee_school/frontend/src/services/tutorial.service.js"
+import TweetDataService from "C:/Users/ines_/bee_school/frontend/src/services/tweets_service.js"
 import { Link } from "react-router-dom";
 import CIcon from '@coreui/icons-react'
 import {cilPencil, cilUserX, cilUser, ciley} from '@coreui/icons'
@@ -71,7 +71,7 @@ export default class Avombro extends Component {
   }  
 
   retrieveForm() {
-    UtenteDataService.getAllformAvombro()
+    TweetDataService.getAllformAvombro()
       .then(response => {
         const sortedData = response.data.sort((a, b) => a.createdat - b.createdat);
         const clinicalCompositions = sortedData.map((item) => {
@@ -107,7 +107,7 @@ export default class Avombro extends Component {
   }
 
   searchnum_sequencial() {
-    UtenteDataService.findAvombroBynum_sequencial(this.state.searchnum_sequencial)
+    TweetDataService.findAvombroBynum_sequencial(this.state.searchnum_sequencial)
     .then(response => {
       const clinicalCompositions = response.data.map((item) => {
         const utente = item.utente || {};
@@ -129,7 +129,7 @@ export default class Avombro extends Component {
   }
 
   searchidcomposition() {
-    UtenteDataService.findAvombroByidcomposition(this.state.searchidcomposition)
+    TweetDataService.findAvombroByidcomposition(this.state.searchidcomposition)
     .then(response => {
       const clinicalCompositions = response.data.map((item) => {
         const utente = item.utente || {};
@@ -152,7 +152,7 @@ export default class Avombro extends Component {
 
   searchestado() {
     const { searchestado } = this.state;
-    UtenteDataService.findAvombroByestado(searchestado)
+    TweetDataService.findAvombroByestado(searchestado)
     .then(response => {
       const clinicalCompositions = response.data.map((item) => {
         const utente = item.utente || {};
@@ -175,7 +175,7 @@ export default class Avombro extends Component {
 
   searchdata() {
     const { searchdata } = this.state;
-    UtenteDataService.findAvombroBydata(searchdata)
+    TweetDataService.findAvombroBydata(searchdata)
     .then(response => {
       const clinicalCompositions = response.data.map((item) => {
         const utente = item.utente || {};
