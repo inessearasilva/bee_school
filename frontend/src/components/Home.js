@@ -82,7 +82,7 @@ export default class Home extends Component {
               <div className="col-lg-4 col-md-6 col-sm-12">
               <div className="flex-container">
                   <div className="flex-item">
-                  <table className="home-table" style={{ minWidth: '390px' }}>
+                  <table className="home-table" style={{ width:'100%', minWidth: '390px', maxWidth:'390px' }}>
                     <thead>
                       <tr>
                         <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
@@ -93,7 +93,7 @@ export default class Home extends Component {
                     <Hashtags />
                   </table>
                   <br></br>
-                  <table className="home-table" style={{ minWidth: '390px' }}>
+                  <table className="home-table" style={{ width:'100%', minWidth: '390px', maxWidth:'390px' }}>
                     <thead>
                       <tr>
                       <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>

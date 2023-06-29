@@ -30,12 +30,11 @@ const Hashtags = () => {
         <React.Fragment key={record._id}>
           <tr>
             <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
-              {record.nome}
             </td>
           </tr>
           {getFirstTenHashtagEntries(record).map(([hashtag, value]) => (
             <tr key={hashtag}>
-              <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
+              <td style={{ padding: '3px', paddingInlineStart: '10px', width:'82.5%' }}>
                 {hashtag}
               </td>
               <td className="qtt-background" style={{ padding: '3px' }}>

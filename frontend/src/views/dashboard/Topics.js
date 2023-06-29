@@ -29,13 +29,13 @@ const Topics = () => {
       {getFirstTenRecords().map((record) => (
         <React.Fragment key={record._id}>
           <tr>
-            <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
-              {record.nome}
+            <td style={{ padding: '3px', paddingInlineStart: '10px' }}>
+              
             </td>
           </tr>
           {getFirstTenTopicsEntries(record).map(([topic, value]) => (
             <tr key={topic}>
-              <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
+              <td style={{ padding: '3px', paddingInlineStart: '10px', width:'82.5%' }}>
                 {topic}
               </td>
               <td className="qtt-background" style={{ padding: '3px' }}>
