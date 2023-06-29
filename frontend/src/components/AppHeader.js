@@ -37,7 +37,7 @@ const AppHeader = () => {
           </CNavLink>
           </CNavItem>
           <CNavItem className="mx-3">
-          <CNavLink href="#" style={{ fontSize: '18px', color: 'black' }}>
+          <CNavLink to="/sentiment_analysis" component={NavLink} style={{ fontSize: '18px', color: 'black' }}>
             Sentiment Analysis
           </CNavLink>
         </CNavItem>

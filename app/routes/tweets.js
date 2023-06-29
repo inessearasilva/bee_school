@@ -19,6 +19,7 @@ async function checkDatabaseConnection(req, res, next) {
   }
 }
 
+// ==================> Tweets <=======================
 
 // This section will help you get a list of all the records.
 router.get("/tweets", checkDatabaseConnection, async (req, res) => {
@@ -27,6 +28,19 @@ router.get("/tweets", checkDatabaseConnection, async (req, res) => {
   const results = await collection.find({}).toArray();
   res.send(results).status(200);
 });
+
+// ==================> statistics_general <=======================
+
+// This section will help you get a list of all the records.
+router.get("/statistics_general", checkDatabaseConnection, async (req, res) => {
+  const db = req.app.locals.db;
+  const collection = db.collection("statistics_general");
+  const results = await collection.find({}).toArray();
+  res.send(results).status(200);
+});
+
+
+// -----------------------------------------------------------------
 
 
 // This section will help you get a single record by id

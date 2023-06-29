@@ -1,72 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
- 
-const Record = (props) => (
- <tr>
-   <td>{props.record.nome}</td>
-   <td>{props.record.emprego}</td>
- </tr>
+
+const Record = ({ hashtags }) => (
+  <div>
+    <h4>Hashtags:</h4>
+    {hashtags.map(([hashtag, value]) => (
+      <div key={hashtag}>
+        {hashtag}: {value}
+      </div>
+    ))}
+  </div>
 );
- 
-export default function RecordList() {
- const [records, setRecords] = useState([]);
- 
- // This method fetches the records from the database.
- useEffect(() => {
-   async function getRecords() {
-     const response = await fetch(`http://localhost:5050/tweets/`);
- 
-     if (!response.ok) {
-       const message = `An error occurred: ${response.statusText}`;
-       window.alert(message);
-       return;
-     }
- 
-     const records = await response.json();
-     setRecords(records);
-   }
- 
-   getRecords();
- 
-   return;
- }, [records.length]);
- 
- // This method will delete a record
- async function deleteRecord(id) {
-   await fetch(`http://localhost:5050/tweets/${id}`, {
-     method: "DELETE"
-   });
- 
-   const newRecords = records.filter((el) => el._id !== id);
-   setRecords(newRecords);
- }
- 
- // This method will map out the records on the table
- function recordList() {
-   return records.map((record) => {
-     return (
-       <Record
-         record={record}
-         deleteRecord={() => deleteRecord(record._id)}
-         key={record._id}
-       />
-     );
-   });
- }
- 
- // This following section will display the table with the records of individuals.
- return (
-   <div>
-     <h3>Tweets</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
-         <tr>
-           <th>Nome</th>
-           <th>Emprego</th>
-         </tr>
-       </thead>
-       <tbody>{recordList()}</tbody>
-     </table>
-   </div>
- );
+
+
+export default function Hashtags() {
+  const [records, setRecords] = useState([]);
+
+  useEffect(() => {
+    async function getRecords() {
+      try {
+        const response = await fetch("http://localhost:5050/statistics_general/");
+        if (!response.ok) {
+          throw new Error(`An error occurred: ${response.statusText}`);
+        }
+        const records = await response.json();
+        setRecords(records);
+      } catch (error) {
+        window.alert(error.message);
+      }
+    }
+
+    getRecords();
+  }, []);
+
+  const getFirstTenRecords = () => records.slice(0, 10);
+  const getFirstTenHashtagEntries = (record) => Object.entries(record.hashtags).slice(0, 10);
+
+  return (
+    <div>
+      {getFirstTenRecords().map((record) => (
+        <Record hashtags={getFirstTenHashtagEntries(record)} key={record._id} />
+      ))}
+    </div>
+  );
 }

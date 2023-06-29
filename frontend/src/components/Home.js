@@ -4,6 +4,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import image from '../assets/images/monitor.png';
 import world from '../assets/images/world.jpg';
 import TweetDataService from "C:/Users/ines_/bee_school/frontend/src/services/tweets_service.js"
+import Map from '../views/dashboard/Map'
+import Hashtags from '../views/dashboard/Hashtags'
+import Topics from '../views/dashboard/Topics'
 
 export default class Home extends Component {
   constructor(props) {
@@ -82,55 +85,12 @@ export default class Home extends Component {
                   <table className="home-table" style={{ minWidth: '390px' }}>
                     <thead>
                       <tr>
-                      <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
-                        <span style={{ position: 'relative', top: '3.6px' }}># Hashtag Trends</span>
-                      </th>
+                        <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
+                          <span style={{ position: 'relative', top: '3.6px' }}># Hashtag Trends</span>
+                        </th>
                       </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                      <td style={{ padding: '3px', paddingInlineStart: '20px' }}>{Tweets.nome}</td>
-                      <td className="qtt-background" style={{ padding: '3px', textAlign: 'right'}}>10000</td>
-                    </tr>
-                      <tr>
-                      <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#ChildhoodObesity</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>800</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#Sports</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>759</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#FastFood</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>712</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#ChildWellness</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>629</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#NutritionForKids</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>603</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#HealthyKids</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>504</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#ActiveKids</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>502</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#HealthyHabits</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>468</td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>#Sedentarism</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>420</td>
-                      </tr>
-                    </tfoot>
+                    <Hashtags />
                   </table>
                   <br></br>
                   <table className="home-table" style={{ minWidth: '390px' }}>
@@ -138,53 +98,10 @@ export default class Home extends Component {
                       <tr>
                       <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
                         <span style={{ position: 'relative', top: '3.6px' }}> Topic Trends</span>
-                      </th>
+                        </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px'}}>Diabetes</td>
-                        <td className="qtt-background" style={{ padding: '3px', textAlign: 'right' }}>1000</td>
-                      </tr>
-                      <tr>
-                      <td style={{ padding: '3px', paddingInlineStart: '20px' }}>ChildhoodObesity</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>800</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>Sports</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>759</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>FastFood</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>712</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>ChildWellness</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>629</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>NutritionForKids</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>603</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>HealthyKids</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>504</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>ActiveKids</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>502</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>HealthyHabits</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>468</td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td style={{ padding: '3px', paddingInlineStart: '20px' }}>Sedentarism</td>
-                        <td className='qtt-background' style={{ padding: '3px' }}>420</td>
-                      </tr>
-                    </tfoot>
+                    <Topics />
                   </table>
             </div>
             </div>
@@ -198,7 +115,7 @@ export default class Home extends Component {
                       <h6 style={{ fontFamily: 'Cambria' }}>The number of tweets per country</h6>
                     </div>
                     <div className="flex-item">
-                      <img src={world} alt="Metrics" className="img-fluid" />
+                      <Map />
                     </div>
                   </div>
                 </div>
