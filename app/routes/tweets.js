@@ -39,9 +39,28 @@ router.get("/statistics_general", checkDatabaseConnection, async (req, res) => {
   res.send(results).status(200);
 });
 
+// ==================> statistics <=======================
+
+// This section will help you get a list of all the records.
+router.get("/statistics", checkDatabaseConnection, async (req, res) => {
+  const db = req.app.locals.db;
+  const collection = db.collection("statistics");
+  const results = await collection.find({}).toArray();
+  res.send(results).status(200);
+});
+
+// ==================> links <=======================
+
+// This section will help you get a list of all the records.
+router.get("/links", checkDatabaseConnection, async (req, res) => {
+  const db = req.app.locals.db;
+  const collection = db.collection("links");
+  const results = await collection.find({}).toArray();
+  res.send(results).status(200);
+});
+
 
 // -----------------------------------------------------------------
-
 
 // This section will help you get a single record by id
 router.get("/tweets/:id", checkDatabaseConnection, async (req, res) => {

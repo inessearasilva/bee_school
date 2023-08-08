@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, CircleMarker, Popup, useMap, ZoomControl } from "react-leaflet";
-import L from "leaflet";
+import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Record = (props) => {
-  const heatmapData = Object.entries(props.record.geographical).map(([country, value]) => ({
-    country: country,
-    value: value,
-    coordinates: [Math.random() * 180 - 90, Math.random() * 360 - 180], // Replace with actual coordinates if available
-  }));
+  const heatmapData = Object.entries(props.record.geographical).reduce((data, [country, values]) => {
+    if (country !== "null") {
+      const value = values[0]; // Value is stored at index 0
+      const latitude = values[1]; // Latitude at index 1
+      const longitude = values[2]; // Longitude at index 2
+      
+      if (latitude !== null && longitude !== null) {
+        data.push({
+          country: country,
+          value: value,
+          coordinates: [latitude, longitude],
+        });
+      }
+    }
+    return data;
+  }, []);
 
   return (
-    <MapContainer style={{ height: "512px", width: "512px" }} center={[0, 0]} zoom={1} doubleClickZoom={false} attributionControl={false} zoomControl={false} maxBounds={[[90, -180], [-90, 180]]}>
+    <MapContainer style={{ height: "660px", width: "830px" }} center={[0, 0]} zoomSnap={0} zoom={1.70} doubleClickZoom={false} attributionControl={false} maxBounds={[[90, -180], [-90, 180]]}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" noWrap={true}/>
       {heatmapData.map((data) => (
         <CircleMarker
           key={data.country}
           center={data.coordinates}
-          radius= {(data.value) ** (1/4) * 5}
+          radius= {(data.value) ** (1/5) * 5}
           color="#F9E076"
           fillColor="#F9E076"
           fillOpacity={0.8}

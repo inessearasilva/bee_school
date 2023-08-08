@@ -24,6 +24,12 @@ const Topics = () => {
   const getFirstTenTopicsEntries = (record) =>
     Object.entries(record.topics).slice(0, 10);
 
+  const redirectToTopicPage = (topic) => {
+    // Modify the URL to the desired topic page
+    const topicPageURL = `http:/#/topics/${topic}`;
+    window.open(topicPageURL, "_blank");
+  };
+
   return (
     <tbody>
       {getFirstTenRecords().map((record) => (
@@ -35,14 +41,20 @@ const Topics = () => {
           </tr>
           {getFirstTenTopicsEntries(record).map(([topic, value]) => (
             <tr key={topic}>
-              <td style={{ padding: '3px', paddingInlineStart: '10px', width:'82.5%' }}>
-                {topic}
+              <td style={{ padding: '5px', paddingInlineStart: '10px', width:'82.5%' }}>
+                <a href="#" onClick={() => redirectToTopicPage(topic)}>
+                  {topic}
+                </a>
               </td>
               <td className="qtt-background" style={{ padding: '3px' }}>
                 {value}
               </td>
             </tr>
           ))}
+          <tr>
+            <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
+            </td>
+          </tr>
         </React.Fragment>
       ))}
     </tbody>
