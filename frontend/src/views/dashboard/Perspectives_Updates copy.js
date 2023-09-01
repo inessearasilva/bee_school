@@ -31,19 +31,34 @@ export default function Hashtags() {
     }
   };
 
+  // Remove duplicate records based on both URL and title
+  const uniqueRecords = records.filter(
+    (record, index, self) =>
+      index ===
+      self.findIndex(
+        (r) => r.url === record.url || r.title === record.title
+      )
+  );
+
   return (
+    <div>
+            <h2>Perspectives and Updates</h2>
+      <br />
     <div style={{ display: "flex" }}>
       <div style={{ flex: 1 }}>
-        {records.slice(0, records.length / 2).map((record) => (
+        {uniqueRecords.slice(0, uniqueRecords.length / 2).map((record) => (
           <div key={record._id}>
+            {record.topic}
             {validateUrl(record.url) ? (
               <ReactTinyLink
                 cardSize="large"
                 showGraphic={true}
                 maxLine={2}
-                noCache={true}
                 minLine={1}
+                noCache={true}
                 url={record.url}
+                loadSecureUrl={true}
+                
               />
             ) : (
               <p>Invalid URL: {record.url}</p>
@@ -53,7 +68,7 @@ export default function Hashtags() {
         ))}
       </div>
       <div style={{ flex: 1 }}>
-        {records.slice(records.length / 2).map((record) => (
+        {uniqueRecords.slice(uniqueRecords.length / 2).map((record) => (
           <div key={record._id}>
             {validateUrl(record.url) ? (
               <ReactTinyLink
@@ -63,6 +78,7 @@ export default function Hashtags() {
                 minLine={1}
                 noCache={true}
                 url={record.url}
+                loadSecureUrl={true}
               />
             ) : (
               <p>Invalid URL: {record.url}</p>
@@ -71,6 +87,7 @@ export default function Hashtags() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

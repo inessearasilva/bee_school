@@ -32,12 +32,12 @@ const AppHeader = () => {
           </CNavLink>
         </CNavItem>
           <CNavItem className="mx-3">
-          <CNavLink to="/sentiment_analysis" component={NavLink} style={{ fontSize: '18px', color: 'black' }}>
+          <CNavLink to="/tweetstats_worldwide" component={NavLink} style={{ fontSize: '18px', color: 'black' }}>
           TweetStats Worldwide
           </CNavLink>
         </CNavItem>
         <CNavItem className="mx-3">
-          <CNavLink to="/desmistificação" component={NavLink} style={{ fontSize: '18px', color: 'black' }}>
+          <CNavLink to="/perspectives_updates" component={NavLink} style={{ fontSize: '18px', color: 'black' }}>
           Perspectives and Updates
           </CNavLink>
           </CNavItem>

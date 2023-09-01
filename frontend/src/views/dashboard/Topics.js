@@ -42,7 +42,7 @@ const Topics = () => {
           {getFirstTenTopicsEntries(record).map(([topic, value]) => (
             <tr key={topic}>
               <td style={{ padding: '5px', paddingInlineStart: '10px', width:'82.5%' }}>
-                <a href="#" onClick={() => redirectToTopicPage(topic)}>
+                <a style={{color: 'black'}} href="#" onClick={() => redirectToTopicPage(topic)}>
                   {topic}
                 </a>
               </td>
@@ -51,6 +51,14 @@ const Topics = () => {
               </td>
             </tr>
           ))}
+          <tr>
+          <td className="viewall-background" style={{ padding: '3px', marginLeft:'149px' }}>
+          <a href="/#/all_topics" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+              <strong>View All</strong>
+          </a>
+          </td>
+
+          </tr>
           <tr>
             <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
             </td>

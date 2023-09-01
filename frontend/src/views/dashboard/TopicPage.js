@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import verifiedImage from '../../assets/images/verified.png';
-import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser } from 'react-icons/fa';
+import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser, FaRegSmileBeam, FaRegFrown, FaRegMeh } from 'react-icons/fa';
 import Map from './Map Topic'
 import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList, Label, PieChart, Pie, Cell, Tooltip } from "recharts";
 import ReactWordcloud from "react-wordcloud"; 
@@ -193,13 +193,18 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
               <div>
                 <strong>@{entry.username}</strong> {entry.verified && <img src={verifiedImage} alt="Verified" style={{ width: '13px', height: '13px', verticalAlign: 'middle', marginBottom: '2px' }} />}
               </div>
-              <div style={{fontSize: '15px', marginRight: '5px'}}>
+              <div style={{ fontSize: '15px', marginRight: '5px' }}>
                 {entry.result}
-                <br></br>
-                {entry.media !== null ? entry.media : null}
+                <br />
+                {entry.media !== null ? (
+                <a href={entry.media} target="_blank" rel="noopener noreferrer">
+                  {entry.media}
+                </a>
+              ) : null}
               </div>
             </div>
           </div>
+          <br></br>
           <div style={{ marginLeft: '75px', marginBottom: '5px'}}>
             <FaEye title="Impressions" /> {entry.total_impressions} &nbsp;&nbsp;&nbsp;
             <FaHeart title="Likes" /> {entry.total_likes} &nbsp;&nbsp;&nbsp;
@@ -207,6 +212,12 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
             <FaQuoteLeft title="Quotes" /> {entry.total_quotes} &nbsp;&nbsp;&nbsp;
             <FaReply title="Replies" /> {entry.total_replys} &nbsp;&nbsp;&nbsp;
             {entry.mentions > 1 ? <><FaUser title="Mentions" /> {entry.mentions}</> : null}
+
+            <div style={{ marginLeft: '10px', display: 'inline-flex', alignItems: 'center'}}>
+              {entry.sentiment === "Positive" ? <p><FaRegSmileBeam style={{ color: "#76CC9D" }} /> Positive</p> : null}
+              {entry.sentiment === "Negative" ? <p><FaRegFrown style={{ color: "#F46161" }} /> Negative</p>: null}
+              {entry.sentiment === "Neutral" ? <p><FaRegMeh style={{ color: "#FADB7C" }} /> Neutral</p>: null}
+            </div>
           </div>
         </div>
  ))

@@ -4,7 +4,8 @@ import ReactWordcloud from "react-wordcloud";
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css'
 import verifiedImage from '../../assets/images/verified.png';
-import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser } from 'react-icons/fa';
+import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser, FaRegSmileBeam, FaRegFrown, FaRegMeh } from 'react-icons/fa';
+
 
 export default function Sentiment() {
   const [records, setRecords] = useState([]);
@@ -170,16 +171,19 @@ export default function Sentiment() {
 
   // Preparar os dados para o gráfico
   const chartData = records.map((record) => ({
-    negative: { value: record.sentiment_count.Negative, perc: record.sentiment_percentages.Negative },
-    neutral: { value: record.sentiment_count.Neutral, perc: record.sentiment_percentages.Neutral },
-    positive: { value: record.sentiment_count.Positive, perc: record.sentiment_percentages.Positive }
+    negative: { value: record.sentiment_count.Negative, perc: record.sentiment_percentages.Negative, sqrtValue: Math.sqrt(record.sentiment_count.Negative) },
+    neutral: { value: record.sentiment_count.Neutral, perc: record.sentiment_percentages.Neutral, sqrtValue: Math.sqrt(record.sentiment_count.Neutral)  },
+    positive: { value: record.sentiment_count.Positive, perc: record.sentiment_percentages.Positive, sqrtValue: Math.sqrt(record.sentiment_count.Positive) }
   }));
 
   // Esta seção a seguir exibirá os registros e o gráfico
   return (
     <div>
+      <h2>TweetStats Worldwide</h2>
+      <br />
+      <table className="home-table1" style={{ display: 'flex', alignItems: 'center', width:'100%', minWidth: '1280px', maxWidth:'1280px' }}>
       <div className="container text">
-        <div className="row align-items-start">
+        <div className="row align-items-start" style={{marginTop: '30px'}}>
           <div className="col-lg-6 col-md-4 col-sm-10">
       <div style={{ width: "500px", height: "300px", marginTop: '10px' }}>
         <ResponsiveContainer>
@@ -188,7 +192,7 @@ export default function Sentiment() {
             <YAxis type="category" hide />
             <Legend iconType="none" />
             <Bar
-              dataKey="positive.value"
+              dataKey="positive.sqrtValue"
               fill="#76CC9D"
               name="Positive"
               shape={<CustomizedBar fill="#76CC9D" />} // Usar o componente de forma personalizada para a barra
@@ -205,7 +209,7 @@ export default function Sentiment() {
               />
             </Bar>
             <Bar
-              dataKey="neutral.value"
+              dataKey="neutral.sqrtValue"
               fill="#FADB7C"
               name="Neutral"
               shape={<CustomizedBar fill="#FADB7C" />} // Usar o componente de forma personalizada para a barra
@@ -222,7 +226,7 @@ export default function Sentiment() {
               />
             </Bar>
             <Bar
-              dataKey="negative.value"
+              dataKey="negative.sqrtValue"
               fill="#F46161"
               name="Negative"
               shape={<CustomizedBar fill="#F46161" />} // Usar o componente de forma personalizada para a barra
@@ -243,13 +247,15 @@ export default function Sentiment() {
         </div>
         </div>
         <div className="col-lg-6 col-md-4 col-sm-10">
-        <div style={{ width: "600px", height: "270px", marginBottom: '40px' }}>
+        <div style={{ width: "600px", height: "270px", marginTop:'10px' }}>
               <ReactWordcloud options={options} words={keywordsArray} />
             </div>
       </div>
 
       </div>
       </div>
+      </table>
+      <br></br>
       <div className="container text">
         <div className="row align-items-start">
           <div className="col-lg-8 col-md-6 col-sm-12">
@@ -306,6 +312,12 @@ export default function Sentiment() {
                         <FaQuoteLeft title="Quotes" /> {entry.total_quotes} &nbsp;&nbsp;&nbsp;
                         <FaReply title="Replys" /> {entry.total_replys} &nbsp;&nbsp;&nbsp;
                         {entry.mentions > 1 ? <><FaUser title="Menções" /> {entry.mentions}</> : null}
+
+                        <div style={{ marginLeft: '10px', display: 'inline-flex', alignItems: 'center'}}>
+                          {entry.sentiment === "Positive" ? <p><FaRegSmileBeam style={{ color: "#76CC9D" }} /> Positive</p> : null}
+                          {entry.sentiment === "Negative" ? <p><FaRegFrown style={{ color: "#F46161" }} /> Negative</p>: null}
+                          {entry.sentiment === "Neutral" ? <p><FaRegMeh style={{ color: "#FADB7C" }} /> Neutral</p>: null}
+                        </div>
                       </div>
                     </div>
                   ))
