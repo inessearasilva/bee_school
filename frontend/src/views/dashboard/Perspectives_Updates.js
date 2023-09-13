@@ -58,6 +58,7 @@ export default function Hashtags() {
               <ReactTinyLink
                 cardSize="large"
                 showGraphic={true}
+                defaultMedia={record.photo}
                 maxLine={2}
                 minLine={1}
                 noCache={true}
@@ -98,6 +99,7 @@ export default function Hashtags() {
               <ReactTinyLink
                 cardSize="large"
                 showGraphic={true}
+                defaultMedia={record.photo}
                 maxLine={2}
                 minLine={1}
                 noCache={true}

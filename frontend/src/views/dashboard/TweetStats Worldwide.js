@@ -63,6 +63,7 @@ export default function Sentiment() {
     top_10_global: records[0]?.top_10_global || [],
     top_10_media: records[0]?.top_10_media || [],
     top_10_verified: records[0]?.top_10_verified || [],
+    top_10_concerns: records[0]?.top_10_verified || [],
   };
   
 
@@ -75,6 +76,9 @@ export default function Sentiment() {
       filteredTop10 = hashtags.top_10_media;
       break;
     case "top_10_verified":
+      filteredTop10 = hashtags.top_10_verified;
+      break;
+    case "top_10_concerns":
       filteredTop10 = hashtags.top_10_verified;
       break;
     default:
@@ -261,24 +265,32 @@ export default function Sentiment() {
           <div className="col-lg-8 col-md-6 col-sm-12">
             <div className="flex-container">
               <div className="flex-item">
+              <div style={{ marginBottom: '20px'}}>
+                  <h3>Trending Tweets Today </h3></div>
                 <div className="filter-buttons">
                   <button
                     className={selectedFilter === "top_10_global" ? "active" : ""}
                     onClick={() => handleFilterChange("top_10_global")}
                   >
-                    Top 10 Tweets
+                    Global
                   </button>
                   <button
                     className={selectedFilter === "top_10_media" ? "active" : ""}
                     onClick={() => handleFilterChange("top_10_media")}
                   >
-                    Top 10 Tweets with Media
+                    With Media
                   </button>
                   <button
                     className={selectedFilter === "top_10_verified" ? "active" : ""}
                     onClick={() => handleFilterChange("top_10_verified")}
                   >
-                    Top 10 Verified Tweets
+                   Verified
+                  </button>
+                  <button
+                    className={selectedFilter === "top_10_concerns" ? "active" : ""}
+                    onClick={() => handleFilterChange("top_10_concerns")}
+                  >
+                   Concerns
                   </button>
                 </div>
                 <br />
@@ -310,8 +322,8 @@ export default function Sentiment() {
                         <FaHeart title="Likes" /> {entry.total_likes} &nbsp;&nbsp;&nbsp;
                         <FaRetweet title="Retweets" /> {entry.total_retweets} &nbsp;&nbsp;&nbsp;
                         <FaQuoteLeft title="Quotes" /> {entry.total_quotes} &nbsp;&nbsp;&nbsp;
-                        <FaReply title="Replys" /> {entry.total_replys} &nbsp;&nbsp;&nbsp;
-                        {entry.mentions > 1 ? <><FaUser title="Menções" /> {entry.mentions}</> : null}
+                        <FaReply title="Replies" /> {entry.total_replys} &nbsp;&nbsp;&nbsp;
+                        {entry.mentions > 1 ? <><FaUser title="Mentions" /> {entry.mentions}</> : null}
 
                         <div style={{ marginLeft: '10px', display: 'inline-flex', alignItems: 'center'}}>
                           {entry.sentiment === "Positive" ? <p><FaRegSmileBeam style={{ color: "#76CC9D" }} /> Positive</p> : null}

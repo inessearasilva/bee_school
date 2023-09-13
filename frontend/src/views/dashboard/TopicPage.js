@@ -161,25 +161,33 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
               <div className="col-lg-6 col-md-4 col-sm-8" style={{marginRight:'15px'}}>
               <div className="flex-container">
                   <div className="flex-item">
+                    <div style={{ marginBottom: '20px'}}>
+                  <h3>Trending Tweets Today </h3></div>
                   <div className="filter-buttons">
         <button
           className={selectedFilter === "top_10_global" ? "active" : ""}
           onClick={() => handleFilterChange("top_10_global")}
         >
-          Top 10 Tweets
+          Global
         </button>
         <button
           className={selectedFilter === "top_10_media" ? "active" : ""}
           onClick={() => handleFilterChange("top_10_media")}
         >
-          Top 10 Tweets with Media
+          With Media
         </button>
         <button
           className={selectedFilter === "top_10_verified" ? "active" : ""}
           onClick={() => handleFilterChange("top_10_verified")}
         >
-          Top 10 Verified Tweets
+          Verified
         </button>
+        <button
+                    className={selectedFilter === "top_10_concerns" ? "active" : ""}
+                    onClick={() => handleFilterChange("top_10_concerns")}
+                  >
+                   Concerns
+                  </button>
       </div>
       <br></br>
   {filteredTop10.length > 0 ? (
@@ -310,6 +318,7 @@ export default function Hashtags() {
     top_10_global: record.top_10_global || [],
     top_10_media: record.top_10_media || [],
     top_10_verified: record.top_10_verified || [],
+    top_10_concerns: record.top_10_verified || [],
   };
 
   let filteredTop10 = [];
@@ -323,9 +332,13 @@ export default function Hashtags() {
     case "top_10_verified":
       filteredTop10 = hashtags.top_10_verified;
       break;
+    case "top_10_concerns":
+      filteredTop10 = hashtags.top_10_verified;
+      break;
     default:
       filteredTop10 = hashtags.top_10_global;
       break;
+    
   }
 
   const options = {
