@@ -183,8 +183,8 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
           Verified
         </button>
         <button
-                    className={selectedFilter === "top_10_concerns" ? "active" : ""}
-                    onClick={() => handleFilterChange("top_10_concerns")}
+                    className={selectedFilter === "top_10_question" ? "active" : ""}
+                    onClick={() => handleFilterChange("top_10_question")}
                   >
                    Concerns
                   </button>
@@ -318,7 +318,7 @@ export default function Hashtags() {
     top_10_global: record.top_10_global || [],
     top_10_media: record.top_10_media || [],
     top_10_verified: record.top_10_verified || [],
-    top_10_concerns: record.top_10_verified || [],
+    top_10_question: record.top_10_question || [],
   };
 
   let filteredTop10 = [];
@@ -332,8 +332,8 @@ export default function Hashtags() {
     case "top_10_verified":
       filteredTop10 = hashtags.top_10_verified;
       break;
-    case "top_10_concerns":
-      filteredTop10 = hashtags.top_10_verified;
+    case "top_10_question":
+      filteredTop10 = hashtags.top_10_question;
       break;
     default:
       filteredTop10 = hashtags.top_10_global;

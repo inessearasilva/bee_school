@@ -63,7 +63,7 @@ export default function Sentiment() {
     top_10_global: records[0]?.top_10_global || [],
     top_10_media: records[0]?.top_10_media || [],
     top_10_verified: records[0]?.top_10_verified || [],
-    top_10_concerns: records[0]?.top_10_verified || [],
+    top_10_question: records[0]?.top_10_question || [],
   };
   
 
@@ -78,8 +78,8 @@ export default function Sentiment() {
     case "top_10_verified":
       filteredTop10 = hashtags.top_10_verified;
       break;
-    case "top_10_concerns":
-      filteredTop10 = hashtags.top_10_verified;
+    case "top_10_question":
+      filteredTop10 = hashtags.top_10_question;
       break;
     default:
       filteredTop10 = hashtags.top_10_global;
@@ -287,8 +287,8 @@ export default function Sentiment() {
                    Verified
                   </button>
                   <button
-                    className={selectedFilter === "top_10_concerns" ? "active" : ""}
-                    onClick={() => handleFilterChange("top_10_concerns")}
+                    className={selectedFilter === "top_10_question" ? "active" : ""}
+                    onClick={() => handleFilterChange("top_10_question")}
                   >
                    Concerns
                   </button>
