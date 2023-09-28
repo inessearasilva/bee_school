@@ -39,6 +39,16 @@ router.get("/statistics_general", checkDatabaseConnection, async (req, res) => {
   res.send(results).status(200);
 });
 
+// ==================> general_info <=======================
+
+// This section will help you get a list of all the records.
+router.get("/general_info", checkDatabaseConnection, async (req, res) => {
+  const db = req.app.locals.db;
+  const collection = db.collection("general_info");
+  const results = await collection.find({}).toArray();
+  res.send(results).status(200);
+});
+
 // ==================> statistics <=======================
 
 // This section will help you get a list of all the records.
