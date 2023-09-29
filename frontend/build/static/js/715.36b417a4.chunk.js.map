@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/715.36b417a4.chunk.js","mappings":"yIASA,UAPkB,WAEhB,OACE,0CAEJ,C","sources":["views/dashboard/Consultas.js"],"sourcesContent":["import React from 'react'\r\n\r\nconst Consultas = () => {\r\n\r\n  return (\r\n    <h1>In progress...</h1>\r\n  )\r\n}\r\n\r\nexport default Consultas\r\n"],"names":[],"sourceRoot":""}
