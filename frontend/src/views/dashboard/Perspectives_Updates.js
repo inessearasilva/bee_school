@@ -56,14 +56,14 @@ export default function Hashtags() {
           <div key={record._id}>
             {validateUrl(record.url) ? (
               <ReactTinyLink
-                cardSize="large"
-                showGraphic={true}
-                defaultMedia={record.photo}
-                maxLine={2}
-                minLine={1}
-                noCache={true}
-                url={record.url}
-                loadSecureUrl={true}
+              cardSize="large"
+              showGraphic={true}
+              maxLine={2}
+              minLine={1}
+              noCache={true}
+              url={record.url}
+              loadSecureUrl={true}
+                
                 
               />
             ) : (
@@ -97,14 +97,13 @@ export default function Hashtags() {
           <div key={record._id}>
             {validateUrl(record.url) ? (
               <ReactTinyLink
-                cardSize="large"
-                showGraphic={true}
-                defaultMedia={record.photo}
-                maxLine={2}
-                minLine={1}
-                noCache={true}
-                url={record.url}
-                loadSecureUrl={true}
+              cardSize="large"
+              showGraphic={true}
+              maxLine={2}
+              minLine={1}
+              noCache={true}
+              url={record.url}
+              loadSecureUrl={true}
               />
             ) : (
               <p>Invalid URL: {record.url}</p>
