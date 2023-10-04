@@ -175,9 +175,9 @@ export default function Sentiment() {
 
   // Preparar os dados para o gráfico
   const chartData = records.map((record) => ({
-    negative: { value: record.sentiment_count.Negative, perc: record.sentiment_percentages.Negative, sqrtValue: Math.sqrt(record.sentiment_count.Negative) },
-    neutral: { value: record.sentiment_count.Neutral, perc: record.sentiment_percentages.Neutral, sqrtValue: Math.sqrt(record.sentiment_count.Neutral)  },
-    positive: { value: record.sentiment_count.Positive, perc: record.sentiment_percentages.Positive, sqrtValue: Math.sqrt(record.sentiment_count.Positive) }
+    negative: { value: record.sentiment_count.Negative, perc: record.sentiment_percentages.Negative, sqrtValue: (record.sentiment_count.Negative)/1.1 },
+    neutral: { value: record.sentiment_count.Neutral, perc: record.sentiment_percentages.Neutral, sqrtValue: (record.sentiment_count.Neutral)/1.1 - 35 },
+    positive: { value: record.sentiment_count.Positive, perc: record.sentiment_percentages.Positive, sqrtValue: (record.sentiment_count.Positive)/1.1 }
   }));
 
   // Esta seção a seguir exibirá os registros e o gráfico
