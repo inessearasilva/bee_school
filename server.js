@@ -1,6 +1,8 @@
+require("dotenv").config(); // Load environment variables from .env file
+
 const express = require("express");
 const mongoose = require("mongoose");
-const Router = require("./app/routes/tweets")
+const Router = require("./app/routes/tweets");
 const cors = require("cors");
 const path = require('path');
 
@@ -18,11 +20,9 @@ app.use(express.json());
 
 app.use(cors()); // Add this line to enable CORS
 
-require("dotenv").config();
-
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology:true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
