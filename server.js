@@ -31,6 +31,9 @@ db.once("open", function () {
 
 app.use(Router);
 
-app.listen(5050, () => {
-  console.log("Server is running at port 5050");
+const PORT = process.env.PORT || 5050; // Use the port provided by Heroku or default to 5050
+
+app.listen(PORT, () => {
+  console.log(`Server is running at port ${PORT}`);
 });
+
