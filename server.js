@@ -5,18 +5,14 @@ const cors = require("cors");
 
 const app = express();
 
-// Set CORS headers
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Replace * with your allowed origins
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+var corsOptions = {
+  origin: "https://bee-aware-08ab5a1c994e.herokuapp.com/"
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
-
-app.use(express.json());
-app.use(cors()); // Add this line to enable CORS
+app.use(express.urlencoded({ extended: true }));
 
 require("dotenv").config();
 
@@ -32,6 +28,15 @@ db.once("open", function () {
 
 app.use(Router);
 
-app.listen(5050, () => {
-  console.log("Server is running at port 5050");
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
+
+// Serve static files from the 'frontend/build' directory
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+
+// This route should serve 'index.html' for all routes in the frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
