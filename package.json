@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@canvasjs/charts": "^3.7.44",
     "@mui/material": "^5.13.3",
     "@nextui-org/react": "^1.0.0-beta.13",
     "@syncfusion/ej2-base": "^22.1.34",
