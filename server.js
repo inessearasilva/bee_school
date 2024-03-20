@@ -16,7 +16,6 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use(express.json());
 app.use(cors()); // Add this line to enable CORS
 
 require("dotenv").config();
