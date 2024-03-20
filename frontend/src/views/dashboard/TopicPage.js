@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import verifiedImage from '../../assets/images/verified.png';
 import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser, FaRegSmileBeam, FaRegFrown, FaRegMeh } from 'react-icons/fa';
 import Map from './Map Topic'
-import Chart from './Overtime'
 import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList, Label, PieChart, Pie, Cell, Tooltip } from "recharts";
 import ReactWordcloud from "react-wordcloud"; 
 import 'tippy.js/dist/tippy.css';
@@ -246,8 +245,6 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
         <div style={{ width: "600px", height: "270px", marginTop:'40px' }}>
       <ReactWordcloud options={options} words={keywordsArray} />
       </div>
-      <br></br>
-      <Chart />
       </div>
 
 
