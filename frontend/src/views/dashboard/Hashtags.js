@@ -6,7 +6,7 @@ const Hashtags = () => {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch("http://localhost:5050/statistics_general/");
+        const response = await fetch("https://bee-aware-08ab5a1c994e.herokuapp.com/statistics_general/");
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);
         }
