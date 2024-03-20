@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Router = require("./app/routes/tweets")
 const cors = require("cors");
+const path = require('path');
 
 const app = express();
 
@@ -37,3 +38,10 @@ app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
 });
 
+// Serve static files from the 'frontend/build' directory
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+
+// This route should serve 'index.html' for all routes in the frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
