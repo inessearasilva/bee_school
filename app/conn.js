@@ -2,7 +2,16 @@ const { MongoClient } = require("mongodb");
 
 const connectionString = process.env.ATLAS_URI || "";
 
-const client = new MongoClient(connectionString);
+// Load the SSL certificate files
+const ca = [fs.readFileSync("/path/to/ca.pem")]; // Replace "/path/to/ca.pem" with the path to your CA certificate file
+
+const client = new MongoClient(connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  ssl: true, // Enable SSL
+  sslCA: ca, // Specify the CA certificate
+});
+
 
 let conn;
 let db;
