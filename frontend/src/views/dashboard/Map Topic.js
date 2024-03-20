@@ -53,7 +53,7 @@ export default function Map() {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch("https://bee-aware-08ab5a1c994e.herokuapp.com/api/statistics/");
+        const response = await fetch("http://localhost:5050/statistics/");
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);
         }
