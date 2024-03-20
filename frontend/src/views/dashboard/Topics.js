@@ -20,9 +20,21 @@ const Topics = () => {
     getRecords();
   }, []);
 
-  const getFirstTenRecords = () => records.slice(0, 10);
-  const getFirstTenTopicsEntries = (record) =>
-    Object.entries(record.topics).slice(0, 10);
+    const getFirstTenRecords = () => {
+      // Sort the records based on their values in descending order
+      const sortedRecords = records.sort((a, b) => b.value - a.value);
+      // Slice the first 10 records
+      return sortedRecords.slice(0, 10);
+    };
+    
+
+    const getFirstTenTopicsEntries = (record) => {
+      // Sort the topics based on their values in descending order
+      const sortedTopics = Object.entries(record.topics).sort((a, b) => b[1] - a[1]);
+      // Slice the first 10 topics
+      return sortedTopics.slice(0, 10);
+    };
+    
 
   const redirectToTopicPage = (topic) => {
     // Modify the URL to the desired topic page
