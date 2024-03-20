@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@ashwamegh/react-link-preview": "^0.3.0",
-    "@canvasjs/charts": "^3.7.44",
-    "@canvasjs/react-charts": "^1.0.0",
     "@coreui/coreui": "^4.2.3",
     "@coreui/icons": "^2.1.0",
     "@coreui/icons-react": "^2.1.0",
