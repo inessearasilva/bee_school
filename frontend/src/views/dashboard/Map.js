@@ -51,7 +51,7 @@ export default function Map() {
 
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`https://bee-aware-08ab5a1c994e.herokuapp.com/statistics_general/`);
+      const response = await fetch(`hhttps://bee-aware-0831ce44e802.herokuapp.com/statistics_general/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
