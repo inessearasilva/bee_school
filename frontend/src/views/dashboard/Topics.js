@@ -1,4 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from 'react-router-dom';
+import {
+  CContainer,
+  CHeader,
+  CHeaderBrand,
+  CHeaderDivider,
+  CHeaderNav,
+  CHeaderToggler,
+  CNavLink,
+  CNavItem,
+} from '@coreui/react';
 
 const Topics = () => {
   const [records, setRecords] = useState([]);
@@ -20,26 +31,18 @@ const Topics = () => {
     getRecords();
   }, []);
 
-    const getFirstTenRecords = () => {
-      // Sort the records based on their values in descending order
-      const sortedRecords = records.sort((a, b) => b.value - a.value);
-      // Slice the first 10 records
-      return sortedRecords.slice(0, 10);
-    };
-    
+  const getFirstTenRecords = () => {
+    // Sort the records based on their values in descending order
+    const sortedRecords = records.sort((a, b) => b.value - a.value);
+    // Slice the first 10 records
+    return sortedRecords.slice(0, 10);
+  };
 
-    const getFirstTenTopicsEntries = (record) => {
-      // Sort the topics based on their values in descending order
-      const sortedTopics = Object.entries(record.topics).sort((a, b) => b[1] - a[1]);
-      // Slice the first 10 topics
-      return sortedTopics.slice(0, 10);
-    };
-    
-
-  const redirectToTopicPage = (topic) => {
-    // Modify the URL to the desired topic page
-    const topicPageURL = `http:/#/topics/${topic}`;
-    window.open(topicPageURL, "_blank");
+  const getFirstTenTopicsEntries = (record) => {
+    // Sort the topics based on their values in descending order
+    const sortedTopics = Object.entries(record.topics).sort((a, b) => b[1] - a[1]);
+    // Slice the first 10 topics
+    return sortedTopics.slice(0, 10);
   };
 
   return (
@@ -48,15 +51,14 @@ const Topics = () => {
         <React.Fragment key={record._id}>
           <tr>
             <td style={{ padding: '3px', paddingInlineStart: '10px' }}>
-              
             </td>
           </tr>
           {getFirstTenTopicsEntries(record).map(([topic, value]) => (
             <tr key={topic}>
               <td style={{ padding: '5px', paddingInlineStart: '10px', width:'82.5%' }}>
-                <a style={{color: 'black'}} href="#" onClick={() => redirectToTopicPage(topic)}>
+                <NavLink to={`/topics/${topic}`} style={{color: 'black'}}>
                   {topic}
-                </a>
+                </NavLink>
               </td>
               <td className="qtt-background" style={{ padding: '3px' }}>
                 {value}
@@ -64,12 +66,11 @@ const Topics = () => {
             </tr>
           ))}
           <tr>
-          <td className="viewall-background" style={{ padding: '3px', marginLeft:'149px' }}>
-          <a href="/#/all_topics" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-              <strong>View All</strong>
-          </a>
-          </td>
-
+            <td className="viewall-background" style={{ padding: '3px', marginLeft:'149px' }}>
+              <NavLink to="/all_topics" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+                <strong>View All</strong>
+              </NavLink>
+            </td>
           </tr>
           <tr>
             <td style={{ padding: '3px', paddingInlineStart: '20px' }}>

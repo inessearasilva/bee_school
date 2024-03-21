@@ -45,3 +45,18 @@ app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
+
+// Gracefully close the MongoDB connection when Node.js process is exiting
+process.on('SIGINT', async () => {
+  try {
+    await mongoose.connection.close();
+    console.log('MongoDB connection closed');
+    server.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  } catch (error) {
+    console.error('Error while closing MongoDB connection:', error);
+    process.exit(1);
+  }
+});
