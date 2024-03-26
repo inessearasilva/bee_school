@@ -1,5 +1,215 @@
 // Here you can add other styles
 
+@media (max-width: 1279px) {
+  .sentiment {
+    width:300px;
+    height:300px;
+    margin-top:1px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .sentiment {
+    width:500px;
+    height:300px;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .piegraphic {
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .numbertopic {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .numbertopics {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .percchart {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .topicname {
+    margin-top: 160px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .topicname {
+    font-size: 30px;
+    font-weight: bold;
+    align-items: left;
+  }
+}
+
+
+@media (max-width: 1279px) {
+  .wordcloud {
+    width:300px;
+    height:270px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wordcloud {
+    width:600px;
+    height:270px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tweets {
+    width:1270px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tweetst {
+    width:620px;
+  }
+}
+
+@media (max-width: 1279px) {
+  $header-padding-x: 4rem; // Adjust padding for small screens
+}
+
+@media (min-width: 1280px) {
+  $header-padding-x: 4rem; // Adjust padding for small screens
+}
+
+@media (max-width: 1279px) {
+  .media{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-nav-item {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .app-header-dropdown {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .perspectivesg {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .perspectivesp {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .statsg {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .statsm {
+    display: none;
+  }
+}
+
+.app-header-dropdown {
+  margin-right: 5px; /* Adjust this value as needed */
+}
+
+@media (max-width: 768px) {
+  .home-table {
+    width:100%;
+    min-width: 250px;
+    max-width: 250px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-table {
+    width:100%;
+    min-width: 390px;
+    max-width: 390px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepic {
+    width:280px;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .homepic {
+    width: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homemap {
+    width: 280px;
+    height: 224px;
+  }
+}
+
+@media (min-width: 768px) {
+  .homemap {
+    width: 830px;
+    height: 660px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topicmap {
+    width: 280px;
+    height: 224px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .topicmap {
+    margin-top: 20px;
+    width: 600px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .filter-buttons button:not(.active), .active {
+    padding: 8px;
+  }
+}
+
+
 select option::before {
   content: "";
   width: 0;
@@ -170,7 +380,6 @@ button.active {
 .home-table {
   border: 1px solid #d8d7d7;
   font-family: proxima-nova;
-  font-size: 18px;
   border-radius: 8px;
   border-spacing: 0;
   border-collapse: separate;
@@ -185,8 +394,55 @@ button.active {
   background: linear-gradient(to bottom, #ffe432 9%, transparent 0%);
 }
 
+@media (min-width: 1280px) {
+  .home-table1 {
+    min-width: 1280px;
+    max-width: 1280px;
+    border: 1px solid #d8d7d7;
+  }
+}
+
+@media (max-width: 749px) {
+  .home-table1 {
+    border: 1px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1001px) {
+  .home-table2 {
+    min-width: 340px;
+    max-width: 340px;
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 749px) {
+  .home-table2 {
+    min-width: 278px;
+    max-width: 278px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1279px) {
+  .home-table1 {
+    min-width: 720px;
+    max-width: 1000px;
+    border: 1px solid #ffffff;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1279px) {
+  .home-table2 {
+    min-width: 220px;
+    max-width: 220px;
+  }
+}
+
 .home-table1 {
-  border: 1px solid #d8d7d7;
   border-radius: 8px;
   border-spacing: 0;
   border-collapse: separate;
@@ -271,6 +527,18 @@ button.active {
   white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+  .viewall-background {
+    margin-left: 79px;
+  }
+}
+
+@media (min-width: 769px) {
+  .viewall-background {
+    margin-left: 149px;
+  }
+}
+
 .about-us-table {
   border: 1px solid #d8d7d7;
   font-family: Cambria;
@@ -308,12 +576,24 @@ button.active {
   color: #000000; /* Replace with your desired text color */
 }
 
-.metric-data {
-  /* Add your styles for the metric data element here */
-  /* Example styles: */
-  font-size: 25px;
-  margin-right: 10px;
-  margin-left: 30px; /* Optional space between metric data and box */
+
+
+@media (max-width: 768px) {
+  .metric-data {
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 5px; /* Optional space between metric data and box */
+  }
+}
+
+@media (min-width: 768px) {
+  .metric-data {
+    /* Add your styles for the metric data element here */
+    /* Example styles: */
+    font-size: 25px;
+    margin-right: 10px;
+    margin-left: 30px; /* Optional space between metric data and box */
+  }
 }
 
 .metric-box1 {

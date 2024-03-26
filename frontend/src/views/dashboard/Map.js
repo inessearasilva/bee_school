@@ -21,7 +21,7 @@ const Record = (props) => {
   }, []);
 
   return (
-    <MapContainer style={{ height: "660px", width: "830px" }} center={[0, 0]} zoomSnap={0} zoom={1.70} doubleClickZoom={false} attributionControl={false} maxBounds={[[90, -180], [-90, 180]]}>
+    <MapContainer className="homemap" center={[0, 0]} zoomSnap={0} zoom={1.70} doubleClickZoom={false} attributionControl={false} maxBounds={[[90, -180], [-90, 180]]}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" noWrap={true}/>
       {heatmapData.map((data) => (
         <CircleMarker
@@ -51,7 +51,7 @@ export default function Map() {
 
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`https://bee-aware-0831ce44e802.herokuapp.com/statistics_general/`);
+      const response = await fetch(`http://localhost:5050/statistics_general/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

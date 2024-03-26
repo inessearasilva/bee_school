@@ -18,7 +18,7 @@ export default function Sentiment() {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch("https://bee-aware-0831ce44e802.herokuapp.com/statistics_general/");
+        const response = await fetch("http://localhost:5050/statistics_general/");
 
         if (!response.ok) {
           throw new Error(`Ocorreu um erro: ${response.statusText}`);
@@ -184,12 +184,11 @@ export default function Sentiment() {
   return (
     <div>
       <h2>TweetStats Worldwide</h2>
-      <br />
-      <table className="home-table1" style={{ display: 'flex', alignItems: 'center', width:'100%', minWidth: '1280px', maxWidth:'1280px' }}>
+      <table className="home-table1" style={{ display: 'flex', alignItems: 'center', width:'100%' }}>
       <div className="container text">
         <div className="row align-items-start" style={{marginTop: '30px'}}>
           <div className="col-lg-6 col-md-4 col-sm-10">
-      <div style={{ width: "500px", height: "300px", marginTop: '10px' }}>
+      <div className="sentiment">
         <ResponsiveContainer>
           <BarChart data={chartData} layout="vertical" barGap={55}>
             <XAxis type="number" hide />
@@ -251,7 +250,7 @@ export default function Sentiment() {
         </div>
         </div>
         <div className="col-lg-6 col-md-4 col-sm-10">
-        <div style={{ width: "600px", height: "270px", marginTop:'10px' }}>
+        <div className="wordcloud" style={{ marginTop:'10px' }}>
               <ReactWordcloud options={options} words={keywordsArray} />
             </div>
       </div>
@@ -296,7 +295,7 @@ export default function Sentiment() {
                 <br />
                 {filteredTop10.length > 0 ? (
                   filteredTop10.map((entry, index) => (
-                    <div key={index} style={{ marginBottom: '20px', width: '1270px', border: '1px solid #ccc', borderRadius: '8px' }}>
+                    <div className="tweets" key={index} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
                       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                         <div style={{ marginRight: '10px', marginTop: '6px' }}>
                           <img src={entry.profile_photo} alt="Perfil" style={{ width: '65px', marginLeft: '5px' }} />
@@ -309,7 +308,7 @@ export default function Sentiment() {
                             {entry.result}
                             <br />
                             {entry.media !== null ? (
-                            <a href={entry.media} target="_blank" rel="noopener noreferrer">
+                            <a className="media" href={entry.media} target="_blank" rel="noopener noreferrer">
                               {entry.media}
                             </a>
                           ) : null}
@@ -334,7 +333,7 @@ export default function Sentiment() {
                     </div>
                   ))
                 ) : (
-                  <p>Não há dados disponíveis para o filtro selecionado.</p>
+                  <p>No data available for the selected filter.</p>
                 )}
               </div>
             </div>

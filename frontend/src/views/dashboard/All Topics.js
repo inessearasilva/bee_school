@@ -16,13 +16,13 @@ const Record = (props) => {
 
   return (
 
-    <table className="home-table1" style={{ display: 'flex', alignItems: 'center', width:'100%', minWidth: '1280px', maxWidth:'1280px' }}>
-    <div className="row align-items-start" style={{ display: 'flex', alignItems: 'center', width: '100%', minWidth: '1280px', maxWidth: '1280px' }}>
+    <table className="home-table1" style={{ width:'100%', textAlign:"center"}}>
+    <div className="row align-items-start" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
       <div className="col-lg-4 col-md-4 col-sm-12">
         <table>
           <tbody>
           {props.filteredTopics.slice(0, Math.ceil(props.filteredTopics.length / 3)).map((topic, index) => (
-            <table key={topic} className="home-table2" style={{ marginTop:'20px', marginBottom:'20px', marginLeft:'65px', alignItems: 'center', width: '100%', minWidth: '340px', maxWidth: '340px' }}>
+            <table key={topic} className="home-table2" style={{ marginTop:'20px', marginBottom:'20px', alignItems: 'center', width: '100%'}}>
               <thead>
                 <tr>
                   <th style={{ display: 'flex', padding:'12px' }}>
@@ -49,9 +49,10 @@ const Record = (props) => {
       <div className="col-lg-4 col-md-4 col-sm-12">
         <table>
           <tbody>
-          {props.filteredTopics.slice(Math.ceil(props.filteredTopics.length / 3), Math.ceil(props.filteredTopics.length / 3 * 2)).map((topic, index) => (
-            <table key={topic} className="home-table2" style={{ marginTop:'20px', marginBottom:'20px', marginLeft:'45px', alignItems: 'center', width: '100%', minWidth: '340px', maxWidth: '340px' }}>
-            <thead>
+
+            {props.filteredTopics.slice(Math.ceil(props.filteredTopics.length / 3), Math.ceil(props.filteredTopics.length / 3 * 2)).map((topic, index) => (
+            <table key={topic} className="home-table2" style={{ marginTop:'20px', marginBottom:'20px', alignItems: 'center', width: '100%'}}>
+              <thead>
                 <tr>
                   <th style={{ display: 'flex', padding:'12px' }}>
                     <span style={{ marginLeft:'8px' ,marginRight: 'auto' }}>{topic}</span>
@@ -69,8 +70,8 @@ const Record = (props) => {
                 </td>
               </tr>
               </tbody>
-          </table>
-  ))}
+            </table>
+          ))}
           </tbody>
         </table>
       </div>
@@ -78,7 +79,7 @@ const Record = (props) => {
         <table>
           <tbody>
           {props.filteredTopics.slice(Math.ceil(props.filteredTopics.length / 3 * 2)).map((topic, index) => (
-            <table key={topic} className="home-table2" style={{ marginTop:'20px', marginBottom:'20px', marginLeft:'20px', alignItems: 'center', width: '100%', minWidth: '340px', maxWidth: '340px' }}>
+            <table key={topic} className="home-table2" style={{ marginTop:'20px', marginBottom:'20px', alignItems: 'center', width: '100%'}}>
             <thead>
                 <tr>
                   <th style={{ display: 'flex', padding:'12px' }}>
@@ -128,7 +129,7 @@ export default function Sentiment() {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch("https://bee-aware-0831ce44e802.herokuapp.com/statistics_general/");
+        const response = await fetch("http://localhost:5050/statistics_general/");
 
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);

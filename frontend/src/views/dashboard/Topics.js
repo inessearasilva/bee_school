@@ -17,7 +17,7 @@ const Topics = () => {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch("https://bee-aware-0831ce44e802.herokuapp.com/statistics_general/");
+        const response = await fetch("http://localhost:5050/statistics_general/");
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);
         }
@@ -50,7 +50,7 @@ const Topics = () => {
       {getFirstTenRecords().map((record) => (
         <React.Fragment key={record._id}>
           <tr>
-            <td style={{ padding: '3px', paddingInlineStart: '10px' }}>
+            <td style={{ padding: '3px', paddingInlineStart: '20px' }}>
             </td>
           </tr>
           {getFirstTenTopicsEntries(record).map(([topic, value]) => (
@@ -66,7 +66,7 @@ const Topics = () => {
             </tr>
           ))}
           <tr>
-            <td className="viewall-background" style={{ padding: '3px', marginLeft:'149px' }}>
+            <td className="viewall-background" style={{ padding: '3px' }}>
               <NavLink to="/all_topics" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
                 <strong>View All</strong>
               </NavLink>

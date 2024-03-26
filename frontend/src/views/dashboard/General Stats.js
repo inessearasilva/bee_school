@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList, Label, PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const Record = (props) => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
+  <div className="statsg" style={{ display: 'flex', flexDirection: 'column' }}>
 <div class="metric-container">
   <div class="metric-data">
     {props.record.engagement_metrics.total_impressions}
@@ -54,7 +54,7 @@ export default function Sentiment() {
   useEffect(() => {
     async function getRecords() {
       try {
-        const response = await fetch("https://bee-aware-0831ce44e802.herokuapp.com/statistics_general/");
+        const response = await fetch("http://localhost:5050/statistics_general/");
 
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);

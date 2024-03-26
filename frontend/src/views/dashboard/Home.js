@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import image from '../../assets/images/banner.png';
+import stats from '../../assets/images/stats.png';
 import TweetDataService from "../../services/tweets_service.js"
 import Map from './Map'
 import Hashtags from './Hashtags'
@@ -77,11 +78,11 @@ export default class Home extends Component {
         <Navbar className="navbar navbar-expand-lg navbar-white bg-white">
           <Container>
             <div className="container text">
-              <div className="row align-items-start" style={{display: 'flex', width:'100%', minWidth: '1280px', maxWidth:'1280px'}}>
+              <div className="row align-items-start">
               <div className="col-lg-4 col-md-6 col-sm-12">
               <div className="flex-container" >
                   <div className="flex-item">
-                  <table className="home-table" style={{ width:'100%', minWidth: '390px', maxWidth:'390px' }}>
+                  <table className="home-table">
                     <thead>
                       <tr>
                         <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
@@ -91,8 +92,7 @@ export default class Home extends Component {
                     </thead>
                     <Topics />
                   </table>
-                  <br></br><br></br><br></br>
-                  <table className="home-table" style={{ width:'100%', minWidth: '390px', maxWidth:'390px' }}>
+                  <table className="home-table" style={{marginTop:"40px"}}>
                     <thead>
                       <tr>
                       <th colSpan="2" style={{ textAlign: 'center', position: 'relative' }}>
@@ -105,19 +105,20 @@ export default class Home extends Component {
             </div>
             </div>
             </div>
-            <div className="col-lg-8 col-md-6 col-sm-12">
+            <div className="col-lg-8 col-md-8 col-sm-12">
                   <div className="flex-container" >
                     <div className="flex-item">
-                    <div className="row align-items-start" style={{ display: 'flex', width:'100%', minWidth: '840px', maxWidth:'840px'}}>
-                    <div className="col-lg-9 col-md-9 col-sm-15" >
-                    <img src={image} style={{width:'650px'}}/>
+                    <div className="row align-items-start">
+                    <div className="col-lg-9 col-md-9 col-sm-6" >
+                    <img src={image} className="homepic"/>
                     </div>
-                    <div className="col-lg-2 col-md-2 col-sm-8">
-                      <Stats/>
+                    <div className="col-lg-2 col-md-2 col-sm-6">
+                      <div className="statsg"> 
+                      <Stats /></div>
+                      <img src={stats} className="statsm" style={{width:"240px", marginTop:"30px", alignItems:"center"}}/>
                     </div>
                     </div>
-                      <br /><br />
-                      <h2 style={{ fontFamily: 'Cambria' }}><b>Tweets per Country</b></h2>
+                      <h2 style={{ fontFamily: 'Cambria', marginTop:"40px" }}><b>Tweets per Country</b></h2>
                     </div>
                     <div className="flex-item">
                       <Map />
