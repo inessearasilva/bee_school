@@ -60,7 +60,8 @@ export default function Hashtags() {
               showGraphic={false}
               maxLine={2}
               minLine={1}
-              description=" "
+              description={record.description}
+              header={record.title}
               noCache={true}
               url={record.url}
               loadSecureUrl={true}
@@ -102,7 +103,8 @@ export default function Hashtags() {
                 showGraphic={false}
                 maxLine={2}
                 minLine={1}
-                description=" "
+                description={record.description}
+                header={record.title}
                 noCache={true}
                 url={record.url}
                 loadSecureUrl={true}
@@ -140,7 +142,8 @@ export default function Hashtags() {
                 cardSize="large"
                 showGraphic={false}
                 maxLine={2}
-                description=" "
+                description={record.description}
+                header={record.title}
                 minLine={1}
                 noCache={true}
                 url={record.url}
