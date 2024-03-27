@@ -57,9 +57,10 @@ export default function Hashtags() {
             {validateUrl(record.url) ? (
               <ReactTinyLink
               cardSize="large"
-              showGraphic={true}
+              showGraphic={false}
               maxLine={2}
               minLine={1}
+              description=" "
               noCache={true}
               url={record.url}
               loadSecureUrl={true}
@@ -98,9 +99,10 @@ export default function Hashtags() {
             {validateUrl(record.url) ? (
               <ReactTinyLink
                 cardSize="large"
-                showGraphic={true}
+                showGraphic={false}
                 maxLine={2}
                 minLine={1}
+                description=" "
                 noCache={true}
                 url={record.url}
                 loadSecureUrl={true}
@@ -136,8 +138,9 @@ export default function Hashtags() {
             {validateUrl(record.url) ? (
               <ReactTinyLink
                 cardSize="large"
-                showGraphic={true}
+                showGraphic={false}
                 maxLine={2}
+                description=" "
                 minLine={1}
                 noCache={true}
                 url={record.url}
