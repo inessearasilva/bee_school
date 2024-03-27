@@ -495,8 +495,18 @@ button.active {
   text-decoration: none;
   -webkit-tap-highlight-color: rgb(245, 248, 250);
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px; 
 }
+
+.newstable tfoot {
+  border-top: 1px solid rgb(225, 232, 237);
+}
+
+.newstable td {
+  max-width: 630px;
+  word-wrap: break-word; /* This ensures long words are broken and don't overflow */
+}
+
 
 .qtt-background {
   display: inline-flex;
