@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import verifiedImage from '../../assets/images/verified.png';
 import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser, FaRegSmileBeam, FaRegFrown, FaRegMeh } from 'react-icons/fa';
 import Map from './Map Topic'
-import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList, Label, PieChart, Pie, Cell, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList, PieChart, Pie, Cell, Tooltip } from "recharts";
 import ReactWordcloud from "react-wordcloud"; 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css'
@@ -11,13 +11,11 @@ import 'tippy.js/animations/scale.css'
 export default function Hashtags() {
   const { topic } = useParams();
 
-  // State to store the selected filter, defaulting to 'top_10_global'
   const [selectedFilter, setSelectedFilter] = useState("top_10_global");
 
-  // Declare keywordsArray outside the useEffect hook
   const [record, setRecord] = useState(null);
-  const [keywordsArray, setKeywordsArray] = useState([]); // Initialize it as an empty array
-  const [hashtagsArray, setHashtagsArray] = useState([]); // Initialize it as an empty array
+  const [keywordsArray, setKeywordsArray] = useState([]); 
+  const [hashtagsArray, setHashtagsArray] = useState([]); 
 
   useEffect(() => {
     async function getRecords() {
@@ -30,14 +28,13 @@ export default function Hashtags() {
         const matchingRecord = records.find((r) => r.topic === topic);
         setRecord(matchingRecord || null);
 
-        // Convert the record.keywords object into an array of keyword objects
         const keywords = matchingRecord?.keywords || {};
         const keywordsArray = Object.entries(keywords).map(([keyword, count]) => ({
           text: keyword,
           value: count,
         }));
 
-        setKeywordsArray(keywordsArray); // Set the keywordsArray state with the converted data
+        setKeywordsArray(keywordsArray); 
 
         const hashtags = matchingRecord?.hashtags || {};
         const hashtagsArray = Object.entries(hashtags).map(([hashtag, count]) => ({
@@ -45,7 +42,7 @@ export default function Hashtags() {
           value: count,
         }));
 
-        setHashtagsArray(hashtagsArray); // 
+        setHashtagsArray(hashtagsArray); 
 
       } catch (error) {
         window.alert(error.message);
@@ -55,7 +52,6 @@ export default function Hashtags() {
     getRecords();
   }, [topic]);
 
-  // Function to handle filter change
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter);
   };
@@ -113,13 +109,12 @@ export default function Hashtags() {
 
   return (
     <div>
-      {/* Pass the filteredTop10 data and the handleFilterChange function as props to the Record component */}
       <Record
         record={record}
         hashtags={hashtags}
         filteredTop10={filteredTop10}
         selectedFilter={selectedFilter}
-        handleFilterChange={handleFilterChange} // Pass the handleFilterChange function
+        handleFilterChange={handleFilterChange}
         options={options}
         keywordsArray={keywordsArray}
         hashtagsArray={hashtagsArray}
@@ -128,7 +123,6 @@ export default function Hashtags() {
   )}
 
 const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterChange, options, keywordsArray, hashtagsArray }) => {
-  // Prepare data for the pie chart
   const pieData = record ? [
     { name: 'Positive', value: record.sentiment_count?.Positive || 0, color: '#76CC9D', perc: record.sentiment_percentages?.Positive },
     { name: 'Neutral', value: record.sentiment_count?.Neutral || 0, color: '#FADB7C', perc: record.sentiment_percentages?.Neutral },
@@ -179,7 +173,6 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
 
   const calculateKValue = (value) => {
     const kValue = value / 1000;
-    // Use toFixed(1) to display one decimal if the value is less than 1
     return kValue.toFixed(kValue < 1 ? 1 : 0);
   };
 
@@ -251,9 +244,9 @@ const Record = ({ record, hashtags, filteredTop10, selectedFilter, handleFilterC
         <div className="col-lg-4 col-md-5 col-sm-12">
         <div className="percchart" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <ResponsiveContainer width={450} height={350}>
-            <BarChart layout="vertical" data={chartData} barSize={35} margin={{ left: 60, right: 80, top:4, bottom: 20 }}> {/* Adjust the margins */}
-                <XAxis type="number" dataKey="sqrtValue" hide /> {/* Use "sqrtValue" for XAxis dataKey */}
-                <YAxis type="category" dataKey="name" hide/> {/* Use "name" for YAxis dataKey */}
+            <BarChart layout="vertical" data={chartData} barSize={35} margin={{ left: 60, right: 80, top:4, bottom: 20 }}> 
+                <XAxis type="number" dataKey="sqrtValue" hide /> 
+                <YAxis type="category" dataKey="name" hide/> 
                 <Tooltip content={<CustomTooltip />} wrapperStyle={{ backgroundColor: "white", border: '1px solid #ccc' }} />
                 <Bar dataKey="sqrtValue" fill="#8884d8">
                   <LabelList

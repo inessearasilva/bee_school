@@ -3,7 +3,6 @@ const { ObjectId, MongoClient } = require("mongodb");
 
 const router = express.Router();
 
-// Middleware function to check if the database connection is ready
 async function checkDatabaseConnection(req, res, next) {
   const connectionString = process.env.ATLAS_URI || "";
 
@@ -21,7 +20,6 @@ async function checkDatabaseConnection(req, res, next) {
 
 // ==================> Tweets <=======================
 
-// This section will help you get a list of all the records.
 router.get("/tweets", checkDatabaseConnection, async (req, res) => {
   const db = req.app.locals.db;
   const collection = db.collection("tweets");
@@ -31,7 +29,6 @@ router.get("/tweets", checkDatabaseConnection, async (req, res) => {
 
 // ==================> statistics_general <=======================
 
-// This section will help you get a list of all the records.
 router.get("/statistics_general", checkDatabaseConnection, async (req, res) => {
   const db = req.app.locals.db;
   const collection = db.collection("statistics_general");
@@ -41,7 +38,6 @@ router.get("/statistics_general", checkDatabaseConnection, async (req, res) => {
 
 // ==================> general_info <=======================
 
-// This section will help you get a list of all the records.
 router.get("/general_info", checkDatabaseConnection, async (req, res) => {
   const db = req.app.locals.db;
   const collection = db.collection("general_info");
@@ -51,7 +47,6 @@ router.get("/general_info", checkDatabaseConnection, async (req, res) => {
 
 // ==================> statistics <=======================
 
-// This section will help you get a list of all the records.
 router.get("/statistics", checkDatabaseConnection, async (req, res) => {
   const db = req.app.locals.db;
   const collection = db.collection("statistics");
@@ -61,7 +56,6 @@ router.get("/statistics", checkDatabaseConnection, async (req, res) => {
 
 // ==================> links <=======================
 
-// This section will help you get a list of all the records.
 router.get("/links", checkDatabaseConnection, async (req, res) => {
   const db = req.app.locals.db;
   const collection = db.collection("links");
@@ -72,7 +66,6 @@ router.get("/links", checkDatabaseConnection, async (req, res) => {
 
 // -----------------------------------------------------------------
 
-// This section will help you get a single record by id
 router.get("/tweets/:id", checkDatabaseConnection, async (req, res) => {
   const db = req.app.locals.db;
   const collection = db.collection("tweets");

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList, Label, PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const Record = (props) => (
   <div className="statsg" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -70,14 +69,12 @@ export default function Sentiment() {
     getRecords();
   }, []);
 
-  // This method will map out the records
   function recordList() {
     return records.map((record) => {
       return <Record record={record} key={record._id} />;
     });
   }
-  
-  // This following section will display the records and the chart
+
   return (
     <div>
     <div style={{ display: 'flex' }}>

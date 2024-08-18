@@ -6,9 +6,9 @@ import { useParams } from 'react-router-dom';
 const Record = (props) => {
   const heatmapData = Object.entries(props.record.geographical).reduce((data, [country, values]) => {
     if (country !== "null") {
-      const value = values[0]; // Value is stored at index 0
-      const latitude = values[1]; // Latitude at index 1
-      const longitude = values[2]; // Longitude at index 2
+      const value = values[0]; 
+      const latitude = values[1]; 
+      const longitude = values[2]; 
       
       if (latitude !== null && longitude !== null) {
         data.push({

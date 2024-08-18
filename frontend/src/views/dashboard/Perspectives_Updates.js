@@ -20,7 +20,6 @@ export default function Hashtags() {
   }, []);
 
   const redirectToTopicPage = (topic) => {
-    // Modify the URL to the desired topic page
     const topicPageURL = `http:/#/topics/${topic}`;
     window.open(topicPageURL, "_blank");
   };
@@ -65,7 +64,7 @@ export default function Hashtags() {
 
   const validateUrl = (url) => {
     try {
-      new URL(url); // Validate the URL format
+      new URL(url);
       return true;
     } catch (error) {
       console.error("Invalid URL:", url);
@@ -78,15 +77,12 @@ export default function Hashtags() {
     const limit = 190;
     
     if (description && description.length > limit) {
-      // Find the last space before the character limit
       let lastSpaceIndex = description.lastIndexOf(' ', limit);
-      
-      // If there are no spaces before the limit, just truncate the string
+
       if (lastSpaceIndex === -1) {
         return description.substring(0, limit) + '...';
       }
       
-      // Otherwise, truncate at the last space
       return description.substring(0, lastSpaceIndex) + '...';
     }
     
@@ -97,22 +93,18 @@ export default function Hashtags() {
     const limit = 145;
     
     if (title && title.length > limit) {
-      // Find the last space before the character limit
       let lastSpaceIndex = title.lastIndexOf(' ', limit);
       
-      // If there are no spaces before the limit, just truncate the string
       if (lastSpaceIndex === -1) {
         return title.substring(0, limit) + '...';
       }
       
-      // Otherwise, truncate at the last space
       return title.substring(0, lastSpaceIndex) + '...';
     }
     
     return title;
   };
 
-  // Remove duplicate records based on both URL and title
   const uniqueRecords = records.filter(
     (record, index, self) =>
       index ===

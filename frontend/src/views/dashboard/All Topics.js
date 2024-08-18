@@ -5,11 +5,8 @@ import { FaAngleRight } from 'react-icons/fa';
 const Record = (props) => {
   const topicsArray = Object.keys(props.record.topics);
   const halfLength = Math.ceil(topicsArray.length / 2);
-  const firstHalf = topicsArray.slice(0, halfLength);
-  const secondHalf = topicsArray.slice(halfLength);
 
   const redirectToTopicPage = (topic) => {
-    // Modify the URL to the desired topic page
     const topicPageURL = `http:/#/topics/${topic}`;
     window.open(topicPageURL, "_blank");
   };
@@ -111,8 +108,7 @@ const Record = (props) => {
 export default function Sentiment() {
   const [records, setRecords] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState('');
-  const [availableLetters, setAvailableLetters] = useState(new Set()); // Define availableLetters state
-
+  const [availableLetters, setAvailableLetters] = useState(new Set());
   const handleLetterClick = (letter) => {
     setSelectedLetter(letter);
 

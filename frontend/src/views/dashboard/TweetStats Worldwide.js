@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList, Label, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, LabelList} from "recharts";
 import ReactWordcloud from "react-wordcloud"; 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css'
@@ -10,10 +10,9 @@ import { FaHeart, FaRetweet, FaQuoteLeft, FaReply, FaEye, FaUser, FaRegSmileBeam
 export default function Sentiment() {
   const [records, setRecords] = useState([]);
 
-  // Estado para armazenar o filtro selecionado, padrão é 'top_10_global'
   const [selectedFilter, setSelectedFilter] = useState("top_10_global");
-  const [keywordsArray, setKeywordsArray] = useState([]); // Inicializa como um array vazio
-  const [hashtagsArray, setHashtagsArray] = useState([]); // Inicializa como um array vazio
+  const [keywordsArray, setKeywordsArray] = useState([]); 
+  const [hashtagsArray, setHashtagsArray] = useState([]);
 
   useEffect(() => {
     async function getRecords() {
@@ -54,7 +53,6 @@ export default function Sentiment() {
     getRecords();
   }, []);
 
-  // Função para lidar com a mudança de filtro
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter);
   };
@@ -112,8 +110,8 @@ export default function Sentiment() {
           y={y}
           width={width}
           height={height}
-          rx={4} // Ajustar o raio para mudar o grau de arredondamento
-          ry={4} // Ajustar o raio para mudar o grau de arredondamento
+          rx={4} 
+          ry={4}
           fill={props.fill}
         />
       </g>
@@ -135,12 +133,12 @@ export default function Sentiment() {
   );
 
   const CustomizedLabelSentiment = ({ x, y, width, value, fill }) => {
-    const labelX = x + width + 10; // Ajustar a coordenada x para posicionar as etiquetas em relação à barra
+    const labelX = x + width + 10;
     const yOffset = -8;
-    const lineHeight = 16; // Ajustar a altura da linha conforme necessário
-    const valueFontSize = 25; // Tamanho da fonte para value.value
-    const percFontSize = 18; // Tamanho da fonte para value.perc
-    const lineSpacing = 20; // Ajustar o espaçamento entre os dois valores
+    const lineHeight = 16; 
+    const valueFontSize = 25;
+    const percFontSize = 18;
+    const lineSpacing = 20; 
 
     if (value) {
       const labelValue = `${value.value}\n${value.perc.toFixed(2)}%`;
@@ -151,11 +149,11 @@ export default function Sentiment() {
           {values.map((val, index) => (
             <text
               key={index}
-              x={500} // Definir um valor fixo para a coordenada x
+              x={500}
               y={y + (lineHeight * index) + yOffset}
               fill="black"
-              textAnchor="end" // Alinhar as etiquetas à direita
-              dominantBaseline="middle" // Centralizar verticalmente as etiquetas
+              textAnchor="end"
+              dominantBaseline="middle"
             >
               <tspan
                 fontSize={index === 0 ? valueFontSize : percFontSize}
@@ -173,14 +171,12 @@ export default function Sentiment() {
     return null;
   };
 
-  // Preparar os dados para o gráfico
   const chartData = records.map((record) => ({
     negative: { value: record.sentiment_count.Negative, perc: record.sentiment_percentages.Negative, sqrtValue: (record.sentiment_count.Negative)/1.1 },
     neutral: { value: record.sentiment_count.Neutral, perc: record.sentiment_percentages.Neutral, sqrtValue: (record.sentiment_count.Neutral)/1.1 - 220 },
     positive: { value: record.sentiment_count.Positive, perc: record.sentiment_percentages.Positive, sqrtValue: (record.sentiment_count.Positive)/1.1 }
   }));
 
-  // Esta seção a seguir exibirá os registros e o gráfico
   return (
     <div>
       <h2>TweetStats Worldwide</h2>
@@ -198,7 +194,7 @@ export default function Sentiment() {
               dataKey="positive.sqrtValue"
               fill="#76CC9D"
               name="Positive"
-              shape={<CustomizedBar fill="#76CC9D" />} // Usar o componente de forma personalizada para a barra
+              shape={<CustomizedBar fill="#76CC9D" />} 
             >
               <LabelList
                 dataKey="positive"
@@ -215,7 +211,7 @@ export default function Sentiment() {
               dataKey="neutral.sqrtValue"
               fill="#FADB7C"
               name="Neutral"
-              shape={<CustomizedBar fill="#FADB7C" />} // Usar o componente de forma personalizada para a barra
+              shape={<CustomizedBar fill="#FADB7C" />} 
             >
               <LabelList
                 dataKey="neutral"
@@ -232,7 +228,7 @@ export default function Sentiment() {
               dataKey="negative.sqrtValue"
               fill="#F46161"
               name="Negative"
-              shape={<CustomizedBar fill="#F46161" />} // Usar o componente de forma personalizada para a barra
+              shape={<CustomizedBar fill="#F46161" />}
             >
               <LabelList
                 dataKey="negative"

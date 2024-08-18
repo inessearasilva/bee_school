@@ -8,7 +8,6 @@ const loading = (
   </div>
 )
 
-// Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 class App extends Component {

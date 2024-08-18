@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from 'react-router-dom';
-import {
-  CContainer,
-  CHeader,
-  CHeaderBrand,
-  CHeaderDivider,
-  CHeaderNav,
-  CHeaderToggler,
-  CNavLink,
-  CNavItem,
-} from '@coreui/react';
 
 const Topics = () => {
   const [records, setRecords] = useState([]);
@@ -32,16 +22,12 @@ const Topics = () => {
   }, []);
 
   const getFirstTenRecords = () => {
-    // Sort the records based on their values in descending order
     const sortedRecords = records.sort((a, b) => b.value - a.value);
-    // Slice the first 10 records
     return sortedRecords.slice(0, 10);
   };
 
   const getFirstTenTopicsEntries = (record) => {
-    // Sort the topics based on their values in descending order
     const sortedTopics = Object.entries(record.topics).sort((a, b) => b[1] - a[1]);
-    // Slice the first 10 topics
     return sortedTopics.slice(0, 10);
   };
 
